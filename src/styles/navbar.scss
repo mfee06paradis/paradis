@@ -1,0 +1,183 @@
+@import './variables.scss';
+
+//---------------------- navbar ----------------------
+
+.navbar {
+    margin: 2rem auto;
+    text-align: center;
+    width: 50rem;
+    height: 10rem;
+}
+
+.nav-outline {
+    padding: 0.2rem 0 0.2rem 0;
+    border-top: $pink-dark 3px solid;
+    border-bottom: $pink-dark 3px solid;
+}
+
+.nav-inline {
+    padding: 0.5rem 0 0.5rem 0;
+    border-top: $pink-mid 2px solid;
+    border-bottom: $pink-mid 2px solid;
+    margin: 0;
+}
+
+.navbar-bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    background: url(../images/bg-flower-navbar.svg) top left no-repeat, url(../images/bg-shining.svg) left repeat;
+    background-size: 30rem, 60rem;
+    height: 30rem;
+}
+
+.nav-link p {
+    margin: -0.2rem;
+}
+
+.nav-link:hover {
+    filter: brightness(110%);
+}
+
+.nav-title-eng {
+    font-family: $font-family-title;
+    font-size: 1.2rem;
+    color: $red-mid;
+    position: relative;
+}
+
+.nav-title-chs {
+    background: url(../images/nav-title01.svg) center no-repeat;
+    background-size: 75% auto;
+    height: 1rem;
+    color: $primary;
+    font-family: $font-family-title;
+    font-size: 0.9rem;
+}
+
+.navbar-logo {
+    background: url(../images/logo-bg.png) top center no-repeat;
+    background-size: 97%;
+    top: 0;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    height: 12rem;
+    width: 9.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+}
+
+.logo {
+    background: url(../images/logo-pc.png) center no-repeat;
+    background-size: 80%;
+    width: 97%;
+    height: 12rem;
+    z-index: 100;
+}
+
+.logo:hover {
+    filter: brightness(90%);
+    transform: scale(1.1);
+}
+
+//---------------------- navbar-icons ----------------------
+.navbar-icons {
+    position: absolute;
+    z-index: 99;
+    right: 20%; //NEED CHANGE
+    top: 3rem;
+    width: 15%;
+
+    .nav-link {
+        padding: 0.2rem;
+    }
+
+}
+
+.navbar-search {
+    background: url(../images/icons/search.svg) center no-repeat;
+    height: 1.2rem;
+    bottom: 0;
+}
+
+.navbar-cart {
+    background: url(../images/icons/cart.svg) center no-repeat;
+    height: 1.2rem;
+}
+
+.navbar-favorite {
+    background: url(../images/icons/favorite.svg) center no-repeat;
+    height: 1rem;
+    margin-right: 0.7rem;
+}
+
+.navbar-member {
+    background: url(../images/icons/member.svg) left no-repeat;
+    height: 1.2rem;
+}
+
+
+.navbar-text-span {
+    font-size: 0.5rem;
+    color: $primary;
+    font-family: $font-family-base;
+    padding-left: 0.5rem;
+}
+
+.navbar-logout {
+    background: url(../images/icons/logout.svg) center no-repeat;
+    height: 1.2rem;
+    margin-left: -1rem;
+}
+
+.navbar-search:hover,
+.navbar-cart:hover,
+.navbar-favorite:hover,
+.navbar-member:hover,
+.navbar-member:hover,
+.navbar-logout:hover {
+    filter: brightness(85%);
+}
+
+
+//---------------------- Login modal ----------------------
+#login-modal {
+    .modal-content {
+        background: url(../images/bg-flower-login.svg) right top no-repeat;
+        background-size: 40%;
+        background-color: rgba(100%, 100%, 100%, 0.7);
+    }
+
+    .modal-header {
+        background: url(../images/login-logo.png) center top no-repeat;
+        background-size: 70%;
+        height: 9rem;
+        width: 38%;
+        margin: -1.5rem auto 0 auto;
+        border: none;
+    }
+
+    .modal-footer {
+        border: none;
+    }
+}
+
+.input-group {
+    border: none;
+
+    .form-control {
+        border-radius: 25px;
+        border: 2px solid $primary;
+        padding: 20px;
+        height: 15px;
+        //background: url(../images/icons/member.svg) left no-repeat;
+        background-color: $white;
+    }
+}
+
+input[type=text] {
+    padding-left: 3rem;
+}

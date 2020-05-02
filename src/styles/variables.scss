@@ -1,0 +1,78 @@
+// -------------- color --------------
+$pink-dark: #dd6b88;
+$pink-mid: #f0a3b5;
+$pink-light: #fedfe1;
+$brown-dark: #c78550;
+$brown-mid: #d8b479;
+$brown-light: #edd2a6;
+$blue-dark: #66959d;
+$blue-light: #80c3d0;
+$red-mid: #c74042;
+$grey-mid: #656765;
+$white: #fff;
+
+//-------------- primary color --------------
+$primary: $pink-dark;
+$secondary: $brown-dark;
+$success: $pink-mid;
+$info: $blue-dark;
+$warning: $blue-light;
+$danger: $red-mid;
+$light: $pink-light;
+$dark: $grey-mid;
+
+$body-color: $grey-mid;
+
+// -------------- BGcolor --------------
+$bg-white: $white;
+$bg-pink: $pink-light;
+
+// -------------- Font --------------
+//kefa
+@import url("//db.onlinewebfonts.com/c/b6e1e126bc19c3e9fe26136203746a13?family=Kefa+PressS");
+
+//Naikai
+@font-face {
+  font-family: "Naikai";
+  src: url("../fonts/NaikaiFont-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Naikai";
+  src: url("../fonts/NaikaiFont-Light.ttf") format("truetype");
+  font-weight: light;
+  font-style: normal;
+}
+
+//Noto Sans TC
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
+
+$font-family-copperplate: Copperplate, Copperplate Gothic Light, fantasy;
+$font-family-title: "Kefa PressS", "Naikai", sans-serif;
+$font-family-content: Arial, "Noto Sans TC", sans-serif;
+$font-family-base: $font-family-content;
+
+//table
+$table-color: $body-color;
+$table-bg: $light;
+$table-hover-color: $body-color;
+$table-hover-bg: rgba($primary, 0.075);
+$table-border-color: rgb(203, 203, 203);
+$input-focus-border-color: rgba($success, 0.25);
+
+//-------------- RWD --------------
+$phone-media: 480px;
+
+@mixin pc-width() {
+  @media all and (min-width: $phone-media) {
+    @content;
+  }
+}
+
+@mixin phone-width() {
+  @media all and (max-width: $phone-media) {
+    @content;
+  }
+}

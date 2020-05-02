@@ -1,0 +1,47 @@
+.row {
+  margin: 0;
+  padding: 0;
+}
+.disMenu1 {
+  margin-top: 30px;
+}
+.disMenu2 {
+  margin-top: 30px;
+}
+.disMenu2 p {
+  white-space: nowrap;
+  line-height: 10px;
+}
+.disBtn2-1 {
+  float: left;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+.disBtn2-2 {
+  float: left;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+.disImg {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .disMenu2 {
+    display: none;
+  }
+  .disImg {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .disMenu1 {
+    display: none;
+  }
+  .disImg {
+    margin-left: 50px;
+    margin-right: 0px;
+  }
+}
