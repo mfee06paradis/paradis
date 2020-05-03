@@ -1,0 +1,40 @@
+@import "./variables.scss";
+.menu-title {
+  p {
+    position: relative;
+    left: 20px;
+    text-align: center;
+    font-family: $font-family-title;
+    font-weight: normal;
+    line-height: 5px;
+    color: $red-mid;
+  }
+}
+.menu-img {
+  height: 30px;
+}
+.menu-img :hover {
+  background: url(../images/menu.svg) left no-repeat;
+}
+.disImg {
+  margin-top: 10px;
+}
+@media screen and (max-width: 768px) {
+  .disMenu2 {
+    display: none;
+  }
+  .disImg {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .disMenu1 {
+    display: none;
+  }
+  .disImg {
+    margin-left: 50px;
+    margin-right: 0px;
+  }
+}
