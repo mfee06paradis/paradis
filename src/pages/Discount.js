@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/discount.scss'
-import { Link } from 'react-router'
+import { NavLink } from 'react-router-dom'
 function discont() {
   const menu_title = (eng, chs) => {
     return (
@@ -20,32 +20,42 @@ function discont() {
 
             <div className="row col-12 disMenu1">
               <div className="col-6 text-center disBtn1-1">
+              <NavLink
+                  to="/discount"
+                >
                 <button className="btn-white">當季優惠</button>
+                </NavLink>
               </div>
               <div className="col-6 text-center disBtn1-2">
+              <NavLink
+                  to="/discounts"
+                >
                 <button className="btn-white">現正優惠</button>
+                </NavLink>
               </div>
 
             </div>
 
             <div className="row col-md-2 disMenu2">
               <div className="col-md-12 text-center">
+                <NavLink
+                  to="/discount"
+                >
+                  <div className="menu-img bg-white">
+                    {menu_title('Seson', '當季優惠')}
 
-                  <button className="bg-white">
-                    <div className="menu-img">
-                      {menu_title('Seson', '當季優惠')}
-                      <hr></hr>
-                    </div>
-                  </button>
-
-
-                <button className="bg-white">
-                  <div className="menu-img">
-                    {menu_title('Now On Sale', '現正優惠')}
-                    <hr></hr>
                   </div>
-                </button>
+                </NavLink>
+                <hr></hr>
+                <NavLink
+                  to="/discounts"
+                >
+                  <div className="menu-img bg-white">
+                    {menu_title('Now On Sale', '現正優惠')}
 
+                  </div>
+                </NavLink>
+                <hr></hr>
               </div>
             </div>
             <div className="col-12 col-md-10 ">
