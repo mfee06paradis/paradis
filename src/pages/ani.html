@@ -12,46 +12,73 @@
             margin: 0 auto;
         }
 
+        .text {
+            font-family: "Naikai";
+            src: url("../fonts/NaikaiFont-Regular.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+            fill: #dd6b88;
+        }
+
         .cls-1 {
             animation-name: logo-1;
-            animation-duration: 3s;
+            animation-duration: 5s;
             animation-timing-function: ease;
             animation-iteration-count: 1;
         }
 
         .cls-2 {
             animation-name: logo-2;
-            animation-duration: 3s;
+            animation-duration: 5s;
             animation-timing-function: ease;
             animation-iteration-count: 1;
         }
 
         .cls-3 {
             animation-name: logo-3;
-            animation-duration: 3s;
+            animation-duration: 5s;
             animation-timing-function: ease;
             animation-iteration-count: 1;
         }
 
         .cls-4 {
             animation-name: logo-4;
-            animation-duration: 3s;
+            animation-duration: 5s;
             animation-timing-function: ease;
             animation-iteration-count: 1;
         }
 
         .cls-5 {
             animation-name: logo-5;
-            animation-duration: 3s;
+            animation-duration: 5s;
             animation-timing-function: ease;
             animation-iteration-count: 1;
         }
 
         .cls-6 {
             animation-name: logo-6;
-            animation-duration: 3s;
+            animation-duration: 5s;
             animation-timing-function: ease;
             animation-iteration-count: 1;
+        }
+
+        .text {
+            animation-name: text-1;
+            animation-duration: 5s;
+            animation-timing-function: ease;
+            animation-iteration-count: 1;
+            /* animation-delay: 2s; */
+        }
+
+        @keyframes text-1 {
+            0% {
+                right: 100;
+            }
+
+            100% {
+                right: 10;
+            }
+
         }
 
         @keyframes logo-1 {
@@ -59,13 +86,14 @@
                 fill: transparent;
             }
 
+            50% {
+                fill: #e16b8c;
+            }
+
             100% {
                 fill: #e16b8c;
             }
-        }
 
-        .text {
-            fill: #dd6b88;
         }
 
         @keyframes logo-2 {
@@ -75,6 +103,10 @@
 
             10% {
                 fill: transparent;
+            }
+
+            60% {
+                fill: #81c7d4;
             }
 
             100% {
@@ -91,6 +123,10 @@
                 fill: transparent;
             }
 
+            70% {
+                fill: #cb4042;
+            }
+
             100% {
                 fill: #cb4042;
             }
@@ -101,8 +137,12 @@
                 fill: transparent;
             }
 
-            40% {
+            30% {
                 fill: transparent;
+            }
+
+            80% {
+                fill: #9b1f2b;
             }
 
             100% {
@@ -115,8 +155,12 @@
                 fill: transparent;
             }
 
-            70% {
+            40% {
                 fill: transparent;
+            }
+
+            90% {
+                fill: #d82948;
             }
 
             100% {
@@ -129,7 +173,7 @@
                 fill: transparent;
             }
 
-            60% {
+            50% {
                 fill: transparent;
             }
 
@@ -141,7 +185,7 @@
 </head>
 
 <body>
-    <div>
+    <div class="logo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.3 43.1">
             <defs>
                 <style>
@@ -240,7 +284,7 @@
         </svg>
         <svg>
             <g>
-                <text class="text text-1" x="10" y="80" style="font-size:100px;">
+                <text class="text text-1" x="10" y="90" style="font-size:100px;">
                     P
                 </text>
                 <text class="text text-2" x="60" y="80" style="font-size:100px;">

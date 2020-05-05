@@ -5,6 +5,7 @@ import ProductList from './pages/ProductList'
 import Product from './pages/Product'
 import Uielements from './pages/Uielements'
 import Discount from './pages/Discount'
+import Discounts from './pages/Discounts'
 
 import Menu from './components/Menu'
 import Footer from './components/Footer'
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/discount">
             <Discount />
+          </Route>
+          <Route path="/discounts">
+            <Discounts />
           </Route>
           <Route exact path="/">
             <ProductList />
