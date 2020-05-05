@@ -1,9 +1,6 @@
 import React from 'react'
 import '../styles/discount.scss'
-<<<<<<< HEAD
 import { NavLink } from 'react-router-dom'
-=======
->>>>>>> parent of fb2c347... discount
 function discont() {
   const menu_title = (eng, chs) => {
     return (
@@ -29,11 +26,7 @@ function discont() {
                   to="/discount"
                 >
                 <button className="btn-white">當季優惠</button>
-<<<<<<< HEAD
                 </NavLink>
-=======
-
->>>>>>> parent of fb2c347... discount
               </div>
               <div className="col-6 text-center disBtn1-2">
               <NavLink
@@ -47,19 +40,12 @@ function discont() {
 
             <div className="row col-md-2 disMenu2">
               <div className="col-md-12 text-center">
-<<<<<<< HEAD
                 <NavLink
                   to="/discount"
                 >
                   <div className="menu-img bg-white">
                     {menu_title('Seson', '當季優惠')}
 
-=======
-                <button className="bg-white">
-                  <div className="menu-img">
-                    {menu_title('Seson', '當季優惠')}
-                    <hr></hr>
->>>>>>> parent of fb2c347... discount
                   </div>
                 </NavLink>
                 <hr></hr>
@@ -69,19 +55,9 @@ function discont() {
                   <div className="menu-img bg-white">
                     {menu_title('Now On Sale', '現正優惠')}
 
-<<<<<<< HEAD
                   </div>
                 </NavLink>
                 <hr></hr>
-=======
-                <button className="bg-white">
-                <div className="menu-img">
-                  {menu_title('Now On Sale', '現正優惠')}
-                  <hr></hr>
-                  </div>
-                </button>
-
->>>>>>> parent of fb2c347... discount
               </div>
             </div>
             <div className="col-12 col-md-10 ">
