@@ -1,4 +1,8 @@
 import React from 'react';
+import Slider from 'react-slick';
+
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 
 const renderProductColumn = (product) => (
   <div className="product text-center" key={product.id}>
@@ -14,11 +18,9 @@ const renderProductColumn = (product) => (
     <div className="product__name--zh">
       {product.nameZh}
     </div>
-    <a href="#" title={product.button}>
-      <div className="product__detail-button">
-        {product.button}
-      </div>
-    </a>          
+    <button className="btn-green">
+      {product.button}
+    </button>
   </div>
 );
 
@@ -26,13 +28,36 @@ const ProductList = (props) => {
   const { list } = props;
 
   return (
-    <div className="product-wrapper">
+    <Slider
+      className="product-wrapper"
+      infinite={false}
+      slidesToShow={4}
+      slidesToScroll={1}
+      responsive={[
+        {
+          breakpoint: 767.98,
+          settings: {
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 575.98,
+          settings: {
+            infinite: false,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        },
+      ]}
+    >
       {
         (list || []).map((product) => (
           renderProductColumn(product)
         ))
       }
-    </div>
+    </Slider>
   );
 };
 

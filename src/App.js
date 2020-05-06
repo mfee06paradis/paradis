@@ -6,7 +6,7 @@ import Product from './pages/Product'
 import Uielements from './pages/Uielements'
 import Discount from './pages/Discount'
 import Discounts from './pages/Discounts'
-import Home from './pages/Home';
+import Makeup from './pages/Makeup';
 import Lesson from './pages/Lesson';
 import AdaptiveTest from './pages/AdaptiveTest';
 
@@ -34,8 +34,8 @@ function App() {
           <Route path="/discounts">
             <Discounts />
           </Route>
-          <Route path="/home">
-            <Home />
+          <Route path="/makeup">
+            <Makeup />
           </Route>
           <Route path="/lesson">
             <Lesson />

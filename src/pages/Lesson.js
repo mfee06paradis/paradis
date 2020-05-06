@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
 import MakeUpStepList from '../components/lesson/MakeUpStepList';
 import ProductList from '../components/lesson/ProductList';
+import '../styles/lesson.scss';
 
 const MOCK_MARKUP_STEP_LIST = [
   {
@@ -70,37 +72,52 @@ const MOCK_MARKUP_PRODUCT_LIST = [
   },
 ];
 
-const Lesson = () => (
-  <main className="make-up" data-aos="fade-in" data-aos-duration="400">
-    <div className="bg-pink">
-      <section>
-        <div className="container">
-          <div className="container--rounded" data-aos="fade-up">
-            <div className="heading text-center">
-              <div className="main-title-before"></div>
-                <div className="main-title">
-                  <h2>MAKEUP LESSON</h2>
-                  <h4>步驟教學</h4>
+const Lesson = () => {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      easing: 'ease-in-out',
+      duration: 800,
+    });
+  }, []);
+
+  return (
+    <main className="lesson" data-aos="fade-in" data-aos-duration="400">
+      <div className="bg-pink">
+      <hr className="hr-white" />
+        <section>
+          <div className="container">
+            <div className="context-full">
+              <div className="context-full-before" />
+              <div className="context-full-mid">
+                <div className="heading text-center">
+                  <div className="main-title-before"></div>
+                    <div className="main-title">
+                      <h2>MAKEUP LESSON</h2>
+                      <h4>步驟教學</h4>
+                    </div>
+                  <div className="main-title-after"></div>
                 </div>
-              <div className="main-title-after"></div>
+                <MakeUpStepList list={MOCK_MARKUP_STEP_LIST} />
+              </div>
+              <div className="context-full-after" />
             </div>
-            <MakeUpStepList list={MOCK_MARKUP_STEP_LIST} />
           </div>
-        </div>
-      </section>
-    </div>
-    <div className="make-up-subsection" data-aos="fade-in" data-aos-duration="400">
-      <div data-aos="fade-up">
-        <div className="sub-title-deco">
-          <div className="sub-title">
-            <p className="sub-title-eng">USED ITEM</p>
-            <p className="sub-title-chs">使用商品</p>
-          </div>
-        </div>
-        <ProductList list={MOCK_MARKUP_PRODUCT_LIST} />
+        </section>
       </div>
-    </div>
-  </main>
-);
+      <div className="lesson-subsection" data-aos="fade-in" data-aos-duration="400">
+        <div data-aos="fade-up">
+          <div className="sub-title-deco">
+            <div className="sub-title">
+              <p className="sub-title-eng">USED ITEM</p>
+              <p className="sub-title-chs">使用商品</p>
+            </div>
+          </div>
+          <ProductList list={MOCK_MARKUP_PRODUCT_LIST} />
+        </div>
+      </div>
+    </main>
+  );
+};
 
 export default Lesson;

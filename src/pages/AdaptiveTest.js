@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
 import TestBoard from '../components/adaptive-test/TestBoard';
 import ProductList from '../components/adaptive-test/ProductList';
+import '../styles/adaptive-test.scss';
 
 const MOCK_QUESTIONS = [
   {
@@ -29,7 +31,6 @@ const MOCK_QUESTIONS = [
     title: '動物森友會買得到嗎？',
   },
 ];
-
 
 const MOCK_PRODUCT_LIST = [
   {
@@ -82,36 +83,51 @@ const MOCK_PRODUCT_LIST = [
   },
 ];
 
-const AdaptiveTest = () => (
-  <>
-    <main className="adaptive-test" data-aos="fade-in" data-aos-duration="400">
-      <div className="bg-white">
-        <section>
-          <div className="container">
-            <div className="container--rounded" data-aos="fade-up">
-              <div className="heading text-center">
-                <div className="main-title-before"></div>
-                <div className="main-title">
-                  <h2>Adaptive Test</h2>
-                  <h4>步驟教學</h4>
+const AdaptiveTest = () => {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      easing: 'ease-in-out',
+      duration: 800,
+    });
+  }, []);
+
+  return (
+    <>
+      <main className="adaptive-test" data-aos="fade-in" data-aos-duration="400">
+        <div className="bg-pink">
+          <hr className="hr-white" />
+          <section>
+            <div className="container">
+              <div className="context-full" data-aos="fade-up">
+                <div className="context-full-before" />
+                <div className="context-full-mid">
+                  <div className="heading text-center">
+                    <div className="main-title-before"></div>
+                    <div className="main-title">
+                      <h2>Adaptive Test</h2>
+                      <h4>步驟教學</h4>
+                    </div>
+                    <div className="main-title-after"></div>
+                  </div>
+                  <div className="adaptive-test__description text-center">
+                    <p>文案文案文案文案文案文案文案文案<br />文案文案文案文案<br />文案文案文案文案文案文案<br />文案文案文案</p>
+                  </div>
+                  <TestBoard questions={MOCK_QUESTIONS} />
                 </div>
-                <div className="main-title-after"></div>
+                <div className="context-full-after" />
               </div>
-              <div className="adaptive-test__description text-center">
-                <p>文案文案文案文案文案文案文案文案<br />文案文案文案文案<br />文案文案文案文案文案文案<br />文案文案文案</p>
-              </div>
-              <TestBoard questions={MOCK_QUESTIONS} />
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
+      </main>
+      <div className="adaptive-test-subsection" data-aos="fade-in" data-aos-duration="400">
+        <div data-aos="fade-up">
+          <ProductList list={MOCK_PRODUCT_LIST} />
+        </div>
       </div>
-    </main>
-    <div className="adaptive-test-subsection" data-aos="fade-in" data-aos-duration="400">
-      <div data-aos="fade-up">
-        <ProductList list={MOCK_PRODUCT_LIST} />
-      </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 export default AdaptiveTest;

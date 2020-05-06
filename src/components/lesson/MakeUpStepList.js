@@ -7,7 +7,7 @@ const renderStepColumn = (step) => (
         <span>{step.label}</span>
       </div>
       <div className="step__image mx-auto mx-lg-0">
-        <img className="w-100" src={step.image} alt={step.label} />
+        <img className="mw-100" src={step.image} alt={step.label} />
       </div>
       <div className="step__content text-center text-lg-left">
         <div className="step__label d-none d-lg-block">
