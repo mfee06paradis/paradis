@@ -1,0 +1,195 @@
+/* index.html */
+main.index section {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+main.index .banner-wrapper--desktop {
+  background-color: var(--red-300);
+  margin-bottom: 100px;
+}
+main.index .banner-wrapper--desktop .banner__image {
+  position: relative;
+  width: 80%;
+}
+main.index .banner-wrapper--desktop .banner__image .banner__triangle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  margin-left: auto;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent var(--red-300);
+  border-width: 0px 0px 306px 150px;
+}
+main.index .banner-wrapper--desktop .banner__image img {
+  height: 306px;
+}
+main.index .banner-wrapper--desktop .banner__content {
+  position: absolute;
+  bottom: 0;
+  right: -180px;
+  z-index: 1;
+}
+main.index .banner-wrapper--desktop .banner__content p {
+  font-size: 34px;
+  font-weight: bold;
+  color: white;
+}
+main.index .banner-wrapper--desktop .banner__cloud {
+  position: absolute;
+  top: 20px;
+  right: -50%;
+  transform: translateX(-50%);
+  width: 314px;
+  height: 219px;
+  content: '';
+  z-index: 1;
+  background-image: url('../images/index/cloud.png');
+  background-repeat: round;
+  text-align: center;
+}
+main.index .banner-wrapper--desktop .banner__cloud > div:first-child {
+  font-size: 44.1px;
+  line-height: 1.2;
+  color: var(--red-400);
+}
+main.index .banner-wrapper--desktop .banner__cloud > div:last-child {
+  font-size: 25.2px;
+  color: var(--black-100);
+}
+main.index .banner-wrapper--mobile {
+  margin-bottom: 51.8px;
+}
+main.index .banner-wrapper--mobile .banner__image {
+  position: relative;
+  width: 100%;
+}
+main.index .banner-wrapper--mobile .banner__content {
+  position: relative;
+  background-color: var(--red-300);
+  margin-top: 18.3px;
+  padding: 29.3px 6.4px 8px;
+}
+main.index .banner-wrapper--mobile .banner__content p {
+  margin-bottom: 0;
+  font-size: 21.3px;
+  font-weight: bold;
+  letter-spacing: normal;
+  color: white;
+}
+main.index .banner-wrapper--mobile .banner__cloud {
+  position: absolute;
+  top: -44px;
+  right: 20px;
+  width: 134px;
+  height: 93.5px;
+  content: '';
+  z-index: 1;
+  background-image: url('../images/index/cloud.png');
+  background-repeat: round;
+  text-align: center;
+}
+main.index .banner-wrapper--mobile .banner__cloud > div:first-child {
+  font-size: 18.8px;
+  line-height: 1.2;
+  color: var(--red-400);
+}
+main.index .banner-wrapper--mobile .banner__cloud > div:last-child {
+  font-size: 9px;
+  color: var(--black-100);
+}
+main.index .tutorial {
+  position: relative;
+  margin-bottom: 50px;
+  padding: 65px 46px;
+  background-image: url('../images/global/block-bg.png');
+  background-repeat: round;
+}
+main.index .tutorial .tutorial__label {
+  position: absolute;
+  transform: translateX(-50%);
+  top: -14.5px;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+}
+main.index .tutorial .tutorial__label span {
+  position: relative;
+  padding: 12px 40px;
+  background-color: var(--red-400);
+  font-family: 'Copperplate';
+  color: var(--red-100);
+  font-size: 24.3px;
+  line-height: 1.2;
+  letter-spacing: 2.47px;
+}
+main.index .tutorial .tutorial__label span:before,
+main.index .tutorial .tutorial__label span::after {
+  position: absolute;
+  top: 10px;
+  content: '';
+  width: 33.1px;
+  height: 35.9px;
+  z-index: -1;
+  background-repeat: no-repeat;
+}
+main.index .tutorial .tutorial__label span:before {
+  left: -20px;
+  background-image: url('../images/index/label-left.svg');
+}
+main.index .tutorial .tutorial__label span:after {
+  right: -20px;
+  background-image: url('../images/index/label-right.svg');
+}
+main.index .tutorial .tutorial__image {
+  transform-style: preserve-3d;
+  transition: transform 500ms ease 0s, opacity 500ms ease 0s;
+  opacity: 1;
+  transform: scaleX(1) scaleY(1) scaleZ(1);
+}
+main.index .tutorial:hover .tutorial__image {
+  transform-style: preserve-3d;
+  transition: transform 500ms ease 0s, opacity 500ms ease 0s;
+  opacity: .7;
+  transform: scaleX(1.05) scaleY(1.05) scaleZ(1.05);
+}
+main.index .tutorial .tutorial__content {
+  position: relative;
+  margin-top: 43.5px;
+  padding: 20px 0;
+}
+main.index .tutorial .tutorial__content p {
+  margin-top: 1rem;
+  font-size: 23.1px;
+}
+main.index .scroll-top {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 91px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  main.index .banner-wrapper--desktop .banner__cloud {
+    position: absolute;
+    top: 60px;
+    right: -55%;
+    transform: translateX(-50%);
+    width: 284px;
+    height: 189px;
+    content: '';
+    z-index: 1;
+    background-image: url('../images/index/cloud.png');
+    background-repeat: round;
+  }
+  main.index .banner-wrapper--desktop .banner__content {
+    right: -160px;
+  }
+  main.index .banner-wrapper--desktop .banner__content p {
+    font-size: 30px;
+  }
+}

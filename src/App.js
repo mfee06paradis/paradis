@@ -6,6 +6,9 @@ import Product from './pages/Product'
 import Uielements from './pages/Uielements'
 import Discount from './pages/Discount'
 import Discounts from './pages/Discounts'
+import Home from './pages/Home';
+import Lesson from './pages/Lesson';
+import AdaptiveTest from './pages/AdaptiveTest';
 
 import Menu from './components/Menu'
 import Footer from './components/Footer'
@@ -30,6 +33,15 @@ function App() {
           </Route>
           <Route path="/discounts">
             <Discounts />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/lesson">
+            <Lesson />
+          </Route>
+          <Route path="/adaptive-test">
+            <AdaptiveTest />
           </Route>
           <Route exact path="/">
             <ProductList />

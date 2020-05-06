@@ -1,0 +1,145 @@
+/* lesson.html */
+main.make-up section {
+  padding: 88.5px 0;
+}
+main.make-up .container--rounded {
+  padding: 91.6px 42px;
+  background-image: url('../images/global/section-bg.png');
+  background-repeat: round;
+}
+main.make-up .step-wrapper {
+  margin-top: 55px;
+}
+main.make-up .step {
+  padding: 35px 0 20px 0;
+}
+main.make-up .step:after {
+  content: '';
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 0;
+  height: 1px;
+  width: 80%;
+  background-color: #b3b3b3;
+}
+main.make-up .step .step__image {
+  width: 216px;
+  height: 216px;
+  overflow: hidden;
+}
+main.make-up .step .step__image img {
+  transform-style: preserve-3d;
+  transition: transform 500ms ease 0s, opacity 500ms ease 0s;
+  opacity: 1;
+  transform: scaleX(1) scaleY(1) scaleZ(1);
+}
+main.make-up .step:hover .step__image img {
+  transform-style: preserve-3d;
+  transition: transform 500ms ease 0s, opacity 500ms ease 0s;
+  opacity: .7;
+  transform: scaleX(1.05) scaleY(1.05) scaleZ(1.05);
+}
+main.make-up .step .step__label span {
+  position: relative;
+  z-index: 1;
+  padding: 6px;
+  background-color: #f297af;
+  font-family: 'Copperplate';
+  color: var(--red-100);
+  font-size: 16.7px;
+}
+main.make-up .step .step__label span:before,
+main.make-up .step .step__label span::after {
+  position: absolute;
+  top: 10px;
+  content: '';
+  width: 22.4px;
+  height: 24.4px;
+  z-index: -1;
+  background-repeat: no-repeat;
+}
+main.make-up .step .step__label span:before {
+  left: -16px;
+  background-image: url('../images/lesson/label-left.svg');
+}
+main.make-up .step .step__label span:after {
+  right: -16px;
+  background-image: url('../images/lesson/label-right.svg');
+}
+main.make-up .step .step__description {
+  margin-top: 19px;
+}
+main.make-up .step .step__description p {
+  font-size: 21px;
+}
+div.make-up-subsection {
+  position: relative;
+  padding-top: 95.9px;
+  padding-bottom: 74.3px;
+  overflow: hidden;
+}
+div.make-up-subsection:before {
+  position: absolute;
+  content: '';
+  top: -1px;
+  width: 100%;
+  height: 14px;
+  background-image: url('../images/global/bg-top-alt.png');
+}
+div.make-up-subsection .product-wrapper {
+  margin-top: 31px;
+}
+div.make-up-subsection .product .product__image {
+  width: 137.9px;
+  margin: 0 auto;
+}
+div.make-up-subsection .product .product__brand {
+  font-family: 'Copperplate';
+  font-size: 7px;
+  line-height: 1.2;
+  color: var(--black-100);
+  width: 85px;
+  margin: 0 auto;
+  text-align: left;
+}
+div.make-up-subsection .product .product__name--en {
+  font-family: 'Kefa';
+  font-size: 10px;
+  line-height: 0.8;
+  color: var(--black-100);
+  width: 85px;
+  margin: 0 auto;
+  text-align: left;
+}
+div.make-up-subsection .product .product__name--zh {
+  font-family: 'Kefa';
+  font-size: 9px;
+  line-height: 1.2;
+  color: var(--black-100);
+  width: 85px;
+  margin: 0 auto;
+  text-align: left;
+}
+div.make-up-subsection .product .product__detail-button {
+  width: 100px;
+  height: 46.2px;
+  line-height: 46.2px;
+  margin: 0 auto;
+  margin-top: 9.3px;
+  font-family: 'NotoSansCJKtc';
+  color: white;
+  background-image: url('../images/lesson/label-alt.png');
+  background-repeat: round;
+}
+
+@media (max-width: 991.98px) {
+  main.make-up .container--rounded {
+    background-image: url('../images/global/section-bg-mobile.png');
+    background-size: cover;
+  }
+
+  main.make-up .row > div:last-child .step:after {
+    display: none;
+  }
+}
