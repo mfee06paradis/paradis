@@ -16,7 +16,7 @@ function discont() {
   }
   return (
     <>
-      <div className="bg-white">
+      <div className="bg-white dis">
         <div className="container">
           <div className="row ">
 

@@ -14,10 +14,9 @@ function disconts() {
     }
     return (
         <>
-            <div className="bg-white">
+            <div className="bg-white dis">
                 <div className="container">
-                    <div className="row ">
-
+                    <div className="row">
                         <div className="row col-12 disMenu1">
                             <div className="col-6 text-center disBtn1-1">
                                 <NavLink

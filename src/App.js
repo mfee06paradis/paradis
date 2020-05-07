@@ -9,6 +9,7 @@ import Discounts from './pages/Discounts'
 import Makeup from './pages/Makeup';
 import Lesson from './pages/Lesson';
 import AdaptiveTest from './pages/AdaptiveTest';
+import Ani from './pages/Ani'
 
 import Menu from './components/Menu'
 import Footer from './components/Footer'
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path="/adaptive-test">
             <AdaptiveTest />
+          </Route>
+          <Route path="/ani">
+            <Ani />
           </Route>
           <Route exact path="/">
             <ProductList />
