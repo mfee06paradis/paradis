@@ -57,7 +57,7 @@ function Menu() {
           <NavLink
             activeClassName="active"
             className="nav-link"
-            to="/Uielements"
+            to="/Ani"
           ></NavLink>
         </Col>
         <Col className="navbar-cart">

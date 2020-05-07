@@ -1,0 +1,365 @@
+body {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #fedfe1;
+}
+
+.textbox {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ani {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.aniLogo {
+  width: 25%;
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: "opti";
+  src: url("../fonts/OPTICopperplate-Heavy.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.text {
+  font-family: "opti", sans-serif;
+}
+
+.cls-1 {
+  animation-name: logo-1;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+}
+
+.cls-2 {
+  animation-name: logo-2;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+}
+
+.cls-3 {
+  animation-name: logo-3;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+}
+
+.cls-4 {
+  animation-name: logo-4;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+}
+
+.cls-5 {
+  animation-name: logo-5;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+}
+
+.cls-6 {
+  animation-name: logo-6;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+}
+
+.text {
+  fill: #dd6b88;
+  font-size: 40px;
+}
+
+.text-1 {
+  animation-name: text-1;
+  animation-duration: 6s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+.text-2 {
+  animation-name: text-2;
+  animation-duration: 6s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+.text-3 {
+  animation-name: text-3;
+  animation-duration: 6s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+.text-4 {
+  animation-name: text-4;
+  animation-duration: 6s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+.text-5 {
+  animation-name: text-5;
+  animation-duration: 6s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+.text-6 {
+  animation-name: text-6;
+  animation-duration: 6s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+.text-7 {
+  animation-name: text-7;
+  animation-duration: 6s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+@keyframes text-1 {
+  0% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+  50% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+
+  100% {
+    transform: translatex(0px);
+    fill: #e16b8c;
+  }
+}
+
+@keyframes text-2 {
+  0% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+  55% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+
+  100% {
+    transform: translatex(0px);
+    fill: #e16b8c;
+  }
+}
+
+@keyframes text-3 {
+  0% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+  60% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+
+  100% {
+    transform: translatex(0px);
+    fill: #e16b8c;
+  }
+}
+
+@keyframes text-4 {
+  0% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+  65% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+
+  100% {
+    transform: translatex(0px);
+    fill: #e16b8c;
+  }
+}
+
+@keyframes text-5 {
+  0% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+  70% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+
+  100% {
+    transform: translatex(0px);
+    fill: #e16b8c;
+  }
+}
+
+@keyframes text-6 {
+  0% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+  75% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+
+  100% {
+    transform: translatex(0px);
+    fill: #e16b8c;
+  }
+}
+
+@keyframes text-7 {
+  0% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+  80% {
+    transform: translatex(500px);
+    fill: transparent;
+  }
+
+  100% {
+    transform: translatex(0px);
+    fill: #e16b8c;
+  }
+}
+
+@keyframes logo-1 {
+  0% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    fill: #e16b8c;
+  }
+}
+
+@keyframes logo-2 {
+  0% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  10% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    fill: #81c7d4;
+  }
+}
+
+@keyframes logo-3 {
+  0% {
+    fill: transparent;
+    transform: scale(0.1, 0.1);
+  }
+
+  20% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    fill: #cb4042;
+  }
+}
+
+@keyframes logo-4 {
+  0% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  40% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    fill: #9b1f2b;
+  }
+}
+
+@keyframes logo-5 {
+  0% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  70% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    fill: #d82948;
+  }
+}
+
+@keyframes logo-6 {
+  0% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  60% {
+    transform: scale(0.1, 0.1);
+    fill: transparent;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    fill: #6699a1;
+  }
+}
+.cls-1 {
+  fill: #e16b8c;
+}
+
+.cls-2 {
+  fill: #81c7d4;
+}
+
+.cls-3 {
+  fill: #cb4042;
+}
+
+.cls-4 {
+  fill: #9b1f2b;
+}
+
+.cls-5 {
+  fill: #d82948;
+}
+
+.cls-6 {
+  fill: #6699a1;
+}
