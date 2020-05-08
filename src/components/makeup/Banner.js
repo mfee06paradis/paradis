@@ -1,10 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+
+import bannerDesktopImage from '../../images/makeup/banner.png'
+import bannerMobileImage from '../../images/makeup/banner-mobile.png'
 
 const renderDesktopBanner = () => (
   <div className="banner-wrapper--desktop d-none d-lg-block" data-aos="fade-in">
     <div className="banner__image">
-      <img className="mw-100" src="assets/images/makeup/banner.png" alt="banner" />
+      <img className="mw-100" src={bannerDesktopImage} alt="banner" />
       <div className="banner__triangle"></div>
       <NavLink
         to="/adaptive-test"
@@ -24,7 +27,7 @@ const renderDesktopBanner = () => (
 const renderMobileBanner = () => (
   <div className="banner-wrapper--mobile d-block d-lg-none">
     <div className="banner__image">
-      <img className="w-100" src="assets/images/makeup/banner-mobile.png" alt="banner" />
+      <img className="w-100" src={bannerMobileImage} alt="banner" />
     </div>
     <div className="banner__content">
       <NavLink

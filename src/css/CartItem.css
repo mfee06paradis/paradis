@@ -1,0 +1,50 @@
+.list_group_name {
+  width: 300px;
+  overflow-wrap: break-word;
+  max-height: 176px;
+  overflow-y: auto;
+}
+
+.list_group_other {
+  width: 200px;
+  overflow-wrap: break-word;
+  max-height: 176px;
+  overflow-y: auto;
+}
+
+.list_group_last {
+  width: 50px;
+  overflow-wrap: break-word;
+  max-height: 176px;
+  overflow-y: auto;
+}
+
+.flex_wrap {
+  display: flex;
+  align-items: center;
+}
+
+.flex_wrap_last {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div_center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* 底下是設定 CartItemHead 的 CSS */
+.no_boder {
+  border-style: none;
+  border: 0;
+}
+
+.backgrond_color {
+  background-color: #dcb879 !important;
+  color: white;
+}
+
+.text_color {
+}

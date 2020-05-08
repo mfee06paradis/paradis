@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 
-const MOCK_RESULT = "滾滾長江東逝水滾滾長滾滾長江東逝水滾滾長江東滾滾長江東逝水滾滾長江東";
+import { MOCK_RESULTS } from '../../mock_data/adaptiveTest';
+import submitIcon from '../../images/adaptive-test/submit-icon.png';
 
 const TestBoard = (props) => {
-  const { questions } = props;
+  const { questions, onSubmit } = props;
   const [questionList, setQuestionList] = useState((
     (questions || []).map((question) => ({
       ...question,
       isChecked: null,
     }))
   ));
-  const [showResult, setShowResult] = useState(false);
+  const [result, setResult] = useState(null);
 
   const responseToQuestion = (question, isChecked) => {
-    if (showResult) {
+    if (result) {
       return;
     }
 
@@ -46,7 +47,7 @@ const TestBoard = (props) => {
           <div className="question__control row">
             <div className="col-6">
               <div
-                className="question__control-button text-center"
+                className={`question__control-button text-center ${question.isChecked === true ? 'active' : ''}`}
                 onClick={() => responseToQuestion(question, true)}
               >
                 {
@@ -54,12 +55,12 @@ const TestBoard = (props) => {
                     ? <img src="assets/images/adaptive-test/checked.svg" alt="check" />
                     : <img src="assets/images/adaptive-test/check.svg" alt="check" />
                 }
-                可以
+                {question.option1}
               </div>
             </div>
             <div className="col-6">
               <div
-                className="question__control-button text-center"
+                className={`question__control-button text-center ${question.isChecked === false ? 'active' : ''}`}
                 onClick={() => responseToQuestion(question, false)}
               >
                 {
@@ -67,7 +68,7 @@ const TestBoard = (props) => {
                     ? <img src="assets/images/adaptive-test/checked.svg" alt="check" />
                     : <img src="assets/images/adaptive-test/check.svg" alt="check" />
                 }
-                不行
+                {question.option2}
               </div>
             </div>
           </div>
@@ -77,12 +78,18 @@ const TestBoard = (props) => {
   );
 
   const handleShowResult = () => {
+    if (result) {
+      return;
+    }
+
     const isNotCompleted = questionList.some((question) => (
       question.isChecked === null
     ))
 
     if (!isNotCompleted) {
-      setShowResult(true);
+      const testedResult = MOCK_RESULTS[Math.floor(Math.random() * MOCK_RESULTS.length)];
+      setResult(testedResult);
+      onSubmit(testedResult.products);
     }
   };
 
@@ -103,12 +110,12 @@ const TestBoard = (props) => {
       </div>
       <div className="adaptive-test__main-submit">
         <div className="question__submit-button" onClick={handleShowResult}>
-          <img src="assets/images/adaptive-test/submit-icon.png" alt="submit" />
+          <img src={submitIcon} alt="submit" />
           顯示診斷結果
         </div>
       </div>
       {
-        showResult
+        result
           ? (
             <div className="adaptive-test__main-result">
               <div className="result-container">
@@ -116,7 +123,7 @@ const TestBoard = (props) => {
                   診斷結果
                 </div>
                 <div className="result-container__body">
-                  <p>{MOCK_RESULT}</p>
+                  <p>{(result || {}).response}</p>
                 </div>
               </div>
             </div>

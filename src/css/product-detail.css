@@ -1,0 +1,111 @@
+.outerMostDiv {
+  background-color: white;
+  padding: 0;
+}
+
+.no_padding {
+  padding: 0;
+}
+
+.no_margin {
+  margin: 0;
+}
+
+.p_detail_outer {
+  padding: 20px;
+  outline: 1px solid black;
+}
+
+.p_detail_customOut {
+  /* margin: 20px; */
+  outline: 1px solid black;
+}
+
+.p_detail_wrap {
+  margin: 0 -30px;
+  margin-bottom: 60px;
+}
+
+.p_detail {
+  padding: 0 30px;
+}
+
+.p_detail_custom {
+  height: 300px;
+  background-color: hotpink;
+}
+
+.color_style {
+  width: auto;
+}
+
+.input_number {
+  width: 100px;
+}
+
+/* 摺疊區域 商品特色 */
+.accordion_height {
+  height: 520px;
+  background-color: darkgreen;
+}
+
+.text_accordion {
+  /* border: 1px solid black !important;
+  border-top-style: solid;
+  border-bottom-style: dotted; */
+}
+
+.unitprice_title {
+  text-align: left !important;
+}
+
+/* 評論 */
+
+.comment_height {
+  height: 100px !important;
+  /* overflow-y: scroll; */
+  /* overflow: auto; */
+}
+
+.img_comment {
+  max-width: 100px;
+  overflow: hidden;
+}
+
+.comment_title {
+  display: inline-block;
+}
+
+.buttonDiv {
+  padding: 0;
+}
+
+/* 星星排版 */
+.rating-header {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.menuDiv {
+}
+
+.product_wrap {
+  /* box-sizing: border-box; */
+  margin: 0px -15px;
+  margin-bottom: 30px;
+}
+
+.product {
+  padding: 0 15px;
+}
+
+.product-custom {
+  outline: 1px solid black;
+  margin: 0 px;
+  height: 300px;
+  background-color: blanchedalmond;
+}
+
+.max_height {
+  max-height: 400px;
+}

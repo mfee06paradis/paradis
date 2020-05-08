@@ -1,0 +1,121 @@
+@import './variables.scss';
+
+.carousel-caption {
+    right: 15%;
+    top: 20%;
+    z-index: 10;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    text-align: right;
+
+    h1 {
+        color: $danger;
+        font-family: $font-family-title;
+    }
+
+    h4 {
+        color: black;
+        font-family: $font-family-title;
+    }
+
+    p {
+        font-size: 0.8rem;
+        font-family: $font-family-base;
+    }
+
+    button {
+        background: url(../images/home/Carousel-btn.svg) center no-repeat;
+        margin: 0;
+        padding: 0;
+        color: $primary;
+    }
+
+    button:hover {
+        background: url(../images/home/Carousel-btn-hover.svg) center no-repeat;
+        margin: 0;
+        padding: 0;
+        color: $white;
+    }
+
+    button:focus {
+        outline: none;
+        filter: grayscale(10%) drop-shadow(0rem 0rem 0.2rem rgba(237, 145, 174, 1));
+    }
+}
+
+.FirstSlide {
+    background: url(../images/home/Carousel01.jpg)center no-repeat;
+    height: 100vh;
+}
+
+.SecondSlide {
+    background: url(../images/home/Carousel02.jpg)center no-repeat;
+    height: 100vh;
+}
+
+.ThirdSlide {
+    background: url(../images/home/Carousel03.jpg)center no-repeat;
+    height: 100vh;
+}
+
+
+.view-height {
+    @include pc-width {
+        height: 100vh;
+    }
+
+    @include phone-width {
+        height: auto;
+    }
+}
+
+.home-second {
+    margin: 2rem;
+}
+
+.home-second-width {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.home-second-hover:hover {
+    transform: scale(1.1);
+}
+
+.home-second-top {
+    background: url(../images/home/home-top.svg) top left no-repeat;
+    height: 25%;
+    transform-origin: top left;
+    margin-left: 2rem;
+    margin-top: 3rem;
+    transform: rotate(335deg);
+
+    .home-second-top-text {
+        color: $pink-light;
+        font-family: $font-family-copperplate;
+        margin-left: 1.8rem;
+        padding-top: 0.2rem;
+    }
+}
+
+.home-second-item {
+    background: url(../images/home/home-item.svg) top center no-repeat;
+    height: 160%;
+    margin-top: -2rem;
+}
+
+.home-second-item-text {
+    text-align: center;
+    margin-top: 1rem;
+
+    h3 {
+        color: $secondary;
+        font-family: $font-family-title;
+    }
+
+    p {
+        color: $danger;
+        font-family: $font-family-title;
+        margin-top: -0.5rem;
+    }
+}

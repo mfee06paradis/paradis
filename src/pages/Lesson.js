@@ -1,78 +1,17 @@
 import React, { useEffect } from 'react';
+import { useParams } from "react-router";
 import AOS from 'aos';
 import MakeUpStepList from '../components/lesson/MakeUpStepList';
 import ProductList from '../components/lesson/ProductList';
+import { MOCK_MAKEUP_STEP_LIST, MOCK_MAKEUP_PRODUCT_LIST } from '../mock_data/lesson';
 import '../styles/lesson.scss';
 
-const MOCK_MARKUP_STEP_LIST = [
-  {
-    id: 1,
-    label: 'Step 1',
-    image: 'assets/images/lesson/step-dummy.png',
-    description: '滾滾長江東逝水滾滾長滾滾長江東逝水滾滾長江東滾滾長江東逝水滾滾長江東'  
-  },
-  {
-    id: 2,
-    label: 'Step 2',
-    image: 'assets/images/lesson/step-dummy.png',
-    description: '滾滾長江東逝水滾滾長滾滾長江東逝水滾滾長江東滾滾長江東逝水滾滾長江東'  
-  },
-  {
-    id: 3,
-    label: 'Step 3',
-    image: 'assets/images/lesson/step-dummy.png',
-    description: '滾滾長江東逝水滾滾長滾滾長江東逝水滾滾長江東滾滾長江東逝水滾滾長江東'  
-  },
-  {
-    id: 4,
-    label: 'Step 4',
-    image: 'assets/images/lesson/step-dummy.png',
-    description: '滾滾長江東逝水滾滾長滾滾長江東逝水滾滾長江東滾滾長江東逝水滾滾長江東'  
-  },
-  {
-    id: 5,
-    label: 'Step 5',
-    image: 'assets/images/lesson/step-dummy.png',
-    description: '滾滾長江東逝水滾滾長滾滾長江東逝水滾滾長江東滾滾長江東逝水滾滾長江東'  
-  },
-];
-
-const MOCK_MARKUP_PRODUCT_LIST = [
-  {
-    id: 1,
-    brand: 'YSL BEAUTY',
-    image: 'assets/images/lesson/product-dummy.png',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    button: '商品詳細',
-  },
-  {
-    id: 2,
-    brand: 'YSL BEAUTY',
-    image: 'assets/images/lesson/product-dummy.png',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    button: '商品詳細',
-  },
-  {
-    id: 3,
-    brand: 'YSL BEAUTY',
-    image: 'assets/images/lesson/product-dummy.png',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    button: '商品詳細',
-  },
-  {
-    id: 4,
-    brand: 'YSL BEAUTY',
-    image: 'assets/images/lesson/product-dummy.png',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    button: '商品詳細',
-  },
-];
 
 const Lesson = () => {
+  const { id } = useParams();
+  const makeUpStepList = MOCK_MAKEUP_STEP_LIST[id] || [];
+  const makeUpProductList = MOCK_MAKEUP_PRODUCT_LIST[id] || [];
+
   useEffect(() => {
     AOS.init({
       once: true,
@@ -98,7 +37,7 @@ const Lesson = () => {
                     </div>
                   <div className="main-title-after"></div>
                 </div>
-                <MakeUpStepList list={MOCK_MARKUP_STEP_LIST} />
+                <MakeUpStepList list={makeUpStepList} />
               </div>
               <div className="context-full-after" />
             </div>
@@ -113,7 +52,7 @@ const Lesson = () => {
               <p className="sub-title-chs">使用商品</p>
             </div>
           </div>
-          <ProductList list={MOCK_MARKUP_PRODUCT_LIST} />
+          <ProductList list={makeUpProductList} />
         </div>
       </div>
     </main>

@@ -1,0 +1,120 @@
+.table td {
+  width: 40px !important;
+}
+
+.td_flex {
+  display: flex;
+  align-items: center;
+}
+
+.no_padding {
+  padding: 0;
+}
+
+.margin_bottom {
+  margin-top: 50px;
+}
+
+.margin_top {
+  margin-top: 50px;
+}
+/* .gird_main_right {
+  padding: 0;
+  padding-left: 30px;
+} */
+
+.button_set {
+  margin: 0;
+  margin-top: -30px;
+}
+
+.gird_main_left {
+  padding-right: 0;
+  padding-left: 20px;
+}
+
+.select_block_county {
+  float: left;
+  width: 70%;
+  display: inline-block;
+}
+
+.select_block_number {
+  float: left;
+  width: 65%;
+  display: inline-block;
+}
+
+.label_form {
+  padding-right: 20px;
+  float: left;
+}
+
+.div_center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main_right {
+  /* background-color: goldenrod; */
+}
+
+.form_input {
+  width: 90%;
+}
+
+.background_from {
+  padding: 20px;
+}
+
+.creditCard {
+  margin-top: 50px;
+}
+
+/* ============================== */
+.p_detail_wrap {
+  margin: 0 -30px;
+  margin-bottom: 60px;
+}
+
+.p_detail {
+  padding: 0 30px;
+}
+
+.p_detail_custom {
+  height: 300px;
+  background-color: hotpink;
+}
+
+.accordion_height {
+  height: 455px;
+  background-color: darkgreen;
+}
+
+.buttonDiv {
+  padding: 0;
+}
+
+.menuDiv {
+}
+
+.product_wrap {
+  /* box-sizing: border-box; */
+  margin: 0px -15px;
+  margin-bottom: 30px;
+}
+
+.product {
+  padding: 0 15px;
+}
+
+.product-custom {
+  outline: 1px solid black;
+  margin: 0 px;
+  height: 300px;
+  background-color: blanchedalmond;
+}
+
+.max_height {
+  height: 200px;
+}

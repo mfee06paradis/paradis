@@ -6,12 +6,14 @@
 
 // 其它要導入覆蓋掉原本的預設bootstrap樣式-類別-要放在這下面
 
-//--------------------------------- rwd ---------------------------------
-
 body {
     font-family: $font-family-content;
     top: 10rem;
     color: $dark;
+}
+
+::selection {
+    background-color: $light;
 }
 
 //--------------------------------- bg-color ---------------------------------
@@ -20,7 +22,14 @@ body {
         url(../images/bg-flower2.svg) right bottom no-repeat,
         url(../images/bg-shining.svg) repeat;
     background-color: $bg-white;
-    background-size: 30rem, 30rem, 60rem;
+
+    @include pc-width {
+        background-size: 30rem, 30rem, 60rem;
+    }
+
+    @include phone-width {
+        background-size: 20rem, 20rem, 40rem;
+    }
 }
 
 .bg-pink {
@@ -28,7 +37,15 @@ body {
         url(../images/bg-flower-w2.svg) right bottom no-repeat,
         url(../images/bg-shining.svg) repeat;
     background-color: $bg-pink;
-    background-size: 30rem, 30rem, 60rem;
+
+    @include pc-width {
+        background-size: 30rem, 30rem, 60rem;
+    }
+
+    @include phone-width {
+        background-size: 20rem, 20rem, 40rem;
+    }
+
 }
 
 //--------------------------------- hr ---------------------------------
@@ -36,12 +53,14 @@ hr.hr-white {
     border: 0;
     height: 0.5em;
     background: url(../images/hr-white.svg) repeat-x;
+    margin: 0;
 }
 
 hr.hr-pink {
     border: 0;
     height: 0.5em;
     background: url(../images/hr-pink.svg) repeat-x;
+    margin: 0;
 }
 
 hr.hr-gold {
@@ -65,7 +84,14 @@ hr.hr-gold {
 
     .context-full-mid {
         background: url(../images/context-full02.svg) repeat-y;
-        padding: 1rem 6rem 1rem 6rem;
+
+        @include pc-width {
+            padding: 1rem 6rem 1rem 6rem;
+        }
+
+        @include phone-width {
+            padding: 1rem 2rem 1rem 2rem;
+        }
     }
 
     .context-full-after {
@@ -86,7 +112,14 @@ hr.hr-gold {
     .context-side-mid {
         background: url(../images/context-side02.svg) left repeat-y;
         background-size: 100% auto;
-        padding: 1rem 4.5rem 1rem 4.5rem;
+
+        @include pc-width {
+            padding: 1rem 4.5rem 1rem 4.5rem;
+        }
+
+        @include phone-width {
+            padding: 1rem 2rem 1rem 2rem;
+        }
     }
 
     .context-side-after {
@@ -173,9 +206,16 @@ h6 {
 
 .sub-title-deco {
     background: url(../images/sub-title.svg) center no-repeat;
-    background-size: 40% auto;
     height: 3.5rem;
     margin-bottom: 1rem;
+
+    @include pc-width {
+        background-size: 40% auto;
+    }
+
+    @include phone-width {
+        background-size: 70% auto;
+    }
 }
 
 .text-center {
@@ -275,15 +315,39 @@ tbody tr:first-child td {
 tr td:first-child {
     width: auto;
     text-align: center;
+
+    @include phone-width {
+        display: none;
+    }
 }
 
 tr td:nth-child(2) {
     width: 4rem;
     text-align: right;
+
+    @include phone-width {
+        display: none;
+    }
 }
 
 tr td:last-child {
     min-width: 10rem;
+}
+
+.rwd-show {
+    margin-bottom: 0.5rem;
+
+    .table-label {
+        margin-left: 0.5rem;
+    }
+
+    @include pc-width {
+        display: none;
+    }
+
+    @include phone-width {
+        display: inline-block;
+    }
 }
 
 .table-bg {
@@ -310,71 +374,29 @@ input[type=text]:focus {
 
 .table-label {
     background-color: $primary;
+    padding: 0.3rem;
     color: $white;
     font-family: $font-family-title;
     font-size: 0.8rem;
-    border-radius: 0.1rem;
-    box-shadow: 0 0 0 0.3rem $primary;
+    border-radius: 0.3rem;
+    //box-shadow: 0 0 0 0.3rem $primary;
 }
 
 
 
+//---------------------- Login modal ----------------------
+#login-modal {
+    .modal-content {
+        background: url(../images/bg-flower-login.svg) right top no-repeat;
+        background-size: 40%;
+        background-color: rgba(100%, 100%, 100%, 0.7);
+    }
 
-//---------------------- navbar ----------------------
-
-.navbar {
-    margin: 2rem auto;
-    justify-content: center !important;
-    text-align: center;
-    width: 50rem;
-    height: 10rem;
-}
-
-.nav-outline {
-    padding: 0.2rem 0 0.2rem 0;
-    border-top: $pink-dark 3px solid;
-    border-bottom: $pink-dark 3px solid;
-}
-
-.nav-link {
-    padding: 1rem 0 1rem 0;
-    border-top: $pink-mid 2px solid;
-    border-bottom: $pink-mid 2px solid;
-}
-
-.nav-title-eng {
-    font-family: $font-family-title;
-    font-size: 1.2rem;
-    color: $red-mid;
-}
-
-.nav-title-chs {
-    background: url(../images/nav-title01.svg) center no-repeat;
-    background-size: 100% auto;
-    height: 1rem;
-    color: $primary;
-    font-family: $font-family-title;
-    font-size: 0.8rem;
-}
-
-
-//---------------------- modal ----------------------
-.modal-context {
-    border-radius: 0.5rem;
-    border: $brown-mid 0.1rem solid;
-    box-shadow: 0 0 0 0.4rem $white;
-    padding: 3rem;
-    width: 100%;
-}
-
-.modal-header {
-    border-bottom: none;
-    text-align: center;
-    justify-content: center;
-    margin: 0 auto;
-}
-
-.modal-footer {
-    border-top: none;
-
+    .modal-header {
+        background: url(../images/login-logo.png) center top no-repeat;
+        background-size: 70%;
+        height: 9rem;
+        width: 38%;
+        margin-top: -1.5rem;
+    }
 }

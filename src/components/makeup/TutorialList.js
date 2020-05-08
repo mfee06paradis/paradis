@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const renderTutorialColumn = (tutorial) => (
   <div className="col-lg-4" key={tutorial.id}>
     <NavLink
-      to="/lesson"
+      to={tutorial.url}
     >
       <div className="tutorial">
         <div className="tutorial__label">
@@ -15,7 +15,7 @@ const renderTutorialColumn = (tutorial) => (
         </div>
         <div className="tutorial__content text-center">
           <div className="main-title-before" />
-          <p>{tutorial.content}</p>
+          <p>{tutorial.contentTop}<br />{tutorial.contentBottom}</p>
           <div className="main-title-after" />
         </div>
       </div>
