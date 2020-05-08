@@ -137,7 +137,7 @@ function Menu() {
               <NavLink
                 activeClassName="active"
                 className="nav-link"
-                to="/product"
+                to="/Makeup"
               >
                 <p class="nav-title-eng">MAKEUP</p>
                 <p class="nav-title-chs">彩妝教學</p>
