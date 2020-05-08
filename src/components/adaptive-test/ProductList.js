@@ -3,10 +3,7 @@ import React from 'react';
 const renderProductColumn = (product) => (
   <div className="product text-center col-6 col-lg-4" key={product.id}>
     <div className="product__image">
-      <img className="w-100" src={product.image} alt={product.brand} />
-    </div>
-    <div className="product__brand">
-      {product.brand}
+      <img className="mw-100" src={product.image} alt={product.nameEn} />
     </div>
     <div className="product__name--en">
       {product.nameEn}

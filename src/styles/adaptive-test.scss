@@ -136,8 +136,10 @@ main.adaptive-test {
 
     .result-container__body {
       text-align: center;
+      margin: 0 auto;
       margin-top: 36px;
-      padding: 0 14px;
+      width: 500px;
+      max-width: 100%;
 
       p {
         color: white;
@@ -167,8 +169,13 @@ div.adaptive-test-subsection {
     margin-bottom: 19.3px;
 
     .product__image {
-      width: 80%;
-      margin: 0 auto;
+      img {
+        width: 280px;
+        height: 280px;
+        max-width: 100%;
+        margin: 0 auto;
+        object-fit: contain;
+      }
     }
 
     .product__brand {
@@ -183,6 +190,7 @@ div.adaptive-test-subsection {
       font-size: 10px;
       line-height: 1;
       color: var(--black-100);
+      margin-top: 8px;
     }
 
     .product__name--zh {

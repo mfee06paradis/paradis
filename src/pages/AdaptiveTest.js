@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import TestBoard from '../components/adaptive-test/TestBoard';
 import ProductList from '../components/adaptive-test/ProductList';
-import { MOCK_QUESTIONS, MOCK_PRODUCT_LIST } from '../mock_data/adaptiveTest';
+import { MOCK_QUESTIONS } from '../mock_data/adaptiveTest';
 import '../styles/adaptive-test.scss';
 
 
 const AdaptiveTest = () => {
+  const [productList, setProductList] = useState([]);
+
   useEffect(() => {
     AOS.init({
       once: true,
@@ -36,7 +38,7 @@ const AdaptiveTest = () => {
                   <div className="adaptive-test__description text-center">
                     <p>透過簡單的小測驗，了解自己是暖色性或冷色系皮膚，再挑選適合自己的彩妝品色號，讓你妝容完美不出錯!</p>
                   </div>
-                  <TestBoard questions={MOCK_QUESTIONS} />
+                  <TestBoard questions={MOCK_QUESTIONS} onSubmit={setProductList} />
                 </div>
                 <div className="context-full-after" />
               </div>
@@ -44,11 +46,17 @@ const AdaptiveTest = () => {
           </section>
         </div>
       </main>
-      <div className="adaptive-test-subsection" data-aos="fade-in" data-aos-duration="400">
-        <div data-aos="fade-up">
-          <ProductList list={MOCK_PRODUCT_LIST} />
-        </div>
-      </div>
+      {
+        productList.length
+          ? (
+            <div className="adaptive-test-subsection" data-aos="fade-in" data-aos-duration="400">
+              <div data-aos="fade-up">
+                <ProductList list={productList} />
+              </div>
+            </div>
+          )
+          : null
+      }
     </>
   );
 };

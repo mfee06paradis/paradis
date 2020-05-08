@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 
+import { MOCK_RESULTS } from '../../mock_data/adaptiveTest';
 import submitIcon from '../../images/adaptive-test/submit-icon.png';
 
-const MOCK_RESULT = "滾滾長江東逝水滾滾長滾滾長江東逝水滾滾長江東滾滾長江東逝水滾滾長江東";
-
 const TestBoard = (props) => {
-  const { questions } = props;
+  const { questions, onSubmit } = props;
   const [questionList, setQuestionList] = useState((
     (questions || []).map((question) => ({
       ...question,
       isChecked: null,
     }))
   ));
-  const [showResult, setShowResult] = useState(false);
+  const [result, setResult] = useState(null);
 
   const responseToQuestion = (question, isChecked) => {
-    if (showResult) {
+    if (result) {
       return;
     }
 
@@ -79,12 +78,18 @@ const TestBoard = (props) => {
   );
 
   const handleShowResult = () => {
+    if (result) {
+      return;
+    }
+
     const isNotCompleted = questionList.some((question) => (
       question.isChecked === null
     ))
 
     if (!isNotCompleted) {
-      setShowResult(true);
+      const testedResult = MOCK_RESULTS[Math.floor(Math.random() * MOCK_RESULTS.length)];
+      setResult(testedResult);
+      onSubmit(testedResult.products);
     }
   };
 
@@ -110,7 +115,7 @@ const TestBoard = (props) => {
         </div>
       </div>
       {
-        showResult
+        result
           ? (
             <div className="adaptive-test__main-result">
               <div className="result-container">
@@ -118,7 +123,7 @@ const TestBoard = (props) => {
                   診斷結果
                 </div>
                 <div className="result-container__body">
-                  <p>{MOCK_RESULT}</p>
+                  <p>{(result || {}).response}</p>
                 </div>
               </div>
             </div>
