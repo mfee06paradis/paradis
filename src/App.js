@@ -35,13 +35,13 @@ function App() {
           <Route path="/discounts">
             <Discounts />
           </Route>
-          <Route path="/makeup">
+          <Route path="/makeup" exact>
             <Makeup />
           </Route>
-          <Route path="/lesson">
+          <Route path="/lesson/:id" exact>
             <Lesson />
           </Route>
-          <Route path="/adaptive-test">
+          <Route path="/adaptive-test" exact>
             <AdaptiveTest />
           </Route>
           <Route path="/ani">

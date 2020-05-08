@@ -105,18 +105,12 @@ div.lesson-subsection {
 
   .product {
     .product__image {
-      width: 137.9px;
-      margin: 0 auto;
-    }
-
-    .product__brand {
-      font-family: 'Copperplate';
-      font-size: 7px;
-      line-height: 1.2;
-      color: var(--black-100);
-      width: 85px;
-      margin: 0 auto;
-      text-align: left;
+      img {
+        width: 140px;
+        height: 140px;
+        object-fit: contain;
+        margin: 0 auto;
+      }
     }
 
     .product__name--en {
@@ -126,7 +120,9 @@ div.lesson-subsection {
       color: var(--black-100);
       width: 85px;
       margin: 0 auto;
+      margin-top: 8px;
       text-align: left;
+      white-space: nowrap;
     }
 
     .product__name--zh {

@@ -1,32 +1,12 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
+
 import Banner from '../components/makeup/Banner';
 import TutorialList from '../components/makeup/TutorialList';
+import scrollTopImage from '../images/makeup/scroll-top.png';
+import { MOCK_TUTORIAL_LIST } from '../mock_data/makeup';
 import '../styles/makeup.scss';
 
-const MOCK_TUTORIAL_LIST = [
-  {
-    id: 1,
-    label: '唇妝教學',
-    image: 'assets/images/makeup/tutorial-dummy.png',
-    content: '文案文案文案文案文案文案',
-    url: '/lesson',
-  },
-  {
-    id: 2,
-    label: '唇妝教學',
-    image: 'assets/images/makeup/tutorial-dummy.png',
-    content: '文案文案文案文案文案文案',
-    url: '/lesson',
-  },
-  {
-    id: 3,
-    label: '唇妝教學',
-    image: 'assets/images/makeup/tutorial-dummy.png',
-    content: '文案文案文案文案文案文案',
-    url: '/lesson',
-  }
-];
 
 const Makeup = () => {
   useEffect(() => {
@@ -49,7 +29,7 @@ const Makeup = () => {
         </section>
       </div>
       <div className="scroll-top" data-aos="fade-in" onClick={() => window.scrollTo(0,0)}>
-        <img className="w-100" src="assets/images/makeup/scroll-top.png" alt="scroll-top" />
+        <img className="w-100" src={scrollTopImage} alt="scroll-top" />
       </div>
     </main>
   );
