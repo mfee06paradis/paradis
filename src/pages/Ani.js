@@ -1,8 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import "../styles/Ani.scss"
-import { Button } from 'react-bootstrap'
-import App from '../App'
 function Ani() {
   return (
     <>
