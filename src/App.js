@@ -24,10 +24,14 @@ function App() {
 
   return (
 
+
     <Router>
       <>
         <Menu isAuth={isAuth} setIsAuth={setIsAuth} />
         <Switch>
+          <Route exact path="/">
+            <Ani />
+          </Route>
           <Route path="/Uielements">
             <Uielements />
           </Route>
@@ -70,6 +74,7 @@ function App() {
           <Route path="*">
             <NotFoundPage />
           </Route>
+
         </Switch>
         <Footer />
       </>
