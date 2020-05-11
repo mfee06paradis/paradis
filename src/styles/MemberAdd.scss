@@ -1,0 +1,66 @@
+@import './variables.scss';
+
+#register-modal {
+
+    @include pc-width {
+        top: 15%;
+    }
+
+    @include phone-width {
+        top: 7%;
+    }
+
+    .modal-content {
+        background: url(../images/bg-flower-login.svg) right top no-repeat;
+        background-size: 40%;
+        background-color: rgba(100%, 100%, 100%, 0.85);
+
+        @include pc-width {
+            padding: 0 3rem 0 3rem;
+        }
+
+        @include phone-width {
+            padding: 0;
+        }
+    }
+
+    .modal-header {
+        background: url(../images/MemberAdd/signin-logo.png) center top no-repeat;
+        background-size: 85%;
+        height: 9rem;
+        width: 38%;
+        margin: -1.5rem auto 0 auto;
+        border: none;
+    }
+
+    .modal-footer {
+        border: none;
+    }
+}
+
+.RegisterInput {
+    .input-text {
+        height: 2rem;
+    }
+
+    .form-control::placeholder {
+        color: rgb(193, 193, 193);
+        font-family: 'Open Sans', sans-serif;
+    }
+
+}
+
+.Register-feedback {
+    color: $primary;
+    font-size: 0.8rem;
+}
+
+.Register-button {
+    float: right;
+    margin-top: 1rem;
+}
+
+.Register-cancel {
+    float: left;
+    margin-top: 2rem;
+}
