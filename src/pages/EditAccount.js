@@ -1,17 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import SideBar from '../components/SideBar';
-import Address from '../components/Address';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import TWzipcode from 'react-twzipcode';
 import '../styles/member.scss';
+import { Modal } from 'react-bootstrap';
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+          <div className="sub-title">
+            <h1 className="sub-title-eng">編輯成功!</h1>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <br></br>
+          <button className="btn-main" onClick={props.onHide}>
+            確定
+          </button>
+          <br></br>
+        </Modal.Body>
+      </div>
+    </Modal>
+  );
+}
 
 function EditAccount(props) {
-  let member = JSON.parse(localStorage.getItem('Member')) || [];
-  let nameParseUserMember = member.MemberName;
-  let sliceNameParseUserMember = nameParseUserMember.slice(1);
-  let email = member.MemberEmail;
-  // let password = parseUserMember.MemberPW;
-  let gender = member.MemberSex;
+  const [modalShow, setModalShow] = useState(false);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [gender, setGender] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [phone, setPhone] = useState('');
   let sex;
   switch (gender) {
     case 'F':
@@ -20,18 +47,90 @@ function EditAccount(props) {
     default:
       sex = '男';
   }
-  let birthday = member.MemberBirthday;
-  let phone = member.MemberPhone;
-  let address = member.MemberAddress;
+  const [memberID, setMemberID] = useState('');
+  const [address, setAddress] = useState('');
+  const [county, setCounty] = useState('');
+  const [district, setDistrict] = useState('');
+  const [addressData, setAddressData] = useState('');
+  const handleChange1 = (data) => {
+    setCounty(data.county);
+  };
+  const handleChange2 = (data) => {
+    setDistrict(data.district + data.zipcode);
+  };
 
-  async function updateMembertoLocalStorage(value) {
-    let newMemberdata = value;
-    localStorage.setItem('Member', JSON.stringify(newMemberdata));
+  async function updateMembertoServer() {
+    const newData = {
+      email,
+      name,
+      gender,
+      birthday,
+      phone,
+      addressData,
+      memberID,
+    };
+
+    // 連接的伺服器資料網址
+    const url = 'http://localhost:5000/members/update';
+
+    // 注意資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'put',
+      body: JSON.stringify(newData),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    });
+
+    console.log(JSON.stringify(newData));
+
+    const response = await fetch(request);
+    const data = await response.json();
+
+    console.log('伺服器回傳的json資料', data);
+    // 要等驗証過，再設定資料(簡單的直接設定)
+
+    async function getMemberFromServer() {
+      // 連接的伺服器資料網址
+      const url = 'http://localhost:5000/members';
+
+      // 注意header資料格式要設定，伺服器才知道是json格式
+      const request = new Request(url, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'appliaction/json',
+        }),
+      });
+
+      const response = await fetch(request);
+      const data = await response.json();
+      let x = memberID;
+      let y = x - 1;
+      // console.log(data[y]);
+      let userdata = data[y];
+      localStorage.setItem('Member', JSON.stringify(userdata));
+    }
+    getMemberFromServer();
   }
 
+  const getMemberFromLocalStorage = function () {
+    let member = JSON.parse(localStorage.getItem('Member')) || [];
+    setName(member.memberName);
+    setEmail(member.memberEmail);
+    setGender(member.membersex);
+    setBirthday(member.memberBirthday);
+    setPhone(member.memberPhone);
+    setMemberID(member.memberId);
+    setCounty(member.memberAddress.substr(0, 3));
+    setAddress(member.memberAddress.slice(3));
+    console.log(address);
+  };
+
   useEffect(() => {
-    console.log('ok');
-  }, [member]);
+    getMemberFromLocalStorage();
+  }, []);
 
   // let check = function () {
   // if (!checkPwd) {
@@ -112,34 +211,38 @@ function EditAccount(props) {
   //     return false;
   //   }
   // };
-  // function checkCellPhone(cellphone) {
-  //   if (cellphone.match(/^09[0-9]{8}$/)) {
-  //     return true;
-  //   }
-  // }
-  // let checkPhoneMobile = function () {
-  //   let cellPhone = document.getElementById('cellPhoneMobile').value;
-  //   let result = checkCellPhone(cellPhone);
-  //   if (result) {
-  //     document.getElementById('phoneMesgMobile').innerHTML = 'OK';
-  //     return true;
-  //   } else {
-  //     document.getElementById('phoneMesgMobile').innerHTML =
-  //       '手機號碼格式錯誤!!';
-  //     return false;
-  //   }
-  // };
-  // let checkPhone = function () {
-  //   let cellPhone = document.getElementById('cellPhone').value;
-  //   let result = checkCellPhone(cellPhone);
-  //   if (result) {
-  //     document.getElementById('phoneMesg').innerHTML = 'OK';
-  //     return true;
-  //   } else {
-  //     document.getElementById('phoneMesg').innerHTML = '手機號碼格式錯誤!!';
-  //     return false;
-  //   }
-  // };
+  function checkCellPhone(cellphone) {
+    if (cellphone.match(/^09[0-9]{8}$/)) {
+      return true;
+    }
+  }
+  let checkPhoneMobile = function () {
+    let cellPhone = document.getElementById('cellPhoneMobile').value;
+    let result = checkCellPhone(cellPhone);
+    if (result) {
+      document.getElementById('phoneMesgMobile').innerHTML = 'OK';
+      return true;
+    } else if (!cellPhone) {
+      document.getElementById('phoneMesgMobile').innerHTML = '請輸入手機號碼';
+    } else {
+      document.getElementById('phoneMesgMobile').innerHTML =
+        '手機號碼格式錯誤!!';
+      return false;
+    }
+  };
+  let checkPhone = function () {
+    let cellPhone = document.getElementById('cellPhone').value;
+    let result = checkCellPhone(cellPhone);
+    if (result) {
+      document.getElementById('phoneMesg').innerHTML = 'OK';
+      return true;
+    } else if (!cellPhone) {
+      document.getElementById('phoneMesg').innerHTML = '請輸入手機號碼';
+    } else {
+      document.getElementById('phoneMesg').innerHTML = '手機號碼格式錯誤!!';
+      return false;
+    }
+  };
   return (
     <>
       <div className="row bg-white">
@@ -173,7 +276,13 @@ function EditAccount(props) {
                     <div className="row ">
                       <span className="col-6">
                         <img
-                          src={require('../images/member-icon-for-sidebar.svg')}
+                          src={require('../images/avatar1.jpg')}
+                          style={{
+                            width: '70%',
+                            marginLeft: '2em',
+                            borderRadius: '50%',
+                            paddingBottom: '10px',
+                          }}
                           alt="memberIconForSideBar"
                         />
                       </span>
@@ -216,7 +325,10 @@ function EditAccount(props) {
                           type="text"
                           id="nickNameMobile"
                           // onBlur={checkNickNameMobile}
-                          placeholder={sliceNameParseUserMember}
+                          placeholder={name}
+                          onChange={(event) => {
+                            setName(event.target.value);
+                          }}
                         />
                         <span id="nickNameMesgMobile"></span>
                       </div>
@@ -233,33 +345,9 @@ function EditAccount(props) {
                           style={{ color: '#656765' }}
                           onChange={(event) => {
                             if (event.target.value === '女') {
-                              updateMembertoLocalStorage({
-                                MemberID: '003',
-                                MemberName: '杜子晴',
-                                MemberPW: '1234abcd',
-                                MemberSex: 'F',
-                                MemberBirthday: '1991-03-24',
-                                MemberPhone: '0994060776',
-                                MemberEmail: 'Olivia54685@hotmail.com',
-                                MemberAddress: '連江縣天津路305號',
-                                MemberLevel: 'Member',
-                                MemberCreatedAt: '2020-01-11',
-                                MemberAvatar: '../images/avatar1.jpg',
-                              });
+                              setGender('F');
                             } else {
-                              updateMembertoLocalStorage({
-                                MemberID: '003',
-                                MemberName: '杜子晴',
-                                MemberPW: '1234abcd',
-                                MemberSex: 'M',
-                                MemberBirthday: '1991-03-24',
-                                MemberPhone: '0994060776',
-                                MemberEmail: 'Olivia54685@hotmail.com',
-                                MemberAddress: '連江縣天津路305號',
-                                MemberLevel: 'Member',
-                                MemberCreatedAt: '2020-01-11',
-                                MemberAvatar: '../images/avatar1.jpg',
-                              });
+                              setGender('M');
                             }
                           }}
                         >
@@ -283,6 +371,9 @@ function EditAccount(props) {
                           type="date"
                           id="dateofbirth"
                           value={birthday}
+                          onChange={(event) => {
+                            setBirthday(event.target.value);
+                          }}
                         />
                       </div>
                     </div>
@@ -299,38 +390,62 @@ function EditAccount(props) {
                           className="cellphone"
                           id="cellPhoneMobile"
                           placeholder={phone}
-                          // onBlur={checkPhoneMobile}
+                          onBlur={checkPhoneMobile}
+                          onChange={(event) => {
+                            setPhone(event.target.value);
+                          }}
                         />
                         <span id="phoneMesgMobile"></span>
                       </div>
                     </div>
                   </tr>
 
-                  <tr className="address">
+                  <tr className="addressMobile">
                     <div className="row accountRow">
-                      <div className="col-1"></div>
-                      <div className="col-11">地址</div>
-                      <div className="col-1"></div>
-                      <div className="col-3">
-                        <p>縣市</p>
-                        <p>區/鄉/鎮</p>
-                        <p>郵遞區號</p>
+                      <div className="row accountRow">
+                        <div className="col-1"></div>
+                        <div className="col-11">地址</div>
+                        <div className="col-1"></div>
+                        <div className="col-3">
+                          <p>縣市</p>
+                          <p>區/鄉/鎮</p>
+                          <p>郵遞區號</p>
+                        </div>
+                        <div>
+                          <TWzipcode
+                            countyValue={county}
+                            css={[
+                              'form-control county-sel',
+                              'form-control district-sel',
+                              'form-control zipcode',
+                            ]}
+                            handleChangeCounty={handleChange1}
+                            handleChangeDistrict={handleChange2}
+                            handleChangeZipcode={handleChange2}
+                          />
+                        </div>
+                        <div className="col-12"></div>
+                        <div className="col-1"></div>
+                        <span className="col-7">
+                          <input type="text" value={county + district} />
+                        </span>
+                        <div className="col-12"></div>
+                        <div className="col-1"></div>
+                        <div
+                          className="col-7 addressMobile"
+                          style={{ display: 'none' }}
+                        >
+                          <input
+                            type="text"
+                            placeholder={address}
+                            onChange={(event) => {
+                              setAddressData(
+                                county + district + event.target.value
+                              );
+                            }}
+                          />
+                        </div>
                       </div>
-                      <div className="col-6">
-                        <Address style={{ textAlign: 'left', textIndent: 0 }} />
-                      </div>
-                      <div className="col-12"></div>
-                      <div className="col-1"></div>
-                      <input
-                        id="addressMobile"
-                        type="text"
-                        style={{ height: '6em', width: '80%' }}
-                        placeholder={address}
-                        // onBlur={checkAddressMobile}
-                      />
-                      <div className="col-12"></div>
-                      <div className="col-1"></div>
-                      <div id="addressMesgMobile"></div>
                     </div>
                   </tr>
                   <tr className="lastRow"></tr>
@@ -346,21 +461,32 @@ function EditAccount(props) {
                 className="nav-link"
                 activeClassName="active"
               >
-                <img src={require('../images/cancel2.svg')} alt="cancel2" />
+                <button className="btn-green">取消</button>
               </NavLink>
             </div>
             <div className="col-5">
-              <NavLink
-                to="/Account"
-                className="nav-link"
+              {/* <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              /> */}
+              <button
+                className="nav-link btn-main"
                 activeClassName="active"
+                style={{ cursor: 'pointer', marginTop: '25px' }}
+                onClick={() => {
+                  setModalShow(true);
+                  updateMembertoServer();
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 3500);
+                }}
               >
-                <img
-                  src={require('../images/save2.svg')}
-                  alt="save2"
-                  // onClick={check}
+                <MyVerticallyCenteredModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
                 />
-              </NavLink>
+                保存
+              </button>
             </div>
           </div>
           {/* -----------------------EndMobile-------------------------- */}
@@ -377,7 +503,13 @@ function EditAccount(props) {
                       <div className="col-2"></div>
                       <div className="col-6">
                         <img
-                          src={require('../images/member-icon-for-sidebar.svg')}
+                          src={require('../images/avatar1.jpg')}
+                          style={{
+                            width: '70%',
+                            marginLeft: '2em',
+                            borderRadius: '50%',
+                            paddingBottom: '10px',
+                          }}
                           alt="memberIconForSideBar"
                         />
                       </div>
@@ -412,15 +544,16 @@ function EditAccount(props) {
                       <div className="col-1"></div>
                       <div className="col-11">暱稱</div>
                       <div className="col-1"></div>
-                      <div className="col-8 ">
+                      <div className="col-4 ">
                         <input
                           className="nickName"
                           type="text"
                           id="nickName"
-                          // onBlur={checkNickName}
-                          placeholder={sliceNameParseUserMember}
+                          placeholder={name}
+                          onChange={(event) => {
+                            setName(event.target.value);
+                          }}
                         />
-                        <span id="nickNameMesg"></span>
                       </div>
                     </div>
                   </tr>
@@ -431,7 +564,16 @@ function EditAccount(props) {
                       <div className="col-11">性別</div>
                       <div className="col-1"></div>
                       <div className="col-6">
-                        <select style={{ color: '#656765' }}>
+                        <select
+                          style={{ color: '#656765' }}
+                          onChange={(event) => {
+                            if (event.target.value === '女') {
+                              setGender('F');
+                            } else {
+                              setGender('M');
+                            }
+                          }}
+                        >
                           <option selected disabled>
                             {sex}
                           </option>
@@ -453,6 +595,9 @@ function EditAccount(props) {
                           type="date"
                           name="dateofbirth"
                           id="dateofbirth"
+                          onChange={(event) => {
+                            setBirthday(event.target.value);
+                          }}
                         />
                       </div>
                     </div>
@@ -463,51 +608,64 @@ function EditAccount(props) {
                       <div className="col-1"></div>
                       <div className="col-11">手機</div>
                       <div className="col-1"></div>
-                      <div className="col-8">
+                      <div className="col-4">
                         <input
                           type="text"
                           className="cellPhone"
                           id="cellPhone"
-                          // onBlur={checkPhone}
                           placeholder={phone}
+                          onBlur={checkPhone}
+                          onChange={(event) => {
+                            setPhone(event.target.value);
+                          }}
                         />
                         <span id="phoneMesg"></span>
                       </div>
                     </div>
                   </tr>
 
-                  <tr className="address">
+                  <tr className="address addressPC">
                     <div className="row accountRow">
-                      <div className="col-1"></div>
-                      <div className="col-11">地址</div>
-                      <div className="col-1"></div>
-                      <div className="col">
-                        <div className="col-4">縣市</div>
-                        <div className="col-12">
-                          <select>
-                            <option>1</option>
-                            <option>2</option>
-                          </select>
+                      <div className="row accountRow">
+                        <div className="col-1"></div>
+                        <div className="col-11">地址</div>
+                        <div className="col-1"></div>
+                        <div className="col-3">
+                          <p>縣市</p>
+                          <p>區/鄉/鎮</p>
+                          <p>郵遞區號</p>
                         </div>
-                        <div className="col-4">區/鄉/鎮</div>
-                        <div className="col-12">
-                          <select>
-                            <option>1</option>
-                            <option>2</option>
-                          </select>
+                        <div>
+                          <TWzipcode
+                            countyValue={county}
+                            css={[
+                              'form-control county-sel',
+                              'form-control district-sel',
+                              'form-control zipcode',
+                            ]}
+                            handleChangeCounty={handleChange1}
+                            handleChangeDistrict={handleChange2}
+                            handleChangeZipcode={handleChange2}
+                          />
                         </div>
-                      </div>
-                      <div className="col-12"></div>
-                      <div className="col-1"></div>
-                      <div className="col-10">
-                        <input
-                          type="text"
-                          style={{ height: '6em' }}
-                          id="address"
-                          // onBlur={checkAddress}
-                          placeholder={address}
-                        />
-                        <span id="addressMesg"></span>
+                        <div className="col-12"></div>
+                        <div className="col-1"></div>
+                        <span className="col-lg-3">
+                          <input type="text" value={county + district} />
+                        </span>
+                        <span>
+                          <input
+                            type="text"
+                            id="address"
+                            placeholder={address}
+                            style={{ width: '108%' }}
+                            onChange={(event) => {
+                              setAddressData(
+                                county + district + event.target.value
+                              );
+                            }}
+                          />
+                        </span>
                       </div>
                     </div>
                   </tr>
@@ -524,25 +682,26 @@ function EditAccount(props) {
                 activeClassName="active"
               >
                 <button className="btn-green">取消</button>
-                {/* <img src={require('../images/cancel.svg')} alt="cancel" /> */}
               </NavLink>
             </div>
             <div className="col">
-              {/* <img
-                className="nav-link"
-                activeClassName="active"
-                src={require('../images/save.svg')}
-                alt="save"
-                onClick={check}
-                style={{ cursor: 'pointer' }}
-              /> */}
               <button
                 style={{ marginTop: '20px' }}
                 className="btn-main"
-                type="submit"
+                onClick={() => {
+                  setModalShow(true);
+                  updateMembertoServer();
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 3500);
+                }}
               >
                 保存
               </button>
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
             </div>
           </div>
         </div>

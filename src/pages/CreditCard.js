@@ -3,8 +3,35 @@ import SideBar from '../components/SideBar';
 import AnimatedVisibility from '../components/AnimatedVisibility';
 import '../styles/member.scss';
 import { withRouter } from 'react-router-dom';
-
+import { Modal } from 'react-bootstrap';
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+          <div className="sub-title">
+            <h1 className="sub-title-eng">新增信用卡成功!</h1>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <br></br>
+          <button className="btn-main" onClick={props.onHide}>
+            確定
+          </button>
+          <br></br>
+        </Modal.Body>
+      </div>
+    </Modal>
+  );
+}
 function CreditCard(props) {
+  const [modalShow, setModalShow] = useState(false);
   const [creditCardNumber, setCreditCardNumber] = useState('');
   const [creditCardSafeCode, setCreditCardSafeCode] = useState('');
   const [creditCardName, setCreditCardName] = useState('');
@@ -148,8 +175,11 @@ function CreditCard(props) {
     if (!checkData()) {
       return false;
     }
-    addCardToSever();
-    refresh();
+    setModalShow(true);
+    setTimeout(() => {
+      addCardToSever();
+      refresh();
+    }, 3500);
   };
   const showUserCard = () => {
     if (!userCard) {
@@ -213,12 +243,11 @@ function CreditCard(props) {
     console.log('伺服器回傳的json資料', data);
     // 要等驗証過，再設定資料(簡單的直接設定)
   }
-
   useEffect(() => {
     getCardFromServer();
     const member = JSON.parse(localStorage.getItem('Member')) || [];
-    console.log(member.MemberID);
-    setMemberID(member.MemberID);
+    console.log(member.memberId);
+    setMemberID(member.memberId);
     showUserCard();
   }, []);
 
@@ -259,6 +288,39 @@ function CreditCard(props) {
                 style={{ cursor: 'copy' }}
               />
             </div>
+            <div>
+              <button
+                className="btn-main"
+                onClick={() => {
+                  const member =
+                    JSON.parse(localStorage.getItem('Member')) || [];
+                  const name = member.memberName;
+                  document.getElementById('cardNumber').value =
+                    '4321766289100023';
+                  setCreditCardNumber('4321766289100023');
+                  document.getElementById('safeCode').value = '649';
+                  setCreditCardSafeCode('649');
+                  document.getElementById('name').value = name;
+                  setCreditCardName(name);
+                  let x = document.createElement('OPTION');
+                  x.setAttribute('selected', '1');
+                  let y = document.createTextNode('5月');
+                  x.appendChild(y);
+                  document.getElementById('monthSelect').appendChild(x);
+                  setCreditCardMonth('5');
+                  let a = document.createElement('OPTION');
+                  a.setAttribute('selected', '1');
+                  let b = document.createTextNode('2024年');
+                  a.appendChild(b);
+                  document.getElementById('yearSelect').appendChild(a);
+                  setCreditCardYear('24');
+                  checkData();
+                  checkCardNumber();
+                }}
+              >
+                小幫手
+              </button>
+            </div>
           </div>
 
           <div className="col-1"></div>
@@ -273,6 +335,38 @@ function CreditCard(props) {
               activeClassName="active"
               style={{ cursor: 'pointer' }}
             />
+          </div>
+          <div className="col-3 lastpage">
+            <button
+              className="btn-main"
+              onClick={() => {
+                const member = JSON.parse(localStorage.getItem('Member')) || [];
+                const name = member.memberName;
+                document.getElementById('cardNumber').value =
+                  '4321766289100023';
+                setCreditCardNumber('4321766289100023');
+                document.getElementById('safeCode').value = '649';
+                setCreditCardSafeCode('649');
+                document.getElementById('name').value = name;
+                setCreditCardName(name);
+                let x = document.createElement('OPTION');
+                x.setAttribute('selected', '1');
+                let y = document.createTextNode('5月');
+                x.appendChild(y);
+                document.getElementById('monthSelect').appendChild(x);
+                setCreditCardMonth('5');
+                let a = document.createElement('OPTION');
+                a.setAttribute('selected', '1');
+                let b = document.createTextNode('2024年');
+                a.appendChild(b);
+                document.getElementById('yearSelect').appendChild(a);
+                setCreditCardYear('24');
+                checkData();
+                checkCardNumber();
+              }}
+            >
+              小幫手
+            </button>
           </div>
           <div className="row creditCardBlank" style={{ display: 'none' }}>
             <div className="col-4" onClick={ShowMe}>
@@ -415,6 +509,10 @@ function CreditCard(props) {
                     callTwoFuncs();
                   }}
                 />
+                <MyVerticallyCenteredModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
               </div>
             </div>
 
@@ -439,6 +537,10 @@ function CreditCard(props) {
                   onClick={() => {
                     callTwoFuncs();
                   }}
+                />
+                <MyVerticallyCenteredModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
                 />
               </div>
             </div>
