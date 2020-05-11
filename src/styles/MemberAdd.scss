@@ -2,9 +2,17 @@
 
 #register-modal {
 
-    @include pc-width {
+    @media all and (min-width: 1290px) {
         top: 15%;
     }
+
+    @media all and (min-width: 390px) and (max-width: 1289px) {
+        top: 3%;
+    }
+
+    // @include pc-width {
+    //     top: 15%;
+    // }
 
     @include phone-width {
         top: 7%;

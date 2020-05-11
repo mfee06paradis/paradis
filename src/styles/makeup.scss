@@ -1,9 +1,53 @@
-@import "./global-makeup.scss";
+@import "./variables.scss";
+
+:root {
+  --dust-100: #dcb879;
+  --dust-200: #c78550;
+  --red-100: #fedfe1;
+  --red-200: #f4a7b9;
+  --red-300: #e16b8c;
+  --red-400: #cb4042;
+  --black-100: #656765;
+  --blue-100: #81c7d4;
+  --blue-200: #6699a1;
+}
 
 main.makeup {
+
   section {
     padding-top: 88.5px;
     padding-bottom: 100px;
+  }
+
+  font-family: $font-family-title;
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'NaikaiFont';
+    overflow-x: hidden;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  p {
+    line-height: 1.2;
+    letter-spacing: 2.1px;
+    color: var(--black-100);
+  }
+
+  a:hover,
+  a:focus,
+  a:active {
+    text-decoration: none;
+  }
+
+  main .container {
+    position: relative;
   }
 
   .banner-wrapper--desktop {
@@ -58,7 +102,7 @@ main.makeup {
       background-repeat: round;
       text-align: center;
 
-      > div {
+      >div {
         &:first-child {
           font-size: 44.1px;
           line-height: 1.2;
@@ -108,7 +152,7 @@ main.makeup {
       background-repeat: round;
       text-align: center;
 
-      > div {
+      >div {
         &:first-child {
           font-size: 18.8px;
           line-height: 1.2;

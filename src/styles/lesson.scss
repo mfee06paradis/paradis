@@ -1,9 +1,53 @@
-@import "./global-makeup.scss";
+@import "./variables.scss";
+
+:root {
+  --dust-100: #dcb879;
+  --dust-200: #c78550;
+  --red-100: #fedfe1;
+  --red-200: #f4a7b9;
+  --red-300: #e16b8c;
+  --red-400: #cb4042;
+  --black-100: #656765;
+  --blue-100: #81c7d4;
+  --blue-200: #6699a1;
+}
 
 main.lesson {
   .step-wrapper {
     margin-top: 55px;
   }
+
+  font-family: $font-family-title;
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'NaikaiFont';
+    overflow-x: hidden;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  p {
+    line-height: 1.2;
+    letter-spacing: 2.1px;
+    color: var(--black-100);
+  }
+
+  a:hover,
+  a:focus,
+  a:active {
+    text-decoration: none;
+  }
+
+  main .container {
+    position: relative;
+  }
+
 
   .step {
     padding: 35px 0 20px 0;
@@ -139,7 +183,7 @@ div.lesson-subsection {
 }
 
 @media (max-width: 991.98px) {
-  main.lesson .row > div:last-child .step:after {
+  main.lesson .row>div:last-child .step:after {
     display: none;
   }
 }

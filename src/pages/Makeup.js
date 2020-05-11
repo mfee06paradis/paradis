@@ -28,9 +28,9 @@ const Makeup = () => {
           </div>
         </section>
       </div>
-      <div className="scroll-top" data-aos="fade-in" onClick={() => window.scrollTo(0,0)}>
+      {/* <div className="scroll-top" data-aos="fade-in" onClick={() => window.scrollTo(0,0)}>
         <img className="w-100" src={scrollTopImage} alt="scroll-top" />
-      </div>
+      </div> */}
     </main>
   );
 };

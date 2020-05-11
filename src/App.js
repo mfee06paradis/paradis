@@ -15,6 +15,9 @@ import Cart from './pages/Cart'
 import Ani from './pages/Ani'
 import Member from './pages/Member'
 import MemberAdd from './pages/MemberAdd'
+import CreditCard from './pages/CreditCard'
+import Account from './pages/Account'
+import EditAccount from './pages/EditAccount'
 import NotFoundPage from './pages/NotFoundPage'
 
 import Menu from './components/Menu'
@@ -74,6 +77,15 @@ function App() {
           </Route>
           <Route path="/MemberAdd">
             <MemberAdd />
+          </Route>
+          <Route path="/CreditCard">
+            <CreditCard />
+          </Route>
+          <Route path="/Account">
+            <Account />
+          </Route>
+          <Route path="/EditAccount">
+            <EditAccount />
           </Route>
           <Route exact path="/">
             <Ani />

@@ -1,7 +1,9 @@
 @import "./variables.scss";
+
 .dis {
   margin-bottom: 50px;
 }
+
 .disMenu2 {
   margin-top: 20px;
 }
@@ -9,6 +11,7 @@
 .card-deck {
   margin-left: 15px;
 }
+
 .menu-title {
   p {
     position: relative;
@@ -20,19 +23,24 @@
     color: $red-mid;
   }
 }
+
 .menu-img {
   height: 30px;
 }
+
 .menu-img :hover {
   background: url(../images/menu.svg) left no-repeat;
 }
+
 .disImg {
   margin-top: 10px;
 }
+
 @media screen and (max-width: 768px) {
   .disMenu2 {
     display: none;
   }
+
   .disImg {
     margin-left: 0px;
     margin-right: 0px;
@@ -43,6 +51,7 @@
   .disMenu1 {
     display: none;
   }
+
   .disImg {
     margin-left: 50px;
     margin-right: 0px;

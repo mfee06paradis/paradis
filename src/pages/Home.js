@@ -84,9 +84,9 @@ function Home() {
           </div>
           <div className="main-title-after"></div>
         </div>
-        <main data-aos="fade-in" data-aos-duration="400">
+        <div>
           <Row xs={1} md={3} className="home-second-width">
-            <Col className="home-second-hover">
+            <Col className="home-second-hover" data-aos="fade-in" data-aos-duration="400">
               <div className="home-second-top">
                 <p className="home-second-top-text">TOP1</p>
               </div>
@@ -98,7 +98,7 @@ function Home() {
                 <p>蜜粉餅</p>
               </div>
             </Col>
-            <Col className="home-second-hover">
+            <Col className="home-second-hover"  data-aos="fade-in" data-aos-duration="800">
               <div className="home-second-top">
                 <p className="home-second-top-text">TOP2</p>
               </div>
@@ -110,7 +110,7 @@ function Home() {
                 <p>蜜粉餅</p>
               </div>
             </Col>
-            <Col className="home-second-hover">
+            <Col className="home-second-hover" data-aos="fade-in" data-aos-duration="1200">
               <div className="home-second-top">
                 <p className="home-second-top-text">TOP3</p>
               </div>
@@ -123,14 +123,14 @@ function Home() {
               </div>
             </Col>
           </Row>
-        </main>
+        </div>
       </div>
       {/* third */}
       <div className="bg-pink view-height">
       <hr className="hr-white"></hr>
       <div class="pc-navbar"><br></br></div>
-        <Row  className="home-third-width" data-aos="fade-in" data-aos-duration="400">
-          <Col id="home-youtube" xs={12} md={8}>
+        <Row  className="home-third-width">
+          <Col id="home-youtube" xs={12} md={8}  data-aos="fade-in" data-aos-duration="400">
           <div
               className="video Home-vedio"
               style={{
@@ -154,7 +154,7 @@ function Home() {
             </div>
           </Col>
           <Col xs={12}md={3}>
-          <div className="context-side home-context-side">
+          <div className="context-side home-context-side"  data-aos="fade-in" data-aos-duration="800">
                 <div className="context-side-before"></div>
                 <div className="context-side-mid">
                   <div className="sub-title-deco">

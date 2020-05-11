@@ -6,11 +6,13 @@
   z-index: 10;
   padding-top: 5rem;
   padding-bottom: 5rem;
-  text-align: right;
+  text-align: right !important;
 
   h1 {
     color: $danger;
     font-family: $font-family-title;
+    text-align: right !important;
+    margin: 0;
   }
 
   h4 {
@@ -78,23 +80,33 @@
 }
 
 .home-second-hover:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) !important;
 }
 
 .home-second-top {
   background: url(../images/home/home-top.svg) top left no-repeat;
   transform-origin: top left;
   transform: rotate(335deg);
+  text-align: left;
 
-  @include pc-width {
+  @media all and (min-width: 1290px) {
     height: 7%;
   }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    height: 8.5%;
+  }
+
+  // @include pc-width {
+  //   height: 7%;
+  // }
 
   @include phone-width {
     height: 7%;
   }
 
   .home-second {
+
     @include pc-width {
       margin-left: 2rem;
     }
@@ -108,11 +120,23 @@
     color: $pink-light;
     font-family: $font-family-copperplate;
 
-    @include pc-width {
+    @media all and (min-width: 1290px) {
       margin-left: 1.6rem;
       padding-top: 0.1rem;
       margin-top: 3rem;
     }
+
+    @media all and (min-width: 390px) and (max-width: 1289px) {
+      margin-left: 1.2rem;
+      padding-top: 0rem;
+      margin-top: 1.5rem;
+    }
+
+    // @include pc-width {
+    //   margin-left: 1.6rem;
+    //   padding-top: 0.1rem;
+    //   margin-top: 3rem;
+    // }
 
     @include phone-width {
       margin-left: 1.2rem;
@@ -126,10 +150,20 @@
   background: url(../images/home/home-item.svg) top center no-repeat;
   margin-top: -2rem;
 
-  @include pc-width {
+  @media all and (min-width: 1290px) {
     height: 100%;
     padding: 0rem;
   }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    height: 70%;
+    padding: 0rem;
+  }
+
+  // @include pc-width {
+  //   height: 100%;
+  //   padding: 0rem;
+  // }
 
   @include phone-width {
     height: 50%;
@@ -137,11 +171,24 @@
   }
 
   img {
-    @include pc-width {
+    @media all and (min-width: 1290px) {
       width: 80%;
       margin-top: 5rem;
       margin-left: 3rem;
     }
+
+    @media all and (min-width: 390px) and (max-width: 1289px) {
+      width: 80%;
+      margin-top: 3rem;
+      margin-left: 1rem;
+    }
+
+
+    // @include pc-width {
+    //   width: 80%;
+    //   margin-top: 5rem;
+    //   margin-left: 3rem;
+    // }
 
     @include phone-width {
       width: 12rem;
@@ -173,16 +220,28 @@
 }
 
 #home-youtube {
-  @include pc-width {
+
+  @media all and (min-width: 1290px) {
     padding-top: 6rem;
     padding-left: 15rem;
   }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    padding-top: 5rem;
+    padding-left: 8rem;
+  }
+
+  // @include pc-width {
+  //   padding-top: 6rem;
+  //   padding-left: 15rem;
+  // }
 
   @include phone-width {
     padding: 1.5rem;
     padding-right: 0.5rem;
   }
 }
+
 .home-third-width {
   margin: 0;
 }
@@ -190,10 +249,20 @@
 .home-context-side {
   width: 100%;
 
-  @include pc-width {
+  @media all and (min-width: 1290px) {
     margin-top: 27rem;
     margin-left: -8rem;
   }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    margin-top: 15rem;
+    margin-left: -5rem;
+  }
+
+  // @include pc-width {
+  //   margin-top: 27rem;
+  //   margin-left: -8rem;
+  // }
 
   @include phone-width {
     margin-top: -2rem;

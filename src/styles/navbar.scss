@@ -55,6 +55,7 @@
     url(../images/bg-shining.svg) left repeat;
   background-size: 30rem, 60rem;
   height: 30rem;
+  background-color: $white;
 }
 
 .nav-link p {
@@ -221,6 +222,7 @@
   color: $primary;
   font-family: $font-family-base;
   padding-left: 0.5rem;
+  text-align: left;
 }
 
 .navbar-logout {
@@ -256,6 +258,14 @@
 //---------------------- Login modal ----------------------
 #login-modal {
   top: 20%;
+
+  @media all and (min-width: 1290px) {
+    top: 20%;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    top: 10%;
+  }
 
   .modal-content {
     background: url(../images/bg-flower-login.svg) right top no-repeat;
@@ -441,7 +451,7 @@ input[type='checkbox'] {
   // Let's add some effects after the checkbox is checked
 
   &:checked {
-    + label {
+    +label {
       span {
         background-color: $info;
         //transform: scale(1.25); // enlarge the box
@@ -460,6 +470,7 @@ input[type='checkbox'] {
       }
 
       &:hover {
+
         // copy the states for onMouseOver to avoid flickering
         span {
           background-color: $info;
@@ -566,7 +577,7 @@ hr.login-hr {
 //--------------------- footer ----------------------
 footer {
   position: absolute;
-  bottom: 0 !important;
+  //bottom: 0 !important;
   width: 100%;
   background-color: $primary;
 

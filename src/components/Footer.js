@@ -15,7 +15,7 @@ function Footer() {
 
   return (
     <>
-      <div id="backtotop" data-aos="fade-in" onClick={() => window.scrollTo(0,0)}></div>
+      <div id="backtotop" className="phone-navbar" data-aos="fade-in" onClick={() => window.scrollTo(0,0)}></div>
       <footer className="footer navbar-fixed-bottom">
         <hr className="hr-white"></hr>
         <div className="footer-width">
