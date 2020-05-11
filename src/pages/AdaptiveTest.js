@@ -1,89 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import TestBoard from '../components/adaptive-test/TestBoard';
 import ProductList from '../components/adaptive-test/ProductList';
+import { MOCK_QUESTIONS } from '../mock_data/adaptiveTest';
 import '../styles/adaptive-test.scss';
 
-const MOCK_QUESTIONS = [
-  {
-    id: 1,
-    label: 'QUES1',
-    title: '動物森友會買得到嗎？',
-  },
-  {
-    id: 2,
-    label: 'QUES1',
-    title: '動物森友會買得到嗎？',
-  },
-  {
-    id: 3,
-    label: 'QUES1',
-    title: '動物森友會買得到嗎？',
-  },
-  {
-    id: 4,
-    label: 'QUES1',
-    title: '動物森友會買得到嗎？',
-  },
-  {
-    id: 5,
-    label: 'QUES1',
-    title: '動物森友會買得到嗎？',
-  },
-];
-
-const MOCK_PRODUCT_LIST = [
-  {
-    id: 1,
-    image: 'assets/images/adaptive-test/product-dummy.png',
-    brand: 'YSL BEAUTY',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    price: 'NT.500',
-  },
-  {
-    id: 2,
-    image: 'assets/images/adaptive-test/product-dummy.png',
-    brand: 'YSL BEAUTY',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    price: 'NT.500',
-  },
-  {
-    id: 3,
-    image: 'assets/images/adaptive-test/product-dummy.png',
-    brand: 'YSL BEAUTY',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    price: 'NT.500',
-  },
-  {
-    id: 4,
-    image: 'assets/images/adaptive-test/product-dummy.png',
-    brand: 'YSL BEAUTY',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    price: 'NT.500',
-  },
-  {
-    id: 5,
-    image: 'assets/images/adaptive-test/product-dummy.png',
-    brand: 'YSL BEAUTY',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    price: 'NT.500',
-  },
-  {
-    id: 6,
-    image: 'assets/images/adaptive-test/product-dummy.png',
-    brand: 'YSL BEAUTY',
-    nameEn: 'ROUGE VOLUPTE',
-    nameZh: '情挑誘吻星鑽蜜唇膏',
-    price: 'NT.500',
-  },
-];
 
 const AdaptiveTest = () => {
+  const [productList, setProductList] = useState([]);
+
   useEffect(() => {
     AOS.init({
       once: true,
@@ -111,9 +36,9 @@ const AdaptiveTest = () => {
                     <div className="main-title-after"></div>
                   </div>
                   <div className="adaptive-test__description text-center">
-                    <p>文案文案文案文案文案文案文案文案<br />文案文案文案文案<br />文案文案文案文案文案文案<br />文案文案文案</p>
+                    <p>透過簡單的小測驗，了解自己是暖色性或冷色系皮膚，再挑選適合自己的彩妝品色號，讓你妝容完美不出錯!</p>
                   </div>
-                  <TestBoard questions={MOCK_QUESTIONS} />
+                  <TestBoard questions={MOCK_QUESTIONS} onSubmit={setProductList} />
                 </div>
                 <div className="context-full-after" />
               </div>
@@ -121,11 +46,17 @@ const AdaptiveTest = () => {
           </section>
         </div>
       </main>
-      <div className="adaptive-test-subsection" data-aos="fade-in" data-aos-duration="400">
-        <div data-aos="fade-up">
-          <ProductList list={MOCK_PRODUCT_LIST} />
-        </div>
-      </div>
+      {
+        productList.length
+          ? (
+            <div className="adaptive-test-subsection" data-aos="fade-in" data-aos-duration="400">
+              <div data-aos="fade-up">
+                <ProductList list={productList} />
+              </div>
+            </div>
+          )
+          : null
+      }
     </>
   );
 };

@@ -8,7 +8,7 @@ import Product from './pages/Product'
 import Discount from './pages/Discount'
 import Discounts from './pages/Discounts'
 import DiscountList from './components/DiscountList'
-import MakeUp from './pages/Makeup'
+import Makeup from './pages/Makeup';
 import Lesson from './pages/Lesson'
 import AdaptiveTest from './pages/AdaptiveTest';
 import Cart from './pages/Cart'
@@ -57,10 +57,10 @@ function App() {
           <Route path="/ani">
             <Ani />
           </Route>
-          <Route path="/MakeUp">
-            <MakeUp />
+          <Route path="/makeup" exact>
+            <Makeup />
           </Route>
-          <Route path="/Lesson">
+          <Route path="/lesson/:id" exact>
             <Lesson />
           </Route>
           <Route path="/adaptive-test" exact>

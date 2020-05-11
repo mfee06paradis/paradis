@@ -1,4 +1,4 @@
-@import './global-makeup.scss';
+@import "./global-makeup.scss";
 
 main.makeup {
   section {
@@ -52,9 +52,9 @@ main.makeup {
       transform: translateX(-50%);
       width: 314px;
       height: 219px;
-      content: '';
+      content: "";
       z-index: 1;
-      background-image: url('../images/makeup/cloud.png');
+      background-image: url("../images/makeup/cloud.png");
       background-repeat: round;
       text-align: center;
 
@@ -102,9 +102,9 @@ main.makeup {
       right: 20px;
       width: 134px;
       height: 93.5px;
-      content: '';
+      content: "";
       z-index: 1;
-      background-image: url('../images/makeup/cloud.png');
+      background-image: url("../images/makeup/cloud.png");
       background-repeat: round;
       text-align: center;
 
@@ -126,8 +126,8 @@ main.makeup {
   .tutorial {
     position: relative;
     margin-bottom: 50px;
-    padding: 65px 46px;
-    background-image: url('../images/global/block-bg.png');
+    padding: 65px 35px;
+    background-image: url("../images/global/block-bg.png");
     background-repeat: round;
 
     .tutorial__label {
@@ -142,16 +142,17 @@ main.makeup {
         position: relative;
         padding: 12px 40px;
         background-color: var(--red-400);
-        font-family: 'Copperplate';
+        font-family: "Copperplate";
         color: var(--red-100);
         font-size: 24.3px;
         line-height: 1.2;
         letter-spacing: 2.47px;
 
-        &:before, &::after {
+        &:before,
+        &::after {
           position: absolute;
           top: 10px;
-          content: '';
+          content: "";
           width: 33.1px;
           height: 35.9px;
           z-index: -1;
@@ -160,12 +161,12 @@ main.makeup {
 
         &:before {
           left: -20px;
-          background-image: url('../images/makeup/label-left.svg');
+          background-image: url("../images/makeup/label-left.svg");
         }
 
         &:after {
           right: -20px;
-          background-image: url('../images/makeup/label-right.svg');
+          background-image: url("../images/makeup/label-right.svg");
         }
       }
     }
@@ -180,7 +181,7 @@ main.makeup {
     &:hover .tutorial__image {
       transform-style: preserve-3d;
       transition: transform 500ms ease 0s, opacity 500ms ease 0s;
-      opacity: .7;
+      opacity: 0.7;
       transform: scaleX(1.05) scaleY(1.05) scaleZ(1.05);
     }
 
@@ -215,9 +216,9 @@ main.makeup {
       transform: translateX(-50%);
       width: 284px;
       height: 189px;
-      content: '';
+      content: "";
       z-index: 1;
-      background-image: url('../images/makeup/cloud.png');
+      background-image: url("../images/makeup/cloud.png");
       background-repeat: round;
     }
 

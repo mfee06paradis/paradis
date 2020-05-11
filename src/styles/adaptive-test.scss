@@ -1,7 +1,9 @@
-@import './global-makeup.scss';
+@import "./global-makeup.scss";
 
 main.adaptive-test {
   .adaptive-test__description {
+    width: 500px;
+    max-width: 100%;
     margin-top: 32.5px;
 
     p {
@@ -27,14 +29,14 @@ main.adaptive-test {
       padding: 2px 7px;
       background-color: var(--red-200);
       margin-right: 6.8px;
-      font-family: 'Copperplate';
+      font-family: "Copperplate";
       font-size: 12.7px;
       color: var(--red-100);
       transform: rotate(-30deg);
     }
 
     .question__title {
-      font-family: 'NotoSansCJKtc';
+      font-family: "NotoSansCJKtc";
       font-size: 20.2px;
       color: var(--black-100);
       padding-top: 49.5px;
@@ -51,6 +53,10 @@ main.adaptive-test {
       color: var(--black-100);
       cursor: pointer;
 
+      &.active {
+        background-color: var(--red-200);
+      }
+
       img {
         border: solid 1px #b3b3b3;
         border-radius: 50%;
@@ -58,6 +64,7 @@ main.adaptive-test {
         height: 28px;
         margin-right: 8px;
         vertical-align: sub;
+        background-color: #e6e6e6;
       }
     }
   }
@@ -66,7 +73,7 @@ main.adaptive-test {
     width: 318.5px;
     height: 131.8px;
     line-height: 131.8px;
-    background-image: url('../images/adaptive-test/submit-button.png');
+    background-image: url("../images/adaptive-test/submit-button.png");
     background-repeat: round;
     margin: 0 auto;
     margin-bottom: 23.2px;
@@ -85,7 +92,7 @@ main.adaptive-test {
   .adaptive-test__main-result {
     width: 100%;
     height: 341px;
-    background-image: url('../images/adaptive-test/result-bg.png');
+    background-image: url("../images/adaptive-test/result-bg.png");
     background-repeat: round;
     background-size: cover;
     margin: 0 auto;
@@ -93,7 +100,7 @@ main.adaptive-test {
     .result-container__heading {
       position: relative;
       padding-top: 30px;
-      font-family: 'NotoSansCJKtc';
+      font-family: "NotoSansCJKtc";
       font-size: 22.2px;
       font-weight: bold;
       line-height: 1.2;
@@ -110,7 +117,7 @@ main.adaptive-test {
         width: 58.2px;
         height: 50px;
         content: "";
-        background-image: url('../images//adaptive-test/result-heading-left.png');
+        background-image: url("../images//adaptive-test/result-heading-left.png");
         background-repeat: round;
       }
 
@@ -122,14 +129,17 @@ main.adaptive-test {
         width: 58.2px;
         height: 50px;
         content: "";
-        background-image: url('../images//adaptive-test/result-heading-right.png');
+        background-image: url("../images//adaptive-test/result-heading-right.png");
         background-repeat: round;
       }
     }
 
     .result-container__body {
       text-align: center;
+      margin: 0 auto;
       margin-top: 36px;
+      width: 500px;
+      max-width: 100%;
       padding: 0 14px;
 
       p {
@@ -148,34 +158,40 @@ div.adaptive-test-subsection {
 
   &:before {
     position: absolute;
-    content: '';
+    content: "";
     top: -1px;
     left: 0;
     width: 100%;
     height: 14px;
-    background-image: url('../images/global/bg-top-alt.png');
+    background-image: url("../images/global/bg-top-alt.png");
   }
 
   .product {
     margin-bottom: 19.3px;
 
     .product__image {
-      width: 80%;
-      margin: 0 auto;
+      img {
+        width: 280px;
+        height: 280px;
+        max-width: 100%;
+        margin: 0 auto;
+        object-fit: contain;
+      }
     }
 
     .product__brand {
-      font-family: 'Copperplate';
+      font-family: "Copperplate";
       font-size: 8px;
       line-height: 1.2;
       color: var(--red-300);
     }
 
     .product__name--en {
-      font-family: 'Kefa';
+      font-family: "Kefa";
       font-size: 10px;
       line-height: 1;
       color: var(--black-100);
+      margin-top: 8px;
     }
 
     .product__name--zh {
@@ -185,7 +201,7 @@ div.adaptive-test-subsection {
     }
 
     .product__price {
-      font-family: 'Kefa';
+      font-family: "Kefa";
       font-size: 13.3px;
       line-height: 1.2;
       color: var(--red-400);
@@ -231,13 +247,13 @@ div.adaptive-test-subsection {
     .adaptive-test__main-result {
       width: 329.5px;
       max-width: 100%;
-      background-image: url('../images/adaptive-test/result-bg-alt.png');
+      background-image: url("../images/adaptive-test/result-bg-alt.png");
     }
 
     .bg-pink {
       background: url(../images/bg-flower1.svg) left top no-repeat,
-      url(../images/bg-flower2.svg) right bottom no-repeat,
-      url(../images/bg-shining.svg) repeat;
+        url(../images/bg-flower2.svg) right bottom no-repeat,
+        url(../images/bg-shining.svg) repeat;
     }
   }
 }
