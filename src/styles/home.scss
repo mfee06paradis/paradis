@@ -1,0 +1,274 @@
+@import './variables.scss';
+
+.carousel-caption {
+  right: 15%;
+  top: 20%;
+  z-index: 10;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  text-align: right !important;
+
+  h1 {
+    color: $danger;
+    font-family: $font-family-title;
+    text-align: right !important;
+    margin: 0;
+  }
+
+  h4 {
+    color: black;
+    font-family: $font-family-title;
+  }
+
+  p {
+    font-size: 0.8rem;
+    font-family: $font-family-base;
+  }
+
+  button {
+    background: url(../images/home/Carousel-btn.svg) center no-repeat;
+    margin: 0;
+    padding: 0;
+    color: $primary;
+  }
+
+  button:hover {
+    background: url(../images/home/Carousel-btn-hover.svg) center no-repeat;
+    margin: 0;
+    padding: 0;
+    color: $white;
+  }
+
+  button:focus {
+    outline: none;
+    filter: grayscale(10%) drop-shadow(0rem 0rem 0.2rem rgba(237, 145, 174, 1));
+  }
+}
+
+.FirstSlide {
+  background: url(../images/home/Carousel01.jpg) center no-repeat;
+  height: 100vh;
+}
+
+.SecondSlide {
+  background: url(../images/home/Carousel02.jpg) center no-repeat;
+  height: 100vh;
+}
+
+.ThirdSlide {
+  background: url(../images/home/Carousel03.jpg) center no-repeat;
+  height: 100vh;
+}
+
+.view-height {
+  @include pc-width {
+    height: 100vh;
+  }
+
+  @include phone-width {
+    height: auto;
+  }
+}
+
+.home-second {
+  margin: 3rem;
+}
+
+.home-second-width {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.home-second-hover:hover {
+  transform: scale(1.1) !important;
+}
+
+.home-second-top {
+  background: url(../images/home/home-top.svg) top left no-repeat;
+  transform-origin: top left;
+  transform: rotate(335deg);
+  text-align: left;
+
+  @media all and (min-width: 1290px) {
+    height: 7%;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    height: 8.5%;
+  }
+
+  // @include pc-width {
+  //   height: 7%;
+  // }
+
+  @include phone-width {
+    height: 7%;
+  }
+
+  .home-second {
+
+    @include pc-width {
+      margin-left: 2rem;
+    }
+
+    @include phone-width {
+      margin-left: 0;
+    }
+  }
+
+  .home-second-top-text {
+    color: $pink-light;
+    font-family: $font-family-copperplate;
+
+    @media all and (min-width: 1290px) {
+      margin-left: 1.6rem;
+      padding-top: 0.1rem;
+      margin-top: 3rem;
+    }
+
+    @media all and (min-width: 390px) and (max-width: 1289px) {
+      margin-left: 1.2rem;
+      padding-top: 0rem;
+      margin-top: 1.5rem;
+    }
+
+    // @include pc-width {
+    //   margin-left: 1.6rem;
+    //   padding-top: 0.1rem;
+    //   margin-top: 3rem;
+    // }
+
+    @include phone-width {
+      margin-left: 1.2rem;
+      padding-top: 0rem;
+      margin-top: 0.8rem;
+    }
+  }
+}
+
+.home-second-item {
+  background: url(../images/home/home-item.svg) top center no-repeat;
+  margin-top: -2rem;
+
+  @media all and (min-width: 1290px) {
+    height: 100%;
+    padding: 0rem;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    height: 70%;
+    padding: 0rem;
+  }
+
+  // @include pc-width {
+  //   height: 100%;
+  //   padding: 0rem;
+  // }
+
+  @include phone-width {
+    height: 50%;
+    padding: 7rem;
+  }
+
+  img {
+    @media all and (min-width: 1290px) {
+      width: 80%;
+      margin-top: 5rem;
+      margin-left: 3rem;
+    }
+
+    @media all and (min-width: 390px) and (max-width: 1289px) {
+      width: 80%;
+      margin-top: 3rem;
+      margin-left: 1rem;
+    }
+
+
+    // @include pc-width {
+    //   width: 80%;
+    //   margin-top: 5rem;
+    //   margin-left: 3rem;
+    // }
+
+    @include phone-width {
+      width: 12rem;
+      margin-top: -4.5rem;
+      margin-left: -5.5rem;
+    }
+  }
+}
+
+.home-second-item-text {
+  text-align: center;
+  margin-top: 1rem;
+
+  h3 {
+    color: $secondary;
+    font-family: $font-family-title;
+  }
+
+  p {
+    color: $danger;
+    font-family: $font-family-title;
+    margin-top: -0.5rem;
+  }
+}
+
+.home-second-item-1 {
+  background: url(../images/home/Home-2-1.png) center no-repeat;
+  background-size: 5rem;
+}
+
+#home-youtube {
+
+  @media all and (min-width: 1290px) {
+    padding-top: 6rem;
+    padding-left: 15rem;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    padding-top: 5rem;
+    padding-left: 8rem;
+  }
+
+  // @include pc-width {
+  //   padding-top: 6rem;
+  //   padding-left: 15rem;
+  // }
+
+  @include phone-width {
+    padding: 1.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.home-third-width {
+  margin: 0;
+}
+
+.home-context-side {
+  width: 100%;
+
+  @media all and (min-width: 1290px) {
+    margin-top: 27rem;
+    margin-left: -8rem;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    margin-top: 15rem;
+    margin-left: -5rem;
+  }
+
+  // @include pc-width {
+  //   margin-top: 27rem;
+  //   margin-left: -8rem;
+  // }
+
+  @include phone-width {
+    margin-top: -2rem;
+  }
+}
+
+.home-context-side-text {
+  text-align: center;
+}

@@ -1,0 +1,124 @@
+.main {
+}
+
+.form_main {
+}
+
+.no_padding {
+  padding: 0;
+}
+
+.no_margin {
+  margin: 0;
+}
+
+.gird_main_right {
+  padding: 0;
+  padding-right: 30px;
+}
+
+.gird_main_left {
+  padding: 20px;
+}
+
+.gird_card_body {
+  display: flex;
+  align-items: center;
+}
+
+tr td {
+  vertical-align: middle !important;
+}
+
+.gird_order_details {
+  padding: 0;
+  /* padding-right: 15px; */
+}
+.main_right {
+  padding-top: 20px;
+}
+
+.order_detail_wrap {
+  padding: 0;
+}
+
+.order_detail {
+  padding: 20px;
+}
+
+.order_detail_total {
+  margin: 40px;
+}
+
+.input_number {
+  width: 100px;
+}
+
+.o_checkout_outer {
+  padding: 20px;
+}
+
+.o_checkout_customOut {
+  /* margin: 20px; */
+}
+
+.title {
+  text-align: center;
+}
+
+.form_input {
+  width: 90%;
+}
+
+.background_from {
+  background-color: olivedrab;
+  padding: 20px;
+}
+
+.text_discound {
+  color: #e16b8c !important;
+}
+
+.text_total_amount {
+  color: #cb4042 !important;
+}
+
+.creditCard {
+}
+
+/* ============================== */
+.p_detail_wrap {
+  margin: 0 -30px;
+  margin-bottom: 60px;
+}
+
+.p_detail {
+  padding: 0 30px;
+}
+
+.p_detail_custom {
+  height: 300px;
+  background-color: hotpink;
+}
+
+.accordion_height {
+  height: 455px;
+  background-color: darkgreen;
+}
+
+.buttonDiv {
+  padding: 0;
+}
+
+/* 設定 上下箭頭 */
+.accordion:after h6 {
+  font-family: "FontAwesome";
+  content: "\f068";
+  float: right;
+}
+
+.accordion.collapsed:after h6 {
+  /* symbol for "collapsed" panels */
+  content: "\f067";
+  float: right;
+}

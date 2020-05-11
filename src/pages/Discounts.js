@@ -14,7 +14,7 @@ function disconts() {
     }
     return (
         <>
-            <div className="bg-white dis">
+            <div className=" dis bg-white">
                 <div className="container">
                     <div className="row">
                         <div className="row col-12 disMenu1">
@@ -40,7 +40,7 @@ function disconts() {
                                 <NavLink
                                     to="/discount"
                                 >
-                                    <div className="menu-img bg-white">
+                                    <div className="menu-img ">
                                         {menu_title('Seson', '當季優惠')}
 
                                     </div>
@@ -49,7 +49,7 @@ function disconts() {
                                 <NavLink
                                     to="/discounts"
                                 >
-                                    <div className="menu-img bg-white">
+                                    <div className="menu-img ">
                                         {menu_title('Now On Sale', '現正優惠')}
 
                                     </div>
@@ -59,20 +59,40 @@ function disconts() {
                         </div>
                         <div className="col-12 col-md-10 ">
                             <div className="disImg">
-                                <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                <NavLink
+                                    to="/discountList/1"
+                                >
+                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                </NavLink>
                             </div>
                             <div className="disImg">
-                                <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                <NavLink
+                                    to="/discountList/2"
+                                >
+                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                </NavLink>
                             </div>
                             <div className="disImg">
-                                <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                <NavLink
+                                    to="/discountList/3"
+                                >
+                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                </NavLink>
                             </div>
                             <div className="disImg">
-                                <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                <NavLink
+                                    to="/discountList/4"
+                                >
+                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                </NavLink>
                             </div>
                             <div className="disImg">
-                                <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
-                            </div>
+                                <NavLink
+                                    to="/discountList/5"
+                                >
+                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+
+                                </NavLink></div>
                         </div>
                     </div>
                 </div>

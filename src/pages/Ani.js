@@ -113,7 +113,6 @@ function Ani() {
           </svg>
         </div>
       </div>
-
     </>
   )
 }

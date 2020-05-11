@@ -1,57 +1,31 @@
-:root {
-  --dust-100: #dcb879;
-  --dust-200: #c78550;
-  --red-100: #fedfe1;
-  --red-200: #f4a7b9;
-  --red-300: #e16b8c;
-  --red-400: #cb4042;
-  --black-100: #656765;
-  --blue-100: #81c7d4;
-  --blue-200: #6699a1;
-}
+// :root {
+//   --dust-100: #dcb879;
+//   --dust-200: #c78550;
+//   --red-100: #fedfe1;
+//   --red-200: #f4a7b9;
+//   --red-300: #e16b8c;
+//   --red-400: #cb4042;
+//   --black-100: #656765;
+//   --blue-100: #81c7d4;
+//   --blue-200: #6699a1;
+// }
 
-@font-face {
-  font-family: 'NaikaiFont';
-  src: url('../fonts/NaikaiFont-Regular.ttf');
-}
-@font-face {
-  font-family: 'Kefa';
-  src: url('../fonts/Kefa-Regular.ttf');
-}
-@font-face {
-  font-family: 'Copperplate';
-  src: url('../fonts/Copperplate.ttf');
-}
-@font-face {
-  font-family: 'NotoSansCJKtc';
-  src: url('../fonts/NotoSansCJKtc-Regular.ttf');
-}
+// @font-face {
+//   font-family: 'NaikaiFont';
+//   src: url('../fonts/NaikaiFont-Regular.ttf');
+// }
 
-html {
-  scroll-behavior: smooth;
-}
+// @font-face {
+//   font-family: 'Kefa';
+//   src: url('../fonts/Kefa-Regular.ttf');
+// }
 
-body {
-  font-family: 'NaikaiFont';
-  overflow-x: hidden;
-}
+// @font-face {
+//   font-family: 'Copperplate';
+//   src: url('../fonts/Copperplate.ttf');
+// }
 
-*:focus {
-  outline: none;
-}
-
-p {
-  line-height: 1.2;
-  letter-spacing: 2.1px;
-  color: var(--black-100);
-}
-
-a:hover,
-a:focus,
-a:active {
-  text-decoration: none;
-}
-
-main .container {
-  position: relative;
-}
+// @font-face {
+//   font-family: 'NotoSansCJKtc';
+//   src: url('../fonts/NotoSansCJKtc-Regular.ttf');
+// }

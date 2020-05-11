@@ -1,0 +1,64 @@
+.outerMostDiv {
+  background-color: white;
+  padding: 0;
+}
+
+.header {
+  background-color: olivedrab;
+  height: 100px;
+  padding: 0;
+}
+
+.ad {
+  background-color: hotpink;
+  height: 300px;
+  padding: 0;
+}
+
+.buttonDiv {
+  padding: 0;
+}
+
+.label_center {
+  height: 38px;
+  line-height: 38px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  /* align-self: center;
+  align-items: center;
+  align-content: center;
+  align-items: center; */
+  justify-content: center;
+}
+
+.menuDiv {
+}
+
+.select_wrap {
+  padding-top: 20px;
+  height: 150px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.product_wrap {
+  /* box-sizing: border-box; */
+  margin: 0px -40px !important;
+  margin-bottom: 80px !important;
+}
+
+.product {
+  padding: 0 40px !important;
+}
+
+.product-custom {
+  outline: 1px solid black;
+  margin: 0 px;
+  height: 300px;
+  background-color: blanchedalmond;
+}
+
+.card_img_wrap {
+  padding: 20px;
+}
