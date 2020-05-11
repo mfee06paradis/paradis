@@ -1,18 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import SideBar from '../components/SideBar';
-import Address from '../components/Address';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 import '../styles/member.scss';
-
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+          <div className="sub-title">
+            <h1 className="sub-title-eng">已成功登出!</h1>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <br></br>
+          <button className="btn-main" onClick={props.onHide}>
+            確定
+          </button>
+          <br></br>
+        </Modal.Body>
+      </div>
+    </Modal>
+  );
+}
 function Account(props) {
   const member = localStorage.getItem('Member') || [];
   const parseUserMember = JSON.parse(member);
-  const nameParseUserMember = parseUserMember.MemberName;
-  const sliceNameParseUserMember = nameParseUserMember.slice(1);
-  const email = parseUserMember.MemberEmail;
-  // const password = parseUserMember.MemberPW;
-  const gender = parseUserMember.MemberSex;
+  const nameParseUserMember = parseUserMember.memberName;
+  const email = parseUserMember.memberEmail;
+  const gender = parseUserMember.membersex;
+  const [modalShow, setModalShow] = useState(false);
   let sex;
   switch (gender) {
     case 'F':
@@ -22,9 +46,9 @@ function Account(props) {
       sex = '男';
   }
 
-  const birthday = parseUserMember.MemberBirthday;
-  const phone = parseUserMember.MemberPhone;
-  const address = parseUserMember.MemberAddress;
+  const birthday = parseUserMember.memberBirthday;
+  const phone = parseUserMember.memberPhone;
+  const address = parseUserMember.memberAddress;
 
   return (
     <>
@@ -45,22 +69,29 @@ function Account(props) {
                 className="nav-link"
                 activeClassName="active"
                 onClick={() => {
-                  props.history.goBack();
+                  props.history.push('/member');
                 }}
               />
             </div>
           </div>
 
           {/* -----------------------Mobile-------------------------- */}
-          <form action="" className="row MobileEditcontent">
-            <div className="col-8 container table-bg">
+          <div className="row MobileEditcontent">
+            <div className="col-10 container table-bg">
               <table className="editTable">
                 <tbody>
                   <tr className="bBorder">
                     <div className="row ">
-                      <span className="col-6">
+                      <div className="col-2"></div>
+                      <span className="col-8">
                         <img
-                          src={require('../images/member-icon-for-sidebar.svg')}
+                          src={require('../images/avatar1.jpg')}
+                          style={{
+                            width: '70%',
+                            marginLeft: '2em',
+                            borderRadius: '50%',
+                            paddingBottom: '10px',
+                          }}
                           alt="memberIconForSideBar"
                         />
                       </span>
@@ -70,7 +101,7 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-10">
+                      <div className="col-11">
                         <td>E-mail帳號:</td>
                         <br />
                         <label className="accountText">{email}</label>
@@ -96,11 +127,9 @@ function Account(props) {
                         <td>暱稱:</td>
                         <br />
                         <label className="accountText">
-                          {sliceNameParseUserMember}
+                          {nameParseUserMember}
                         </label>
                       </div>
-                      <div className="col-1"></div>
-                      <div className="col-8 "></div>
                     </div>
                   </tr>
 
@@ -112,8 +141,6 @@ function Account(props) {
                         <br />
                         <label className="accountText2">{sex}</label>
                       </div>
-
-                      <div className="col-1"></div>
                     </div>
                   </tr>
                   <tr className="bBorder">
@@ -124,8 +151,6 @@ function Account(props) {
                         <br />
                         <label className="accountText">{birthday}</label>
                       </div>
-
-                      <div className="col-1"></div>
                     </div>
                   </tr>
 
@@ -137,9 +162,6 @@ function Account(props) {
                         <br />
                         <label className="accountText2">{phone}</label>
                       </div>
-
-                      <div className="col-1"></div>
-                      <div className="col-8"></div>
                     </div>
                   </tr>
 
@@ -151,31 +173,17 @@ function Account(props) {
                         <br />
                         <label className="accountText">{address}</label>
                       </div>
-
                       <div className="col-1"></div>
-                      <div className="col-3" style={{ visibility: 'hidden' }}>
-                        <p>縣市</p>
-                      </div>
-                      <div className="col-6" style={{ visibility: 'hidden' }}>
-                        <Address style={{ textAlign: 'left', textIndent: 0 }} />
-                      </div>
-                      <div className="col-12"></div>
-                      <div className="col-1"></div>
-                      <input
-                        type="text"
-                        style={{
-                          height: '6em',
-                          width: '80%',
-                          visibility: 'hidden',
-                        }}
-                      />
+                      <input type="text" style={{ visibility: 'hidden' }} />
+                      <input type="text" style={{ visibility: 'hidden' }} />
                     </div>
                   </tr>
                   <tr className="lastRow"></tr>
                 </tbody>
               </table>
             </div>
-          </form>
+          </div>
+
           <div class="row">
             <div className="col-6 editButtonMobile">
               <img
@@ -185,10 +193,17 @@ function Account(props) {
                 alt="logout"
                 style={{ cursor: 'pointer' }}
                 onClick={() => {
-                  alert('已成功登出');
-                  localStorage.clear();
-                  props.history.push('/home');
+                  setModalShow(true);
+                  setTimeout(() => {
+                    props.history.push('/home');
+                    localStorage.clear();
+                    window.location.reload();
+                  }, 2000);
                 }}
+              />
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
               />
             </div>
             <div className="col-6 editButtonMobile">
@@ -204,7 +219,7 @@ function Account(props) {
               </NavLink>
             </div>
           </div>
-          {/* -----------------------Mobile-------------------------- */}
+          {/* -----------------------EndMobile-------------------------- */}
 
           <form action="" className="row content">
             <div className="col-lg-12 container table-bg">
@@ -218,7 +233,13 @@ function Account(props) {
                       <div className="col-2"></div>
                       <div className="col-6">
                         <img
-                          src={require('../images/member-icon-for-sidebar.svg')}
+                          src={require('../images/avatar1.jpg')}
+                          style={{
+                            width: '70%',
+                            marginLeft: '2em',
+                            borderRadius: '50%',
+                            paddingBottom: '10px',
+                          }}
                           alt="memberIconForSideBar"
                         />
                       </div>
@@ -228,7 +249,7 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-10">
+                      <div className="col-11">
                         <td>E-mail帳號:</td>
                         <br />
                         <label className="accountText">{email}</label>
@@ -255,12 +276,9 @@ function Account(props) {
                         <td>暱稱:</td>
                         <br />
                         <label className="accountText">
-                          {sliceNameParseUserMember}
+                          {nameParseUserMember}
                         </label>
                       </div>
-
-                      <div className="col-1"></div>
-                      <div className="col-8 "></div>
                     </div>
                   </tr>
 
@@ -272,8 +290,6 @@ function Account(props) {
                         <br />
                         <label className="accountText2">{sex}</label>
                       </div>
-
-                      <div className="col-1"></div>
                     </div>
                   </tr>
                   <tr className="bBorder">
@@ -284,7 +300,6 @@ function Account(props) {
                         <br />
                         <label className="accountText">{birthday}</label>
                       </div>
-                      <div className="col-1"></div>
                     </div>
                   </tr>
 
@@ -296,9 +311,6 @@ function Account(props) {
                         <br />
                         <label className="accountText2">{phone}</label>
                       </div>
-
-                      <div className="col-1"></div>
-                      <div className="col-8"></div>
                     </div>
                   </tr>
 
@@ -313,14 +325,9 @@ function Account(props) {
                       <div className="col-3" style={{ visibility: 'hidden' }}>
                         <p>縣市</p>
                       </div>
-                      <div className="col-4" style={{ visibility: 'hidden' }}>
-                        <Address />
-                      </div>
-                      <div className="col-12"></div>
-                      <div className="col-1"></div>
-                      <div className="col-10" style={{ visibility: 'hidden' }}>
-                        <input type="text" />
-                      </div>
+                      <input type="text" style={{ visibility: 'hidden' }} />
+                      <input type="text" style={{ visibility: 'hidden' }} />
+                      <input type="text" style={{ visibility: 'hidden' }} />
                     </div>
                   </tr>
                   <tr className="lastRow"></tr>
