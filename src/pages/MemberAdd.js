@@ -261,7 +261,7 @@ function MemberAdd(props) {
                 <span className="table-label">必填</span>
               </td>
               <td>
-                <div className="rwd-show">
+                <div className="rwd-show member-add-label">
                 <label htmlFor="memberName">暱稱</label>
                   <span className="table-label">必填</span>
                 </div>
@@ -286,7 +286,7 @@ function MemberAdd(props) {
                 <span className="table-label">必填</span>
               </td>
               <td>
-              <div className="rwd-show">
+              <div className="rwd-show member-add-label">
                 <label htmlFor="memberName">Email帳號</label>
                 <span className="table-label">必填</span>
               </div>
@@ -319,7 +319,7 @@ function MemberAdd(props) {
                 <span className="table-label">必填</span>
               </td>
               <td>
-              <div className="rwd-show">
+              <div className="rwd-show member-add-label">
                 <label htmlFor="memberName">密碼</label>
                 <span className="table-label">必填</span>
               </div>
@@ -344,7 +344,7 @@ function MemberAdd(props) {
                 <span className="table-label">必填</span>
               </td>
               <td>
-              <div className="rwd-show">
+              <div className="rwd-show member-add-label">
                 <label htmlFor="memberName">請再次輸入密碼</label>
                 <span className="table-label">必填</span>
               </div>
