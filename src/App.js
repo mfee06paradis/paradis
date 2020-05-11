@@ -7,6 +7,7 @@ import Brands from './pages/Brands'
 import Product from './pages/Product'
 import Discount from './pages/Discount'
 import Discounts from './pages/Discounts'
+import DiscountList from './components/DiscountList'
 import MakeUp from './pages/Makeup'
 import Lesson from './pages/Lesson'
 import AdaptiveTest from './pages/AdaptiveTest';
@@ -50,6 +51,9 @@ function App() {
           <Route path="/Discounts">
             <Discounts />
           </Route>
+          <Route path="/DiscountList">
+            <DiscountList />
+          </Route>
           <Route path="/ani">
             <Ani />
           </Route>
@@ -70,6 +74,9 @@ function App() {
           </Route>
           <Route path="/MemberAdd">
             <MemberAdd />
+          </Route>
+          <Route exact path="/">
+            <Ani />
           </Route>
           <Route path="*">
             <NotFoundPage />
