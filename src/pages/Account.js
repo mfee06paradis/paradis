@@ -42,8 +42,11 @@ function Account(props) {
     case 'F':
       sex = '女';
       break;
-    default:
+    case 'M':
       sex = '男';
+      break;
+    default:
+      sex = '';
   }
 
   const [address, setAddress] = useState('');

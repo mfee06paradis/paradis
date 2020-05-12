@@ -44,9 +44,13 @@ function EditAccount(props) {
     case 'F':
       sex = '女';
       break;
-    default:
+    case 'M':
       sex = '男';
+      break;
+    default:
+      sex = '請選擇性別';
   }
+
   const [memberID, setMemberID] = useState('');
   const [address, setAddress] = useState('');
   const [county, setCounty] = useState('');
@@ -126,8 +130,14 @@ function EditAccount(props) {
     setBirthday(member.memberBirthday);
     setPhone(member.memberPhone);
     setMemberID(member.memberId);
-    setCounty(member.memberAddress.substr(0, 3));
-    setAddress(member.memberAddress.slice(3));
+    if (member.memberAddress) {
+      setCounty(member.memberAddress.substr(0, 3));
+      setAddress(member.memberAddress.slice(3));
+    } else {
+      setCounty('');
+      setAddress('');
+    }
+
     if (!member.avatar) {
       setAvatar('./images/member-icon.svg');
     } else {
