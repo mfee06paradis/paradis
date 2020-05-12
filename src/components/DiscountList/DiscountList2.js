@@ -40,6 +40,11 @@ function List() {
                                     className="card-img-top pdimg"
                                     alt="..."
                                 />
+                                <img
+                                    src={bgimg}
+                                    className="card-img-top bgimg"
+                                    alt="..."
+                                />
                                 <div className="card-body">
                                     <h5 className="card-title">Bobbi Brown</h5>
                                     <h4 className="card-text">金緻奢華唇膏</h4>
@@ -53,6 +58,11 @@ function List() {
                                 <img
                                     src={img3}
                                     className="card-img-top pdimg"
+                                    alt="..."
+                                />
+                                <img
+                                    src={bgimg}
+                                    className="card-img-top bgimg"
                                     alt="..."
                                 />
                                 <div className="card-body">
