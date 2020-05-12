@@ -256,7 +256,6 @@
 }
 
 #cartNumber {
-
   @include pc-width {
     background-color: $success;
     border-radius: 50%;
@@ -278,9 +277,7 @@
     font-size: 0.8rem;
     color: $danger;
     font-weight: bold;
-
   }
-
 }
 
 //---------------------- Login modal ----------------------
@@ -402,124 +399,221 @@
   text-align: center;
 }
 
+.cbx {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  padding-right: 0.8rem;
+  margin-left: -0.5rem;
+}
+
+.cbx span {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translate3d(0, 0, 0);
+}
+
+.cbx span:first-child {
+  position: relative;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  transform: scale(1);
+  vertical-align: middle;
+  border: 2px solid #66959D;
+  transition: all 0.2s ease;
+}
+
+.cbx span:first-child svg {
+  position: absolute;
+  z-index: 1;
+  top: 0.5rem;
+  left: 0.6rem;
+  fill: none;
+  stroke: white;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 50px;
+  stroke-dashoffset: 50px;
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+  transform: translate3d(0, 0, 0);
+}
+
+.cbx span:first-child:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #66959D;
+  display: block;
+  transform: scale(0);
+  opacity: 1;
+  border-radius: 50%;
+  transition-delay: 0.2s;
+}
+
+.cbx span:last-child {
+  margin-left: 8px;
+}
+
+.cbx span:last-child:after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: #B9B8C3;
+  transform-origin: 0 0;
+  transform: scaleX(0);
+}
+
+.cbx:hover span:first-child {
+  border-color: #66959D;
+}
+
+.inp-cbx:checked+.cbx span:first-child {
+  border-color: #66959D;
+  background: #66959D;
+  animation: check 0.6s ease;
+}
+
+.inp-cbx:checked+.cbx span:first-child svg {
+  stroke-dashoffset: 0;
+}
+
+// .inp-cbx:checked+.cbx span:first-child:before {
+//     transform: scale(2.2);
+//     opacity: 0;
+//     transition: all 0.6s ease;
+// }
+
+@keyframes check {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
 label {
   display: inline-block; // to make it easier to click
   color: $info;
   cursor: pointer;
   position: relative; // important
-
-  // Now we'll create the checkbox object
-
-  span {
-    display: inline-block;
-    position: relative;
-    background-color: transparent;
-    width: 2.6rem;
-    height: 2.6rem;
-    transform-origin: center;
-    border: 2px solid $info;
-    border-radius: 50%;
-    vertical-align: -1rem;
-    margin-right: 0.5rem;
-    transition: background-color 150ms 200ms,
-      transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89); // custom ease effect for bouncy animation
-
-    // Now we'll create the "tick" using pseudo elements - those will be basically two lines that will be rotated to form the "tick"
-
-    &:before {
-      content: '';
-      width: 0px;
-      height: 2px;
-      border-radius: 2px; // so that the tick has nice rounded look
-      background: $info;
-      position: absolute;
-      transform: rotate(45deg);
-      top: 13px; // you'll need to experiment with placement depending on the dimensions you've chosen
-      left: 9px; // you'll need to experiment with placement depending on the dimensions you've chosen
-      transition: width 50ms ease 50ms;
-      //transform: scale(3s);
-      transform-origin: 0% 0%;
-    }
-
-    &:after {
-      content: '';
-      width: 0;
-      height: 2px;
-      border-radius: 2px; // so that the tick has nice rounded look
-      background: $info;
-      position: absolute;
-      transform: rotate(305deg);
-      top: 16px; // you'll need to experiment with placement depending on the dimensions you've chosen
-      left: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
-      transition: width 50ms ease;
-      transform-origin: 0% 0%;
-    }
-  }
-
-  // Time to add some life to it
-
-  &:hover {
-    span {
-      &:before {
-        width: 5px;
-        transition: width 100ms ease;
-      }
-
-      &:after {
-        width: 10px;
-        transition: width 150ms ease 100ms;
-      }
-    }
-  }
 }
 
-input[type='checkbox'] {
-  display: none; // hide the system checkbox
+//   // Now we'll create the checkbox object
 
-  // Let's add some effects after the checkbox is checked
+//   span {
+//     display: inline-block;
+//     position: relative;
+//     background-color: transparent;
+//     width: 2.6rem;
+//     height: 2.6rem;
+//     transform-origin: center;
+//     border: 2px solid $info;
+//     border-radius: 50%;
+//     vertical-align: -1rem;
+//     margin-right: 0.5rem;
+//     transition: background-color 150ms 200ms,
+//       transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89); // custom ease effect for bouncy animation
 
-  &:checked {
-    +label {
-      span {
-        background-color: $info;
-        //transform: scale(1.25); // enlarge the box
+//     // Now we'll create the "tick" using pseudo elements - those will be basically two lines that will be rotated to form the "tick"
 
-        &:after {
-          width: 10px;
-          background: $white;
-          transition: width 150ms ease 100ms; // enlarge the tick
-        }
+//     &:before {
+//       content: '';
+//       width: 0px;
+//       height: 2px;
+//       border-radius: 2px; // so that the tick has nice rounded look
+//       background: $info;
+//       position: absolute;
+//       transform: rotate(45deg);
+//       top: 13px; // you'll need to experiment with placement depending on the dimensions you've chosen
+//       left: 9px; // you'll need to experiment with placement depending on the dimensions you've chosen
+//       transition: width 50ms ease 50ms;
+//       //transform: scale(3s);
+//       transform-origin: 0% 0%;
+//     }
 
-        &:before {
-          width: 5px;
-          background: $white;
-          transition: width 150ms ease 100ms; // enlarge the tick
-        }
-      }
+//     &:after {
+//       content: '';
+//       width: 0;
+//       height: 2px;
+//       border-radius: 2px; // so that the tick has nice rounded look
+//       background: $info;
+//       position: absolute;
+//       transform: rotate(305deg);
+//       top: 16px; // you'll need to experiment with placement depending on the dimensions you've chosen
+//       left: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
+//       transition: width 50ms ease;
+//       transform-origin: 0% 0%;
+//     }
+//   }
 
-      &:hover {
+//   // Time to add some life to it
 
-        // copy the states for onMouseOver to avoid flickering
-        span {
-          background-color: $info;
-          //transform: scale(1.25); // enlarge the box
+//   &:hover {
+//     span {
+//       &:before {
+//         width: 5px;
+//         transition: width 100ms ease;
+//       }
 
-          &:after {
-            width: 10px;
-            background: $white;
-            transition: width 150ms ease 100ms; // enlarge the tick
-          }
+//       &:after {
+//         width: 10px;
+//         transition: width 150ms ease 100ms;
+//       }
+//     }
+//   }
+// }
 
-          &:before {
-            width: 5px;
-            background: $white;
-            transition: width 150ms ease 100ms; // enlarge the tick
-          }
-        }
-      }
-    }
-  }
-}
+// input[type='checkbox'] {
+//   display: none; // hide the system checkbox
+
+//   // Let's add some effects after the checkbox is checked
+
+//   &:checked {
+//     + label {
+//       span {
+//         background-color: $info;
+//         //transform: scale(1.25); // enlarge the box
+
+//         &:after {
+//           width: 10px;
+//           background: $white;
+//           transition: width 150ms ease 100ms; // enlarge the tick
+//         }
+
+//         &:before {
+//           width: 5px;
+//           background: $white;
+//           transition: width 150ms ease 100ms; // enlarge the tick
+//         }
+//       }
+
+//       &:hover {
+//         // copy the states for onMouseOver to avoid flickering
+//         span {
+//           background-color: $info;
+//           //transform: scale(1.25); // enlarge the box
+
+//           &:after {
+//             width: 10px;
+//             background: $white;
+//             transition: width 150ms ease 100ms; // enlarge the tick
+//           }
+
+//           &:before {
+//             width: 5px;
+//             background: $white;
+//             transition: width 150ms ease 100ms; // enlarge the tick
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 hr.login-hr {
   border: 0;
