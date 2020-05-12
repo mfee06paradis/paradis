@@ -1,7 +1,4 @@
 @import "./variables.scss";
-.carousel {
-  margin-top: 50px;
-}
 
 .disFirstSlide {
   background: url(../images/discount/demo1.jpg) center no-repeat;
@@ -17,10 +14,12 @@
   background: url(../images/discount/demo3.jpg) center no-repeat;
   height: 13vh;
 }
+
 .disFourSlide {
   background: url(../images/discount/demo4.jpg) center no-repeat;
   height: 13vh;
 }
+
 .disFiveSlide {
   background: url(../images/discount/demo5.jpg) center no-repeat;
   height: 13vh;
@@ -29,23 +28,28 @@
 .pdimg {
   z-index: 2;
 }
+
 .bgimg {
   position: absolute;
   z-index: 1;
 }
+
 .card {
   border: none;
 }
+
 .card:hover {
   .pdimg {
     transform: scale(1.1);
     transition: all 0.3s ease-in 0s;
   }
+
   .bgimg {
     transform: scaleY(2);
     transition: all 0.3s ease-in 0s;
   }
 }
+
 .dis {
   //margin-top: 3rem;
   padding-top: 4rem;
@@ -93,12 +97,6 @@
   .disImg {
     margin-left: 0px;
     margin-right: 0px;
-  }
-  .carousel {
-    display: none;
-  }
-  .card-deck {
-    margin-top: 100px;
   }
 }
 

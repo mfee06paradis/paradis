@@ -42,6 +42,14 @@ function Menu(props) {
         setUserData(myJson)
       })
   }, []) 
+
+  function isCartNumber(){
+    if(props.cartNumber === 0){
+      return false;
+    }else{
+      return true;
+    }
+  }
   
 
   const lcstg = localStorage.getItem('Member')
@@ -56,6 +64,7 @@ function Menu(props) {
       <>
         <Row className="navbar-icons">
           <Col className="navbar-cart">
+            {isCartNumber() ? <div id="cartNumber">{props.cartNumber}</div> : '' }
             <NavLink
               activeClassName="active"
               className="nav-link"
@@ -189,7 +198,7 @@ function Menu(props) {
     {props.isAuth ? isAuthTrueMenu() : isAuthFalseMenu()}
     <div id="phone-Menu" className="pc-navbar" onClick={()=>{NavbarToggle.current.click()}}>Menu</div>
     <Navbar sticky="top" id="navbar" collapseOnSelect bg="primary" expand="lg">
-      <Navbar.Toggle aria-controls="basic-navbar-nav" ref={NavbarToggle} onClick={()=>{window.scrollTo(0, 0)}}/>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" ref={NavbarToggle} onClick={()=>window.scrollTo({ top: 0, behavior: 'smooth' })}/>
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <NavLink
@@ -302,7 +311,7 @@ function Menu(props) {
                       return false
                     }
                   })
-                  console.log(getUser)
+                  //console.log(getUser)
                   if (getUser !== undefined) {
                     localStorage.setItem('Member', JSON.stringify(getUser))
                   }

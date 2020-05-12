@@ -25,13 +25,14 @@ import Footer from './components/Footer'
 
 function App() {
   const [isAuth, setIsAuth] = useState(false)
+  const [cartNumber, setCartNumber] = useState(0)
 
   return (
 
 
     <Router>
       <>
-        <Menu isAuth={isAuth} setIsAuth={setIsAuth} />
+        <Menu isAuth={isAuth} setIsAuth={setIsAuth} cartNumber={cartNumber} setCartNumber={setCartNumber}/>
         <Switch>
           <Route exact path="/">
             <Ani />

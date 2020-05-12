@@ -13,9 +13,10 @@ function Footer() {
     });
   }, []);
 
+
   return (
     <>
-      <div id="backtotop" className="phone-navbar backtotop" data-aos="fade-in" onClick={() => window.scrollTo(0,0)}></div>
+      <div id="backtotop" className="phone-navbar backtotop" data-aos="fade-in" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}></div>
       <footer className="footer navbar-fixed-bottom">
         <hr className="hr-white"></hr>
         <div className="footer-width">
