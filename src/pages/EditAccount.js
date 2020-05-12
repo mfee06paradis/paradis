@@ -16,11 +16,11 @@ function MyVerticallyCenteredModal(props) {
       <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <div className="sub-title">
             <h1 className="sub-title-eng">編輯成功!</h1>
           </div>
-        </Modal.Header>
-        <Modal.Body>
           <br></br>
           <button className="btn-main" onClick={props.onHide}>
             確定
@@ -52,6 +52,8 @@ function EditAccount(props) {
   const [county, setCounty] = useState('');
   const [district, setDistrict] = useState('');
   const [addressData, setAddressData] = useState('');
+  const [avatar, setAvatar] = useState('');
+  const [avatarTem, setAvatarTem] = useState('');
   const handleChange1 = (data) => {
     setCounty(data.county);
   };
@@ -67,6 +69,7 @@ function EditAccount(props) {
       birthday,
       phone,
       addressData,
+      avatar,
       memberID,
     };
 
@@ -125,13 +128,31 @@ function EditAccount(props) {
     setMemberID(member.memberId);
     setCounty(member.memberAddress.substr(0, 3));
     setAddress(member.memberAddress.slice(3));
-    console.log(address);
+    if (!member.avatar) {
+      setAvatar('./images/member-icon.svg');
+    } else {
+      setAvatar(member.avatar);
+    }
+    const fileUploader = document.querySelector('#chooseAvatar');
+    fileUploader.addEventListener('change', (e) => {
+      setAvatarTem(e.target.files[0].name);
+      let x = './images/' + e.target.files[0].name;
+      setAvatar(x);
+    });
+    const fileUploaderMobile = document.querySelector('#chooseAvatarMobile');
+    fileUploaderMobile.addEventListener('change', (e) => {
+      setAvatarTem(e.target.files[0].name);
+      let x = './images/' + e.target.files[0].name;
+      setAvatar(x);
+    });
   };
 
   useEffect(() => {
     getMemberFromLocalStorage();
   }, []);
-
+  useEffect(() => {
+    // window.location.reload();
+  }, [avatarTem]);
   // let check = function () {
   // if (!checkPwd) {
   //   return false;
@@ -249,6 +270,7 @@ function EditAccount(props) {
         <SideBar />
 
         <div className="col mainCotent">
+          <br />
           <div>
             <img src={require('../images/account3.svg')} alt="account3" />
           </div>
@@ -273,31 +295,41 @@ function EditAccount(props) {
               <table className="editTable">
                 <tbody>
                   <tr className="bBorder">
-                    <div className="row ">
-                      <span className="col-6">
+                    <div className="row">
+                      <div className="col-6">
                         <img
-                          src={require('../images/avatar1.jpg')}
-                          style={{
-                            width: '70%',
-                            marginLeft: '2em',
-                            borderRadius: '50%',
-                            paddingBottom: '10px',
-                          }}
-                          alt="memberIconForSideBar"
+                          src={avatar}
+                          className="avatarIconMobileEdit"
+                          alt="memberIcon"
                         />
-                      </span>
-                      <button className="chooseAvatar text-center">
-                        選擇圖像
-                      </button>
+                      </div>
+                      <div className="col-12"></div>
+                      <div className="col-3 "></div>
+                      <div className="col-4">
+                        <label
+                          for="chooseAvatarMobile"
+                          className="btn-primary"
+                          style={{ borderRadius: '10px', width: '7em' }}
+                        >
+                          請選擇照片
+                        </label>
+                        <input
+                          type="file"
+                          name="file1"
+                          id="chooseAvatarMobile"
+                          style={{ display: 'none' }}
+                        />
+                      </div>
                     </div>
                   </tr>
 
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-10">
-                        <td>E-mail帳號:</td>
-                        <br />
+                      <div className="col divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          E-mail帳號:
+                        </td>
                         <label className="accountText">{email}</label>
                       </div>
                     </div>
@@ -306,9 +338,10 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        <td>密碼:</td>
-                        <br />
+                      <div className="col-8 divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          密碼:
+                        </td>
                         <label className="accountText2">********</label>
                       </div>
                     </div>
@@ -317,9 +350,9 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">暱稱</div>
+                      <div className="col-10 divLeft">暱稱</div>
                       <div className="col-1"></div>
-                      <div className="col-8 ">
+                      <div className="col-8 divLeft">
                         <input
                           className="nickName"
                           type="text"
@@ -338,9 +371,9 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">性別</div>
+                      <div className="col-10 divLeft">性別</div>
                       <div className="col-1"></div>
-                      <div className="col">
+                      <div className="col-8 divLeft">
                         <select
                           style={{ color: '#656765' }}
                           onChange={(event) => {
@@ -363,9 +396,9 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">生日</div>
+                      <div className="col-10 divLeft">生日</div>
                       <div className="col-1"></div>
-                      <div className="col">
+                      <div className="col divLeft">
                         <input
                           style={{ color: '#656765' }}
                           type="date"
@@ -382,12 +415,12 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">手機</div>
+                      <div className="col-10 divLeft">手機</div>
                       <div className="col-1"></div>
                       <div className="col-6">
                         <input
                           type="text"
-                          className="cellphone"
+                          className="cellphone divLeft"
                           id="cellPhoneMobile"
                           placeholder={phone}
                           onBlur={checkPhoneMobile}
@@ -402,16 +435,11 @@ function EditAccount(props) {
 
                   <tr className="addressMobile">
                     <div className="row accountRow">
+                      <div className="col-1"></div>
+                      <div className="col-10 divLeft">地址</div>
                       <div className="row accountRow">
-                        <div className="col-1"></div>
-                        <div className="col-11">地址</div>
-                        <div className="col-1"></div>
-                        <div className="col-3">
-                          <p>縣市</p>
-                          <p>區/鄉/鎮</p>
-                          <p>郵遞區號</p>
-                        </div>
-                        <div>
+                        <div className="col-3"></div>
+                        <div className="col">
                           <TWzipcode
                             countyValue={county}
                             css={[
@@ -423,19 +451,11 @@ function EditAccount(props) {
                             handleChangeDistrict={handleChange2}
                             handleChangeZipcode={handleChange2}
                           />
-                        </div>
-                        <div className="col-12"></div>
-                        <div className="col-1"></div>
-                        <span className="col-7">
+                          <br />
                           <input type="text" value={county + district} />
-                        </span>
-                        <div className="col-12"></div>
-                        <div className="col-1"></div>
-                        <div
-                          className="col-7 addressMobile"
-                          style={{ display: 'none' }}
-                        >
                           <input
+                            className="addressMobile"
+                            style={{ display: 'none' }}
                             type="text"
                             placeholder={address}
                             onChange={(event) => {
@@ -465,10 +485,6 @@ function EditAccount(props) {
               </NavLink>
             </div>
             <div className="col-5">
-              {/* <MyVerticallyCenteredModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-              /> */}
               <button
                 className="nav-link btn-main"
                 activeClassName="active"
@@ -491,7 +507,12 @@ function EditAccount(props) {
           </div>
           {/* -----------------------EndMobile-------------------------- */}
 
-          <form action="/account" className="row content">
+          <form
+            method="post"
+            enctype="multipart/form-data"
+            action=""
+            className="row content"
+          >
             <div className="col-lg-12 container table-bg">
               <table className="editTable">
                 <tbody>
@@ -503,24 +524,35 @@ function EditAccount(props) {
                       <div className="col-2"></div>
                       <div className="col-6">
                         <img
-                          src={require('../images/avatar1.jpg')}
-                          style={{
-                            width: '70%',
-                            marginLeft: '2em',
-                            borderRadius: '50%',
-                            paddingBottom: '10px',
-                          }}
-                          alt="memberIconForSideBar"
+                          src={avatar}
+                          className="avatarIcon"
+                          alt="memberIcon"
                         />
                       </div>
-                      <button className="text-center avatar">選擇圖像</button>
+                      <div className="col-12"></div>
+                      <div className="col-4"></div>
+                      <div className="col-4">
+                        <label
+                          for="chooseAvatar"
+                          className="btn-primary"
+                          style={{ borderRadius: '10px', width: '7em' }}
+                        >
+                          請選擇照片
+                        </label>
+                        <input
+                          type="file"
+                          name="file1"
+                          id="chooseAvatar"
+                          style={{ display: 'none' }}
+                        />
+                      </div>
                     </div>
                   </tr>
 
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>E-mail帳號:</td>
                         <br />
                         <label className="accountText">{email}</label>
@@ -531,7 +563,7 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>密碼:</td>
                         <br />
                         <label className="accountText2">********</label>
@@ -542,7 +574,7 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">暱稱</div>
+                      <div className="col-11 divLeft">暱稱</div>
                       <div className="col-1"></div>
                       <div className="col-4 ">
                         <input
@@ -561,9 +593,9 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">性別</div>
+                      <div className="col-11 divLeft">性別</div>
                       <div className="col-1"></div>
-                      <div className="col-6">
+                      <div className="col-6 divLeft">
                         <select
                           style={{ color: '#656765' }}
                           onChange={(event) => {
@@ -586,9 +618,9 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">生日</div>
+                      <div className="col-11 divLeft">生日</div>
                       <div className="col-1"></div>
-                      <div className="col">
+                      <div className="col divLeft">
                         <input
                           style={{ color: '#656765' }}
                           value={birthday}
@@ -606,9 +638,9 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">手機</div>
+                      <div className="col-11 divLeft">手機</div>
                       <div className="col-1"></div>
-                      <div className="col-4">
+                      <div className="col-4 divLeft">
                         <input
                           type="text"
                           className="cellPhone"
@@ -628,12 +660,12 @@ function EditAccount(props) {
                     <div className="row accountRow">
                       <div className="row accountRow">
                         <div className="col-1"></div>
-                        <div className="col-11">地址</div>
+                        <div className="col-11 divLeft">地址</div>
                         <div className="col-1"></div>
                         <div className="col-3">
-                          <p>縣市</p>
-                          <p>區/鄉/鎮</p>
-                          <p>郵遞區號</p>
+                          <p className="divLeft">縣市</p>
+                          <p className="divLeft">區/鄉/鎮</p>
+                          <p className="divLeft">郵遞區號</p>
                         </div>
                         <div>
                           <TWzipcode
@@ -675,7 +707,7 @@ function EditAccount(props) {
             </div>
           </form>
           <div className="row button">
-            <div className="col-8">
+            <div className="col-4">
               <NavLink
                 to="/Account"
                 className="nav-link"
@@ -684,6 +716,7 @@ function EditAccount(props) {
                 <button className="btn-green">取消</button>
               </NavLink>
             </div>
+            <div className="col-4"></div>
             <div className="col">
               <button
                 style={{ marginTop: '20px' }}

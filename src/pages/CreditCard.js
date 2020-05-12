@@ -15,11 +15,11 @@ function MyVerticallyCenteredModal(props) {
       <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <div className="sub-title">
             <h1 className="sub-title-eng">新增信用卡成功!</h1>
           </div>
-        </Modal.Header>
-        <Modal.Body>
           <br></br>
           <button className="btn-main" onClick={props.onHide}>
             確定
@@ -266,6 +266,7 @@ function CreditCard(props) {
       <div className="row bg-white">
         <SideBar />
         <div className="col mainCotent">
+          <br />
           <div>
             <img
               src={require('../images/creditCardtitle.svg')}
@@ -398,18 +399,26 @@ function CreditCard(props) {
                   style={{ display: 'none' }}
                 ></div>
                 <div
-                  className="col-lg-5 col-4"
+                  className="col-lg-5 col-10"
                   id="mastercard"
                   style={{ display: 'none' }}
                 >
-                  <img src={require('../images/mastercard.png')} alt="visa" />
+                  <img
+                    src={require('../images/mastercard.png')}
+                    alt="mastercard"
+                    style={{ width: '100%' }}
+                  />
                 </div>
                 <div
-                  className="col-lg-5 col-4"
+                  className="col-lg-5 col-10"
                   id="visa"
                   style={{ display: 'none' }}
                 >
-                  <img src={require('../images/visa.png')} alt="visa" />
+                  <img
+                    src={require('../images/visa.png')}
+                    alt="visa"
+                    style={{ width: '100%' }}
+                  />
                 </div>
                 <div className="creditCardBlank2">&nbsp;</div>
                 <div className="creditCardBlank2">&nbsp;</div>
@@ -440,8 +449,8 @@ function CreditCard(props) {
                   />
                 </div>
                 <div className="col-lg-12"></div>
-                <div className="col-lg-7" id="cardMesg"></div>
-                <div className="col-lg-4" id="safeCodeMesg"></div>
+                <div className="col-lg-7 divLeft" id="cardMesg"></div>
+                <div className="col-lg-4 divLeft" id="safeCodeMesg"></div>
                 <div className="col-lg-6 col-12 creditCardText">
                   <input
                     className="cardCotent"
@@ -485,9 +494,9 @@ function CreditCard(props) {
                   </select>
                 </div>
                 <div className="col-lg-12"></div>
-                <div className="col-lg-6" id="nameMesg"></div>
-                <div className="col-lg-3" id="monthMesg"></div>
-                <div className="col-lg-3" id="yearMesg"></div>
+                <div className="col-lg-6 divLeft" id="nameMesg"></div>
+                <div className="col-lg-3 divLeft" id="monthMesg"></div>
+                <div className="col-lg-3 divLeft" id="yearMesg"></div>
               </div>
             </div>
             <div className="row creditCardButton">
