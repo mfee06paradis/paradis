@@ -15,11 +15,11 @@ function MyVerticallyCenteredModal(props) {
       <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <div className="sub-title">
             <h1 className="sub-title-eng">已成功登出!</h1>
           </div>
-        </Modal.Header>
-        <Modal.Body>
           <br></br>
           <button className="btn-main" onClick={props.onHide}>
             確定
@@ -33,36 +33,33 @@ function MyVerticallyCenteredModal(props) {
 function SideBar(props) {
   const [name, setName] = useState('');
   const [modalShow, setModalShow] = useState(false);
-  // const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState('');
 
-  useEffect(() => {
+  const getMemberFromLocalStorage = () => {
     const member = JSON.parse(localStorage.getItem('Member')) || [];
     setName(member.memberName);
-    // setAvatar(member.MemberAvatar);
+    if (!member.avatar) {
+      setAvatar('./images/member-icon-for-sidebar.svg');
+    } else {
+      setAvatar(member.avatar);
+    }
+  };
+
+  useEffect(() => {
+    getMemberFromLocalStorage();
   }, []);
   return (
     <>
       <div className="col-3 sideBar ">
-        <div className="col-8 sideBarContent">
+        <div className="col-9 sideBarContent">
           <div>
             <img
-              // src={require({ avatar })}
-              src={require('../images/avatar1.jpg')}
-              style={{
-                width: '70%',
-                marginLeft: '2em',
-                borderRadius: '50%',
-                paddingBottom: '10px',
-              }}
+              src={avatar}
+              className="avatarIcon"
               alt="memberIconForSideBar"
             />
           </div>
           <div className="pinkRibbonSideBar">歡迎! {name.slice(1)}</div>
-          {/* <img
-            src={require('../images/pink-ribbon-for-sidebar.svg')}
-            alt="pinkRibbon"
-          /> */}
-
           <NavLink
             to="/Account"
             className="row sideBarText nav-link"
