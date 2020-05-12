@@ -15,11 +15,11 @@ function MyVerticallyCenteredModal(props) {
       <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <div className="sub-title">
             <h1 className="sub-title-eng">已成功登出!</h1>
           </div>
-        </Modal.Header>
-        <Modal.Body>
           <br></br>
           <button className="btn-main" onClick={props.onHide}>
             確定
@@ -31,12 +31,12 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 function Account(props) {
-  const member = localStorage.getItem('Member') || [];
-  const parseUserMember = JSON.parse(member);
-  const nameParseUserMember = parseUserMember.memberName;
-  const email = parseUserMember.memberEmail;
-  const gender = parseUserMember.membersex;
   const [modalShow, setModalShow] = useState(false);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [gender, setGender] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [phone, setPhone] = useState('');
   let sex;
   switch (gender) {
     case 'F':
@@ -46,9 +46,26 @@ function Account(props) {
       sex = '男';
   }
 
-  const birthday = parseUserMember.memberBirthday;
-  const phone = parseUserMember.memberPhone;
-  const address = parseUserMember.memberAddress;
+  const [address, setAddress] = useState('');
+  const [avatar, setAvatar] = useState('');
+
+  const getMemberFromLocalStorage = () => {
+    const member = JSON.parse(localStorage.getItem('Member')) || [];
+    setEmail(member.memberEmail);
+    setName(member.memberName);
+    setGender(member.membersex);
+    setBirthday(member.memberBirthday);
+    setPhone(member.memberPhone);
+    setAddress(member.memberAddress);
+    if (!member.avatar) {
+      setAvatar('./images/member-icon.svg');
+    } else {
+      setAvatar(member.avatar);
+    }
+  };
+  useEffect(() => {
+    getMemberFromLocalStorage();
+  }, []);
 
   return (
     <>
@@ -56,6 +73,7 @@ function Account(props) {
         <SideBar />
 
         <div className="col mainCotent">
+          <br />
           <div>
             <img src={require('../images/account3.svg')} alt="account3" />
           </div>
@@ -82,27 +100,24 @@ function Account(props) {
                 <tbody>
                   <tr className="bBorder">
                     <div className="row ">
-                      <div className="col-2"></div>
-                      <span className="col-8">
+                      <div className="col-1"></div>
+                      <div className="col-6">
                         <img
-                          src={require('../images/avatar1.jpg')}
-                          style={{
-                            width: '70%',
-                            marginLeft: '2em',
-                            borderRadius: '50%',
-                            paddingBottom: '10px',
-                          }}
-                          alt="memberIconForSideBar"
+                          src={avatar}
+                          className="avatarIconMobileEdit"
+                          alt="memberIcon"
                         />
-                      </span>
+                      </div>
                     </div>
                   </tr>
 
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        <td>E-mail帳號:</td>
+                      <div className="col divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          E-mail帳號:
+                        </td>
                         <br />
                         <label className="accountText">{email}</label>
                       </div>
@@ -112,8 +127,10 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        <td>密碼:</td>
+                      <div className="col divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          密碼:
+                        </td>
                         <br />
                         <label className="accountText2">********</label>
                       </div>
@@ -123,12 +140,12 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        <td>暱稱:</td>
+                      <div className="col-11 divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          暱稱:
+                        </td>
                         <br />
-                        <label className="accountText">
-                          {nameParseUserMember}
-                        </label>
+                        <label className="accountText">{name}</label>
                       </div>
                     </div>
                   </tr>
@@ -136,8 +153,10 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        <td>性別:</td>
+                      <div className="col-11 divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          性別:
+                        </td>
                         <br />
                         <label className="accountText2">{sex}</label>
                       </div>
@@ -146,8 +165,10 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        <td>生日:</td>
+                      <div className="col-11 divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          生日:
+                        </td>
                         <br />
                         <label className="accountText">{birthday}</label>
                       </div>
@@ -157,8 +178,10 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        <td>手機:</td>
+                      <div className="col-11 divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          手機:
+                        </td>
                         <br />
                         <label className="accountText2">{phone}</label>
                       </div>
@@ -168,12 +191,15 @@ function Account(props) {
                   <tr className="address">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        <td>地址:</td>
+                      <div className="col-11 divLeft">
+                        <td className="divLeft" style={{ display: 'block' }}>
+                          地址:
+                        </td>
                         <br />
                         <label className="accountText">{address}</label>
                       </div>
                       <div className="col-1"></div>
+                      <input type="text" style={{ visibility: 'hidden' }} />
                       <input type="text" style={{ visibility: 'hidden' }} />
                       <input type="text" style={{ visibility: 'hidden' }} />
                     </div>
@@ -233,13 +259,8 @@ function Account(props) {
                       <div className="col-2"></div>
                       <div className="col-6">
                         <img
-                          src={require('../images/avatar1.jpg')}
-                          style={{
-                            width: '70%',
-                            marginLeft: '2em',
-                            borderRadius: '50%',
-                            paddingBottom: '10px',
-                          }}
+                          src={avatar}
+                          className="avatarIcon"
                           alt="memberIconForSideBar"
                         />
                       </div>
@@ -249,7 +270,7 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>E-mail帳號:</td>
                         <br />
                         <label className="accountText">{email}</label>
@@ -260,7 +281,7 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>密碼:</td>
                         <br />
                         <label className="accountText2">********</label>
@@ -272,12 +293,10 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>暱稱:</td>
                         <br />
-                        <label className="accountText">
-                          {nameParseUserMember}
-                        </label>
+                        <label className="accountText">{name}</label>
                       </div>
                     </div>
                   </tr>
@@ -285,7 +304,7 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>性別:</td>
                         <br />
                         <label className="accountText2">{sex}</label>
@@ -295,7 +314,7 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>生日:</td>
                         <br />
                         <label className="accountText">{birthday}</label>
@@ -306,7 +325,7 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>手機:</td>
                         <br />
                         <label className="accountText2">{phone}</label>
@@ -317,10 +336,13 @@ function Account(props) {
                   <tr>
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
+                      <div className="col-11 divLeft">
                         <td>地址:</td>
                         <br />
                         <label className="accountText">{address}</label>
+                      </div>
+                      <div className="col-3" style={{ visibility: 'hidden' }}>
+                        <p>縣市</p>
                       </div>
                       <div className="col-3" style={{ visibility: 'hidden' }}>
                         <p>縣市</p>

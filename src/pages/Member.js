@@ -15,11 +15,11 @@ function MyVerticallyCenteredModal(props) {
       <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <div className="sub-title">
             <h1 className="sub-title-eng">已成功登出!</h1>
           </div>
-        </Modal.Header>
-        <Modal.Body>
           <br></br>
           <button className="btn-main" onClick={props.onHide}>
             確定
@@ -31,23 +31,35 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 function Member(props) {
-  const member = localStorage.getItem('Member') || [];
-  const parseUserMember = JSON.parse(member);
-  const nameParseUserMember = parseUserMember.memberName;
-  const sliceNameParseUserMember = nameParseUserMember.slice(1);
+  const [name, setName] = useState('');
   const [modalShow, setModalShow] = useState(false);
+  const [avatar, setAvatar] = useState('');
+
+  const getMemberFromLocalStorage = () => {
+    const member = JSON.parse(localStorage.getItem('Member')) || [];
+    setName(member.memberName);
+    if (!member.avatar) {
+      setAvatar('./images/member-icon.svg');
+    } else {
+      setAvatar(member.avatar);
+    }
+  };
+  useEffect(() => {
+    getMemberFromLocalStorage();
+  }, []);
   return (
     <>
       <div className="row bg-white">
         <SideBar />
-
         <div className="col mainCotent">
+          <br />
           <div className="col-12 memberdec">
             <img src={require('../images/memberdec.svg')} alt="memberdec" />
           </div>
           <NavLink to="/Account">
             <img
-              className="registerBox2"
+              className="registerBox2 nav-link"
+              activeClassName="active"
               src={require('../images/registerbox2.svg')}
               alt="registerBox2"
             />
@@ -56,19 +68,19 @@ function Member(props) {
             <div className="col-3"></div>
             <div className="col-6">
               <img
-                src={require('../images/avatar1.jpg')}
-                alt="membericon"
-                style={{
-                  width: '70%',
-                  marginLeft: '3em',
-                  borderRadius: '50%',
-                  paddingBottom: '10px',
-                }}
+                src={avatar}
+                className="avatarIcon"
+                alt="memberIconForSideBar"
+              />
+              <img
+                src={avatar}
+                className="avatarIconMobile mobileIcon"
+                alt="memberIconForSideBar"
               />
             </div>
           </div>
           <div className="col-12" style={{ height: '6em' }}>
-            <div className="pinkRibbon">歡迎! {sliceNameParseUserMember}</div>
+            <div className="pinkRibbon">歡迎! {name.slice(1)}</div>
           </div>
           <NavLink to="/Account" className="nav-link" activeClassName="active">
             <div className="col-12">
@@ -82,7 +94,8 @@ function Member(props) {
 
           {/* -------------------Mobile-------------------- */}
           <div className="row">
-            <div className="col-6">
+            <div className="col-1"></div>
+            <div className="col-5">
               <NavLink
                 to="/Account"
                 className="nav-link"
@@ -95,7 +108,7 @@ function Member(props) {
                 />
               </NavLink>
             </div>
-            <div className="col-6">
+            <div className="col-5">
               <NavLink
                 to="/CreditCard"
                 className="nav-link"
@@ -108,7 +121,9 @@ function Member(props) {
                 />
               </NavLink>
             </div>
-            <div className="col-6">
+            <div className="col-12"></div>
+            <div className="col-1"></div>
+            <div className="col-5">
               <NavLink
                 to="/myorders"
                 className="nav-link"
@@ -121,7 +136,7 @@ function Member(props) {
                 />
               </NavLink>
             </div>
-            <div className="col-6">
+            <div className="col-5">
               <NavLink
                 to="/myfavorite"
                 className="nav-link"

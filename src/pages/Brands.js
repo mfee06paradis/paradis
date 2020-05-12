@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/member.scss';
-import Footer from '../components/Footer';
 function Brands(props) {
   return (
     <>
@@ -155,7 +154,6 @@ function Brands(props) {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
