@@ -1,5 +1,20 @@
 @import "./variables.scss";
 
+.pdimg {
+  z-index: 2;
+}
+.bgimg {
+  position: absolute;
+  z-index: 1;
+}
+.card:hover {
+  .pdimg {
+    transform: scale(1.1);
+  }
+  .bgimg {
+    transform: scaleY(2);
+  }
+}
 .dis {
   //margin-top: 3rem;
   padding-top: 4rem;

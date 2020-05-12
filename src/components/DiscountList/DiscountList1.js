@@ -1,12 +1,14 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import '../../styles/discount.scss'
-import img16 from '../../images/discount/16.jpg'
-import img17 from '../../images/discount/17.jpg'
-import img18 from '../../images/discount/18.jpg'
-import img19 from '../../images/discount/19.jpg'
-import img20 from '../../images/discount/20.jpg'
-import img21 from '../../images/discount/21.jpg'
+import bgimg from '../../images/discount/bg.png'
+import img16 from '../../images/discount/16.png'
+import img17 from '../../images/discount/17.png'
+import img18 from '../../images/discount/18.png'
+import img19 from '../../images/discount/19.png'
+import img20 from '../../images/discount/20.png'
+import img21 from '../../images/discount/21.png'
+
 function List() {
     return (
         <>
@@ -17,7 +19,12 @@ function List() {
                             <div className="card">
                                 <img
                                     src={img16}
-                                    className="card-img-top"
+                                    className="card-img-top pdimg"
+                                    alt="..."
+                                />
+                                <img
+                                    src={bgimg}
+                                    className="card-img-top bgimg"
                                     alt="..."
                                 />
                                 <div className="card-body">
@@ -32,7 +39,12 @@ function List() {
                             <div className="card">
                                 <img
                                     src={img17}
-                                    className="card-img-top"
+                                    className="card-img-top pdimg"
+                                    alt="..."
+                                />
+                                <img
+                                    src={bgimg}
+                                    className="card-img-top bgimg"
                                     alt="..."
                                 />
                                 <div className="card-body">
@@ -47,7 +59,12 @@ function List() {
                             <div className="card">
                                 <img
                                     src={img18}
-                                    className="card-img-top"
+                                    className="card-img-top pdimg"
+                                    alt="..."
+                                />
+                                <img
+                                    src={bgimg}
+                                    className="card-img-top bgimg"
                                     alt="..."
                                 />
                                 <div className="card-body">
@@ -62,7 +79,12 @@ function List() {
                             <div className="card">
                                 <img
                                     src={img19}
-                                    className="card-img-top"
+                                    className="card-img-top pdimg"
+                                    alt="..."
+                                />
+                                <img
+                                    src={bgimg}
+                                    className="card-img-top bgimg"
                                     alt="..."
                                 />
                                 <div className="card-body">
@@ -77,7 +99,12 @@ function List() {
                             <div className="card">
                                 <img
                                     src={img20}
-                                    className="card-img-top"
+                                    className="card-img-top pdimg"
+                                    alt="..."
+                                />
+                                <img
+                                    src={bgimg}
+                                    className="card-img-top bgimg"
                                     alt="..."
                                 />
                                 <div className="card-body">
@@ -92,7 +119,12 @@ function List() {
                             <div className="card">
                                 <img
                                     src={img21}
-                                    className="card-img-top"
+                                    className="card-img-top pdimg"
+                                    alt="..."
+                                />
+                                <img
+                                    src={bgimg}
+                                    className="card-img-top bgimg"
                                     alt="..."
                                 />
                                 <div className="card-body">
