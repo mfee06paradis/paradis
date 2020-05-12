@@ -7,12 +7,19 @@
   position: absolute;
   z-index: 1;
 }
+.card {
+  border: none;
+  transform: scale(1);
+  transition: all 0.3s ease-in 0s ease-out 0s;
+}
 .card:hover {
   .pdimg {
     transform: scale(1.1);
+    transition: all 0.3s ease-in 0s;
   }
   .bgimg {
     transform: scaleY(2);
+    transition: all 0.3s ease-in 0s;
   }
 }
 .dis {
