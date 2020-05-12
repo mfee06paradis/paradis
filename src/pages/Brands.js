@@ -37,7 +37,7 @@ function Brands(props) {
                     style={{ display: 'none' }}
                   />
                 </div>
-                <div className="col-7 brandText">
+                <div className="col-7 brandText divLeft">
                   M·A·C擁抱獨特性：我們尊重每個人獨特的美，提供不分年齡，不分種族和性別的服務。
                   <br />
                   <br />
@@ -63,7 +63,7 @@ function Brands(props) {
                     style={{ display: 'none' }}
                   />
                 </div>
-                <div className="col-7 brandText">
+                <div className="col-7 brandText divLeft">
                   色選多元性 —— 所有膚色都能找到屬於妳的完美色選
                   <br />
                   <br />
@@ -89,7 +89,7 @@ function Brands(props) {
                     style={{ display: 'none' }}
                   />
                 </div>
-                <div className="col-7 brandText">
+                <div className="col-7 brandText divLeft">
                   我的目標是讓人們看起來美麗，內在帶出了什麼。從我真的相信美在我們的品格之中。
                   <br />
                   <br />
@@ -105,7 +105,7 @@ function Brands(props) {
                 <div className="col-5">
                   <img src={require('../images/yls.jpg')} alt="yls" />
                 </div>
-                <div className="col-7 brandText">
+                <div className="col-7 brandText divLeft">
                   「追求愛情、快樂和不平凡的生命。」Yves Saint Laurent
                   Beauty定必實現這個承諾。
                   <br />
@@ -132,7 +132,7 @@ function Brands(props) {
                     style={{ display: 'none' }}
                   />
                 </div>
-                <div className="col-7 brandText">
+                <div className="col-7 brandText divLeft">
                   由高級訂製時裝到時尚設計，Giorgio
                   Armani就是一個代表性的名字，代表着嚴選非凡用料的重要產品，一個相信美麗和實用性相輔相成的品牌。
                   <br />
