@@ -1,4 +1,7 @@
 @import "./variables.scss";
+.carousel {
+  margin-top: 50px;
+}
 
 .disFirstSlide {
   background: url(../images/discount/demo1.jpg) center no-repeat;
@@ -90,6 +93,12 @@
   .disImg {
     margin-left: 0px;
     margin-right: 0px;
+  }
+  .carousel {
+    display: none;
+  }
+  .card-deck {
+    margin-top: 100px;
   }
 }
 
