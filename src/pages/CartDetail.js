@@ -2,6 +2,7 @@ import React from "react";
 import { } from "react-bootstrap";
 
 const CartDetail = (props) => {
+  console.log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
   return (
     <div>
     <div className="main-title">
@@ -40,10 +41,10 @@ const CartDetail = (props) => {
     <div className="">
       <button className="btn-pink">繼續購物</button>
       <button
-        type="submit"
+        type="button"
         className="btn-red"
-        onClick={() => {}}
         style={{ float: "right" }}
+        onClick={props.sendToOrder}
       >
         繼續結帳
       </button>

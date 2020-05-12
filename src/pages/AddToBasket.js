@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import {} from "react-bootstrap";
 
 const AddToBasket = (props) => {
-  const cartNewItem = {
-    memberId: props.memberId,
-    productId: props.productId,
-    amount: props.amount,
-  };
-  console.log("cartNewItem = " + cartNewItem);
+  const [inputText, setInputText] = useState(1);
+
   return (
     <div className="">
-      <h6 className="card-title">{props.companyName}</h6>
-      <p className="card-title">{props.productName}</p>
-
+      <div>
+        <h6 className="card-title" style={{ textAlign: "start" }}>
+          {props.companyName}
+        </h6>
+        <p className="card-title" style={{ textAlign: "start" }}>
+          {props.productName}
+        </p>
+      </div>
       <div className="" style={{ width: 60 + "%" }}>
-        <select className="form-control color_style">
-          {props.colors.map((elem) => {
+        <select
+          className="form-control color_style"
+          onChange={(event) => {
+            return props.selectColorClicked(event.target.value);
+          }}
+        >
+          {props.colors.map((elem, index) => {
             console.log("elem " + elem);
             return (
-              <option value={elem} key={props.productId}>
+              <option value={index} key={index}>
                 {elem}
               </option>
             );
@@ -42,19 +48,22 @@ const AddToBasket = (props) => {
         <input
           type="number"
           className="form-control input_number"
-          defaultValue="1"
+          Value={inputText}
           min={1}
           max={100}
+          onChange={(event) => {
+            setInputText(event.target.value);
+          }}
         />
       </div>
       <div className="">
         <button
           className="btn-white ml-0"
-          value={cartNewItem}
-          onClick={(event) => {
+          value={5}
+          onClick={() => 
             // console.log("BTN click  9999 ");
-            props.addToCart(cartNewItem);
-          }}
+            props.addToCart(inputText)
+          }
         >
           加入購物車
         </button>

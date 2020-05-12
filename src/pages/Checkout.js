@@ -1,36 +1,138 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Row, Col, Accordion, Card, Button } from "react-bootstrap";
 import "../css/order-checkout.css";
+import axios from "axios";
 
-function Checkout() {
-  const orderDate = {
-    order: {
-      memberId: 1,
-      orderDate: 20190101164823,
-      originalTotal: 1400,
-      originalDiscount: 100,
-      orderTotal: 1300,
-      couponCode: "APAPAKg",
-      orderState: 2,
-    },
-    orderDetail: [
-      {
-        productId: 1,
-        originalProductPrice: 1000,
-        originalProductDiscount: 0,
-        discountPrice:1000,
-        quantity:2,
-      },
-      {
-        productId: 2,
-        originalProductPrice: 500,
-        originalProductDiscount: 0,
-        discountPrice:500,
-        quantity:1,
-      },
-    ],
+function Checkout(props) {
+  // 付款人相關資訊
+  const draweeData = {
+    memberName: "",
+    memberCellPhone: "",
+    memberPhone: "",
+    memberAddress: "",
+    consigneeName: "",
+    consigneeCellphone: "",
+    consigneePhone: "",
+    consigneeAddress: "",
   };
 
+  // 要送出的 order表單
+  const orderData = {
+    order: {
+      orderId: 1,
+      couponCode: "aaaaa",
+      consigneeId: 2,
+      receiptId: 1,
+      decoration: 0,
+      orderState: 0,
+    },
+  };
+
+  // ================================ 連線抓取 ID資料 =======================================
+
+  useEffect(() => {
+    fetchOrder("http://localhost:5000/user/1/order/?state=2");
+  }, []);
+
+  let unpaidOrderId = 0;
+  const fetchOrder = (url) => {
+    console.log("fetch Data");
+    axios
+      .get(url)
+      .then((res) => {
+        const jsonRst = res.data;
+        unpaidOrderId = jsonRst[0].unpaidOrderId;
+        // this.setState({ persons });
+        console.log(
+          "Order item ----------------------------------  " + unpaidOrderId
+        );
+
+        // this.setState({ order: jsonRst });
+
+        // console.log(this.orderData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const url = "http://localhost:5000/order/";
+
+  const sendOrder = (url) => {
+    console.log("put Data --------------------------------  ");
+
+    axios
+      .put(url, orderData)
+      .then((res) => {
+        const jsonRst = res.data;
+        // this.setState({ persons });
+        console.log(
+          "Order item ----------------------------------  " +
+            JSON.stringify(jsonRst)
+        );
+
+        // this.setState({ cartItems: jsonRst });
+
+        // console.log(this.orderData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // ================================ 地址 - 連接字串 =======================================
+
+  let m_Address1, m_Address2, m_Address3;
+  let c_Address1, c_Address2, c_Address3;
+
+  const addressConcat = (address1, address2, address3) => {
+    let totalAddress = address1 + address2 + address3;
+    return totalAddress;
+  };
+
+  const setMemberAddress = (address1, address2, address3) => {
+    const address = addressConcat(address1, address2, address3);
+    draweeData.memberAddress = address;
+  };
+
+  const setConsigneeAddress = (address1, address2, address3) => {
+    const address = addressConcat(address1, address2, address3);
+    draweeData.consigneeAddress = address;
+  };
+
+  const setAllData = () => {
+    setMemberAddress(m_Address1, m_Address2, m_Address3);
+    setConsigneeAddress(c_Address1, c_Address2, c_Address3);
+    orderData.order.orderId = unpaidOrderId;
+
+    let orderurl = url + unpaidOrderId;
+    console.log(orderurl);
+    sendOrder(orderurl);
+
+    console.log(draweeData);
+  };
+
+  // ================================ 收貨人的狀態設定 =======================================
+  // const [consigneeData, setConsigneeData] = useState({
+  //   consigneeName: "",
+  //   consigneeCellphone: "",
+  //   consigneePhone: "",
+  //   consigneeAddress: "",
+  // });
+
+  // useEffect(() => {
+  //   console.log(consigneeData);
+  // }, [consigneeData]);
+
+  // ================================ 地址設定 =======================================
+
+  // const [consigneeAddressConcat, setConsigneeAddressConcat] = useState({
+  //   selectOne: "",
+  //   selectTwo: "",
+  //   text: "",
+  // });
+
+  // =========================================================================================
   return (
     <>
       <form>
@@ -54,7 +156,12 @@ function Checkout() {
                     <div className="">
                       <div className="row">
                         <div className="col-5 p-0">
-                          <button className="btn-pink button_set">
+                          <button
+                            className="btn-pink button_set"
+                            onClick={() => {
+                              props.history.goBack();
+                            }}
+                          >
                             回前頁
                           </button>
                         </div>
@@ -75,7 +182,10 @@ function Checkout() {
                             <td>
                               <input
                                 type="text"
-                                clasName="form-control input-text"
+                                className="form-control input-text"
+                                onChange={(event) => {
+                                  draweeData.memberName = event.target.value;
+                                }}
                               />
                             </td>
                           </tr>
@@ -84,7 +194,11 @@ function Checkout() {
                             <td>
                               <input
                                 type="text"
-                                clasName="form-control input-text"
+                                className="form-control input-text"
+                                onChange={(event) => {
+                                  draweeData.memberCellPhone =
+                                    event.target.value;
+                                }}
                               />
                             </td>
                           </tr>
@@ -93,10 +207,14 @@ function Checkout() {
                             <td>
                               <input
                                 type="text"
-                                clasName="form-control input-text"
+                                className="form-control input-text"
+                                onChange={(event) => {
+                                  draweeData.memberPhone = event.target.value;
+                                }}
                               />
                             </td>
                           </tr>
+                          <div></div>
                           <tr>
                             <td>地址</td>
                             <td>
@@ -104,7 +222,12 @@ function Checkout() {
                                 <div className="col-6 td_flex p-0">
                                   <label className="label_form m-0">縣市</label>
                                   <div className="select_block_county">
-                                    <select className="form-control select_block_county">
+                                    <select
+                                      className="form-control select_block_county"
+                                      onChange={(event) =>
+                                        (m_Address1 = event.target.value)
+                                      }
+                                    >
                                       <option>台中市</option>
                                       <option>台北市</option>
                                       <option>高雄市</option>
@@ -116,7 +239,12 @@ function Checkout() {
                                 <div className="col-6 td_flex p-0">
                                   <label className="label_form m-0">鄉鎮</label>
                                   <div className="select_block_county">
-                                    <select className="form-control col-form-label select_block_county">
+                                    <select
+                                      className="form-control col-form-label select_block_county"
+                                      onChange={(event) =>
+                                        (m_Address2 = event.target.value)
+                                      }
+                                    >
                                       <option>湖口鄉</option>
                                       <option>大湖鄉</option>
                                       <option>芬園鄉</option>
@@ -133,7 +261,10 @@ function Checkout() {
                             <td>
                               <input
                                 type="text"
-                                clasName="form-control input-text"
+                                className="form-control input-text"
+                                onChange={(event) =>
+                                  (m_Address3 = event.target.value)
+                                }
                               />
                             </td>
                           </tr>
@@ -261,7 +392,11 @@ function Checkout() {
                             <td>
                               <input
                                 type="text"
-                                clasName="form-control input-text"
+                                className="form-control input-text"
+                                onChange={(event) =>
+                                  (draweeData.consigneeName =
+                                    event.target.value)
+                                }
                               />
                             </td>
                           </tr>
@@ -270,7 +405,11 @@ function Checkout() {
                             <td>
                               <input
                                 type="text"
-                                clasName="form-control input-text"
+                                className="form-control input-text"
+                                onChange={(event) =>
+                                  (draweeData.consigneeCellphone =
+                                    event.target.value)
+                                }
                               />
                             </td>
                           </tr>
@@ -279,7 +418,11 @@ function Checkout() {
                             <td>
                               <input
                                 type="text"
-                                clasName="form-control input-text"
+                                className="form-control input-text"
+                                onChange={(event) =>
+                                  (draweeData.consigneePhone =
+                                    event.target.value)
+                                }
                               />
                             </td>
                           </tr>
@@ -290,7 +433,12 @@ function Checkout() {
                                 <div className="col-6 td_flex p-0">
                                   <label className="label_form m-0">縣市</label>
                                   <div className="select_block_county">
-                                    <select className="form-control select_block_county">
+                                    <select
+                                      className="form-control select_block_county"
+                                      onChange={(event) =>
+                                        (c_Address1 = event.target.value)
+                                      }
+                                    >
                                       <option>台中市</option>
                                       <option>台北市</option>
                                       <option>高雄市</option>
@@ -302,7 +450,12 @@ function Checkout() {
                                 <div className="col-6 td_flex p-0">
                                   <label className="label_form m-0">鄉鎮</label>
                                   <div className="select_block_county">
-                                    <select className="form-control col-form-label select_block_county">
+                                    <select
+                                      className="form-control col-form-label select_block_county"
+                                      onChange={(event) =>
+                                        (c_Address2 = event.target.value)
+                                      }
+                                    >
                                       <option>湖口鄉</option>
                                       <option>大湖鄉</option>
                                       <option>芬園鄉</option>
@@ -319,7 +472,10 @@ function Checkout() {
                             <td>
                               <input
                                 type="text"
-                                clasName="form-control input-text"
+                                className="form-control input-text"
+                                onChange={(event) =>
+                                  (c_Address3 = event.target.value)
+                                }
                               />
                             </td>
                           </tr>
@@ -360,7 +516,11 @@ function Checkout() {
                     </div>
                     {/* <div className="" style="text-align: center;"> */}
                     <div className="div_center">
-                      <button type="submit" className="btn-green">
+                      <button
+                        type="button"
+                        className="btn-green"
+                        onClick={() => setAllData()}
+                      >
                         確定送出
                       </button>
                     </div>
@@ -381,7 +541,7 @@ function Checkout() {
                         <Card.Body>
                           <input
                             type="text"
-                            clasName="form-control input-text"
+                            className="form-control input-text"
                           />
                         </Card.Body>
                       </Accordion.Collapse>

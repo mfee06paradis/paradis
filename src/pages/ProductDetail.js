@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import {
   Modal,
   Row,
@@ -6,15 +7,19 @@ import {
   Carousel,
   Accordion,
   Card,
-  Container,
-  Button,
+  CardImg,
 } from "react-bootstrap";
 import { IoIosStarOutline, IoIosStar } from "react-icons/io";
+import { withRouter } from 'react-router-dom'
 import axios from "axios";
+
+
 
 import Star from "./Star";
 import AddToBasket from "./AddToBasket";
-import  ProductDate  from "./ProductDate";
+import ProductDate from "./ProductDate";
+import CarouselSmallImg from "./CarouselSmallImg";
+import CarouselBigImg from "./CarouselBigImg";
 
 import "../css/product.css";
 import "../css/star.scss";
@@ -67,8 +72,7 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
-
-function ProductDetail() {
+function ProductDetail(props) {
   const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
     productItems: [
@@ -84,44 +88,113 @@ function ProductDetail() {
         productFeature: "獨特的黃色基調粉末，能增添妝容明亮感，看起來自然美麗",
         productInstruction: "直接用於唇部，打造更精緻的妝容。",
         companyName: "M.A.C",
+        imageUrls: [
+          "../images/product/ps001/p001/p001_001.png",
+          "../images/product/ps001/p001/p001_002.jpg",
+          "../images/product/ps001/p001/p001_003.jpg",
+          "../images/product/ps001/p001/p001_004.jpg",
+        ],
+      },
+      {
+        productId: 16,
+        productSortId: 5,
+        productName: "磁力眼影",
+        color: "WISHFUL THINKING",
+        unitPrice: 1050,
+        unitsInStock: 41,
+        categoryName: "眼影",
+        productDetail: "以華麗的閃耀星塵為主題的聖誕彩妝！",
+        productFeature: "獨特的黃色基調粉末，能增添妝容明亮感，看起來自然美麗",
+        productInstruction: "直接用於唇部，打造更精緻的妝容。",
+        companyName: "M.A.C",
+        imageUrls: [
+          "../images/product/ps001/p002/p002_001.png",
+          "../images/product/ps001/p002/p002_002.jpg",
+          "../images/product/ps001/p002/p002_003.jpg",
+          "../images/product/ps001/p002/p002_004.jpg",
+        ],
+      },
+      {
+        productSortId: 5,
+        productName: "磁力眼影",
+        color: "SWING ON A STAR",
+        unitPrice: 1050,
+        productId: 17,
+        unitsInStock: 13,
+        categoryName: "眼影",
+        productDetail: "以華麗的閃耀星塵為主題的聖誕彩妝！",
+        productFeature: "獨特的黃色基調粉末，能增添妝容明亮感，看起來自然美麗",
+        productInstruction: "直接用於唇部，打造更精緻的妝容。",
+        companyName: "M.A.C",
         companyUrl: "https://www.maccosmetics.com.tw",
+        imageUrls: [
+          "../images/product/ps001/p003/p003_001.png",
+          "../images/product/ps001/p003/p003_002.jpg",
+          "../images/product/ps001/p003/p003_003.jpg",
+          "../images/product/ps001/p003/p003_004.jpg",
+        ],
       },
     ],
   });
 
+  // ======================= 要送出的 購物車資料 =======================================
 
-  // 要送給購物車的資料
-  
-  const [cart, setCart] = useState( {
-    cartItem:[
-    {
-      memberId:1,
-      productId:1,
-      amount:2,
-    },
-    {
-      memberId:1,
-      productId:3,
-      amount:4,
-    },
-    {
-      memberId:1,
-      productId:5,
-      amount:2,
-    },
-  ]}
-  )
+  const cart = {
+    memberId: 3,
+    productId: 4,
+    amount: 2,
+  };
 
-  // ======================================
+
+
+  //  抓取 psid 參數
+  let { psid } = useParams()
+  // ===================== POST資料格式設定 =======================
+
+  // useEffect( () => {
+  //   console.log( " psid = " + psid)
+  // },[])
+
+  // ===================== 輪播狀態設定 =======================
+  const [indexOfCurrentImg, setCurrentImg] = useState(0);
+
+  // useEffect(() => {
+  //   // console.log("indexOfCurrentImg --------- " + indexOfCurrentImg);
+  // }, [indexOfCurrentImg]);
+
+  const changeCurrentDisplayingImg = (indexOfImageToShow) => {
+    setCurrentImg(indexOfImageToShow);
+  };
+
+  // ======================= 改變 色票(color)，畫面更新 =======================================
+
+  const [colorIndex, setColorIndex] = useState(0);
+
+  // useEffect(() => {
+  //   // cart.productId = product.productItems[index].productId
+  //   // console.log( "購物車的ID = " + cart.productId )
+  // }, [colorIndex]);
+
+  const changeColorToimg = (colorIndex) => {
+    console.log("colorIndex = " + colorIndex);
+    cart.productId = product.productItems[colorIndex].productId
+    console.log( "購物車的ID = " + cart.productId )
+    console.log( "購物車的ID = " + cart.amount )
+    console.log( "購物車的ID = " + cart.memberId )
+    setColorIndex(colorIndex);
+  };
+
+  // ==================== 會員狀態控制 =========================================
+
+  // ==================================================================================
+  // 畫面載入 - 開始連線
+  const str = "http://localhost:5000/product-detail/"
+  const url = str + psid
   useEffect(() => {
-    fetchProduct("http://localhost:5000/product-detail/1");
-    console.log("product.productItems = " + product.productItems);
+    fetchProduct(url);
+    // console.log("product.productItems = " + product.productItems);
+    
   }, []);
-
-  // 購物車 - 資料更新
-  useEffect( () => {
-    console.log("購物車資料成功更新")
-  }, [cart])
 
   // get商品資料
   const fetchProduct = (url) => {
@@ -140,19 +213,23 @@ function ProductDetail() {
       });
   };
 
+  // ==================================================================================
+  // 購物車 - 資料更新
+ 
 
+
+  const urlSent = "http://localhost:5000/cart/" + cart.memberId
   // POST 商品資料 to Cart
 
-  const sendtoProductData = (url) => {
-    console.log("fetch Data");
+  const sendtoProductData = (urlSent, cart) => {
+    console.log("POST Data");
     axios
-      .post(url)
+      .post(urlSent)
       .then((res) => {
         const jsonRst = res.data;
         // this.setState({ persons });
-        console.log(jsonRst);
-
-        setProduct({ productItems: jsonRst });
+        console.log("jsonRst = " + jsonRst);
+        
       })
       .catch((err) => {
         console.log(err);
@@ -162,18 +239,44 @@ function ProductDetail() {
   // 加入購物車方法
 
   const addItemToCart = (cartItem) => {
-
-    console.log("cartItem = " + cartItem );
+    // const number = cart.memberId
+    console.log("55555555555555555555555555555555555555555555555555555");
+    console.log(cartItem);
+    cart.amount = cartItem
+    console.log("55555555555555555555555555555555555555555555555555555");
+    console.log( cart)
+    sendtoProductData(urlSent, cart)
     
-    console.log("資料傳遞成功")
-    // setCart(event) 
+  };
+
+
+  const numbseIsChange = () =>{
     
   }
+  // const changeCurrentDisplayingImg = (event) => {
+  //   console.log("indexOfImgToShow  ++++++++++ " + event.target.value);
 
+  //   setCurrentImg(indexOfImgToShow);
+  // }
+
+  // =============================  加入我的最愛     ================================
+
+  
+  // const [bolMylove, setBolMylove] = useState(0)
+  // const imgMylove = ""
+
+  // useEffect( () => {
+  //   bolMylove = (bolMylove + 1)%2
+  //   if( (bolMylove++)%2 === 1 ){
+
+  //   }
+  // },[bolMylove])
+
+  // ==================================================================================
+  // 購物車 - 資料更新
   return (
     <>
       <div className="">
-        
         <div className="bg-pink">
           <div className="row">
             <div className="col-2"></div>
@@ -185,165 +288,72 @@ function ProductDetail() {
                     <div className="col-6 p_detail">
                       {/* 加入購物車 - 區域 */}
                       <AddToBasket
-                        productId={product.productItems.map(
+                        slesctProductId={product.productItems.map(
                           (item) => item.productId
                         )}
-                        productName={product.productItems.productName}
+                        productName={
+                          product.productItems[colorIndex].productName
+                        }
                         colors={product.productItems.map((item) => item.color)}
-                        companyName={product.productItems[0].companyName}
-                        unitPrice={product.productItems[0].unitPrice}
-                        addToCart = {addItemToCart}
-                        />
+                        companyName={
+                          product.productItems[colorIndex].companyName
+                        }
+                        unitPrice={product.productItems[colorIndex].unitPrice}
+                        selectColorClicked={changeColorToimg}
+                        // cart 的 相關資訊
+
+                        memberId={cart.memberId}
+                        productId={product.productItems[colorIndex].productId}
+                        addToCart={ addItemToCart}
+
                         
-                        
-              
+                      />
 
                       <div style={{ height: 300 + "px" }}>
                         <ProductDate
-                          productDetail = {product.productItems[0].productDetail }
-                          productFeature = {product.productItems[0].productFeature }
-                          productInstruction = {product.productItems[0].productInstruction }
+                          productDetail={
+                            product.productItems[colorIndex].productDetail
+                          }
+                          productFeature={
+                            product.productItems[colorIndex].productFeature
+                          }
+                          productInstruction={
+                            product.productItems[colorIndex].productInstruction
+                          }
                         />
                       </div>
                     </div>
 
                     <div className="col-6 p_detail">
-                      <div className="">
-                        <button className="m-0 p-0">最新</button>
-                        <button className="m-0 p-0" style={{ float: "right" }}>
-                          最愛
-                        </button>
-                      </div>
-                      {/* 大圖輪播 */}
-                      <div className="" style={{ padding: 0 }}>
-                        <Carousel>
-                          <Carousel.Item>
-                            <div>
-                              <img
-                                className="img-fluid d-block w-100"
-                                src="https://via.placeholder.com/250x150"
-                                alt="First slide"
-                              />
-                            </div>
-                            <Carousel.Caption></Carousel.Caption>
-                          </Carousel.Item>
-                          <Carousel.Item>
-                            <img
-                              className="img-fluid d-block w-100"
-                              src="https://via.placeholder.com/250x150"
-                              alt="Third slide"
-                            />
+                      <div>
+                        <CardImg
+                          style={{ width: 50 + "px", float: "left" }}
+                          className="m-0 p-0 img-fluid"
+                          src="../images/product/components/product_new.svg"
+                        />
 
-                            <Carousel.Caption></Carousel.Caption>
-                          </Carousel.Item>
-                          <Carousel.Item>
-                            <img
-                              className="img-fluid d-block w-100"
-                              src="https://via.placeholder.com/250x150"
-                              alt="Third slide"
-                            />
-
-                            <Carousel.Caption></Carousel.Caption>
-                          </Carousel.Item>
-                        </Carousel>
+                        <CardImg
+                          style={{ width: 27 + "px", float: "right" }}
+                          className="m-0 p-0 img-fluid"
+                          src="../images/product/components/product_heart.svg"
+                        />
                       </div>
+                      
+                      {/* 大圖輪播 @@@@@@@@*/}
+                      {/* <div className="" style={{ padding: 0 }}>
+                        <CarouselBigImg
+                          imageUrls={product.productItems[colorIndex].imageUrls}
+                          imageIndex={indexOfCurrentImg}
+                          // _goToSlide = { jumpToSlide }
+                        />
+                      </div> */}
                       {/* 小圖輪播 */}
-                      <div className="" style={{ marginTop: 30 + "px" }}>
-                        <Carousel indicators={false}>
-                          <Carousel.Item>
-                            <Row>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                            </Row>
-
-                            <Carousel.Caption></Carousel.Caption>
-                          </Carousel.Item>
-
-                          <Carousel.Item>
-                            <Row>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                            </Row>
-
-                            <Carousel.Caption></Carousel.Caption>
-                          </Carousel.Item>
-
-                          <Carousel.Item>
-                            <Row>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                              <Col sm={12} md={4}>
-                                <Card>
-                                  <Card.Img
-                                    variant="top"
-                                    src="https://via.placeholder.com/250x150"
-                                  />
-                                </Card>
-                              </Col>
-                            </Row>
-
-                            <Carousel.Caption></Carousel.Caption>
-                          </Carousel.Item>
-                        </Carousel>
-                      </div>
+                      {/* <div className="" style={{ marginTop: 30 + "px" }}>
+                        <CarouselSmallImg
+                          imageUrls={product.productItems[colorIndex].imageUrls}
+                          imageClicked={changeCurrentDisplayingImg}
+                        />
+                      </div> */}
                       {/* 活動行銷 */}
                       <div className=""></div>
                     </div>
@@ -481,7 +491,7 @@ function ProductDetail() {
   );
 }
 
-export default ProductDetail;
+export default withRouter(ProductDetail);
 
 // import React from 'react'
 // import Banner from '../components/Banner'

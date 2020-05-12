@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Row, Col, ListGroup, Accordion, Card } from "react-bootstrap";
+import { withRouter } from 'react-router-dom'
 import axios from "axios";
 
 import "../css/order-cart.css";
@@ -15,23 +16,61 @@ class Cart extends Component {
 
   state = {
     cartItems: [
-      {
-        memberId: 1,
-        productId: 1,
-        productName: "抓取失敗-這是假資料",
-        color: "AAA",
-        unitPrice: 650,
-        unitsInStock: 80,
-        companyName: "BBB",
-        amount: 1,
-      },
-    ],
+     
+    ]
+    
   };
+
+  // 訂單的相關資料
+  orderData = {
+    order:{
+      orderId:999,
+      memberId:1,
+      orderDate:20190101164823,
+      originalTotal:1500,
+      originalDiscount:200,
+      orderTotal:1300,
+      couponCode:"vip001",
+      orderState:2
+      
+    },
+    orderDetail:[
+      {
+        orderId:999,
+        productId:1,
+        orderData:20190101164823,
+        originalProductPrice:500,
+        originalProductDiscount:100,
+        discountPrice:400,
+        quantity:2
+      },
+      {
+        orderId:999,
+        productId:2,
+        orderData:20190101184823,
+        originalProductPrice:1000,
+        originalProductDiscount:100,
+        discountPrice:900,
+        quantity:1
+      }
+    ]
+  }
+
+
+  // const member = JSON.parse(localStorage.getItem('Member')) || [];
+  // console.log(member.MemberID);
+  // setMemberID(member.MemberID);
 
 // 畫面載入成功
 componentDidMount(){
   // 開始連線
-  this.fetchCart("http://localhost:5000/cart/1")
+  localStorage.clear();
+  localStorage.setItem('TestMember', JSON.stringify({MemeberID: 3}));
+  let membId =  JSON.parse(localStorage.getItem('TestMember')).MemeberID;
+ 
+  let fetchUrl = "http://localhost:5000/cart/" + membId;
+  console.log("77777777777777--- " +fetchUrl);
+  this.fetchCart(fetchUrl)
   
 }
 
@@ -42,9 +81,22 @@ fetchCart = (url) => {
     .then((res) => {
       const jsonRst = res.data;
       // this.setState({ persons });
-      console.log(jsonRst);
+      console.log("cart item ------  "   + jsonRst);
 
       this.setState({ cartItems: jsonRst });
+
+      // this.setState( (state, props) => {
+      //  return { orderDetail:  {
+      //   orderId:2000,
+      //   productId:2,
+      //   originalProductPrice:1000,
+      //   originalProductDiscount:100,
+      //   discountPrice:900,
+      //   quantity:1
+      // } }
+      // }) 
+
+      console.log(this.orderData);
     })
     .catch((err) => {
       console.log(err);
@@ -52,7 +104,36 @@ fetchCart = (url) => {
 };
 
 
-// =========================================================================================
+// 
+
+sendCartToOrder = () => {
+  console.log("post Data +++++++++++++++++++++++++++++++++++++++++++++");
+
+  let membId =  JSON.parse(localStorage.getItem('TestMember')).MemeberID;
+  let postUrl = "http://localhost:5000/user/" + membId + "/order/";
+  console.log("post url 000 --- " + postUrl);
+
+  // let url = "http://localhost:5000/user/1/order/"
+
+
+  axios
+    .post(postUrl, this.orderData)
+    .then((res) => {
+      const jsonRst = res.data;
+      // this.setState({ persons });
+      console.log("cart item AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA------  "   + jsonRst);
+
+      let url = "/Checkout/" + this.orderData.order.orderId;
+
+      console.log(this.orderData);
+      this.props.history.push(url)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+// ==========================  購物明細頁 - 前端互動  ===========================================
 
   componentDidUpdate() {
     console.log("componentDidUpdate" + this.state.cartItems);
@@ -63,6 +144,8 @@ fetchCart = (url) => {
     const newCartItems = [...this.state.cartItems];
     newCartItems.splice(itemIndex, 1);
     this.setState({ cartItems: newCartItems });
+    // 資料庫處理 - 刪除 Cart Table
+
   };
 
   changeItemAmount = (itemIndex, amount) => {
@@ -70,7 +153,7 @@ fetchCart = (url) => {
       "changeItemAmount " + parseInt(amount) + "itemIndex " + itemIndex
     );
     const newCartItems = [...this.state.cartItems];
-    console.log("newCartItems       " + newCartItems);
+    console.log("newCartItems = " + newCartItems);
     // newCartItems.cartItem[itemIndex].amount = amount;
     newCartItems[itemIndex].amount = amount;
     newCartItems[itemIndex].total = amount * newCartItems[itemIndex].unitPrice;
@@ -228,6 +311,7 @@ fetchCart = (url) => {
                       <CartDetail
                         originalTotal={this.getOriginalTotal()}
                         discountTotal={this.getDiscountTotal()}
+                        sendToOrder={()=>this.sendCartToOrder()}
                       />
                     </div>
                     <div className="context-full-after"></div>
@@ -243,4 +327,4 @@ fetchCart = (url) => {
   }
 }
 
-export default Cart;
+export default withRouter(Cart);
