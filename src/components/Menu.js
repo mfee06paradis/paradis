@@ -302,6 +302,7 @@ function Menu(props) {
                       return false
                     }
                   })
+                  console.log(getUser)
                   if (getUser !== undefined) {
                     localStorage.setItem('Member', JSON.stringify(getUser))
                   }

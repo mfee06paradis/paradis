@@ -548,7 +548,7 @@ hr.login-hr {
   margin-left: -2rem;
   margin-right: -2rem;
   height: 19rem;
-  margin-top: -3rem;
+  margin-top: -3.5rem;
   z-index: 1;
   padding: 2rem;
 }
@@ -582,11 +582,11 @@ footer {
   background-color: $primary;
 
   @include pc-width {
-    height: 5rem;
+    height: 6.5rem;
   }
 
   @include phone-width {
-    height: 3.7rem;
+    height: 6.2rem;
   }
 }
 
@@ -597,7 +597,7 @@ footer {
 
 .footer-deco-left {
   background: url(../images/footer-deco.svg) center no-repeat;
-  height: 3rem;
+  height: 4rem;
   margin-top: 0.6rem;
 
   @include pc-width {
@@ -612,7 +612,7 @@ footer {
 .footer-deco-right {
   background: url(../images/footer-deco.svg) center no-repeat;
   transform: scaleX(-1);
-  height: 3rem;
+  height: 4rem;
   margin-top: 0.6rem;
 
   @include pc-width {
@@ -626,54 +626,54 @@ footer {
 
 .footer-logo {
   background: url(../images/footer-logo.svg) center no-repeat;
-  height: 2rem;
+  height: 2.5rem;
   margin: 0.3rem 1rem 0.3rem 0;
 
-  @include pc-width {
-    display: block;
-  }
+  // @include pc-width {
+  //   display: block;
+  // }
 
-  @include phone-width {
-    display: none;
-  }
+  // @include phone-width {
+  //   display: none;
+  // }
 }
 
 .footer-fb {
   background: url(../images/footer-fb.svg) center no-repeat;
-  height: 1.5rem;
+  height: 1.7rem;
 
   @include pc-width {
     margin-top: 0;
   }
 
   @include phone-width {
-    margin-top: 0.8rem;
+    margin-top: 0.2rem;
   }
 }
 
 .footer-ig {
   background: url(../images/footer-ig.svg) center no-repeat;
-  height: 1.5rem;
+  height: 1.7rem;
 
   @include pc-width {
     margin-top: 0;
   }
 
   @include phone-width {
-    margin-top: 0.8rem;
+    margin-top: 0.2rem;
   }
 }
 
 .footer-twitter {
   background: url(../images/footer-twitter.svg) center no-repeat;
-  height: 1.3rem;
+  height: 1.5rem;
 
   @include pc-width {
     margin-top: 0.1rem;
   }
 
   @include phone-width {
-    margin-top: 0.9rem;
+    margin-top: 0.3rem;
   }
 }
 
@@ -686,8 +686,8 @@ footer {
 #backtotop {
   position: absolute;
   background: url(../images/backtotop.svg) center no-repeat;
-  height: 7rem;
+  height: 3rem;
   width: 6rem;
-  bottom: 5rem;
+  bottom: 7rem;
   right: 3rem;
 }

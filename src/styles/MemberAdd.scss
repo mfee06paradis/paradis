@@ -46,9 +46,18 @@
     }
 }
 
+.member-add-label {
+    float: left;
+
+    label {
+        color: $dark;
+    }
+}
+
 .RegisterInput {
     .input-text {
         height: 2rem;
+        border: 1px rgb(162, 162, 162) solid;
     }
 
     .form-control::placeholder {

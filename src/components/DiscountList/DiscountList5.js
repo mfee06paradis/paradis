@@ -1,6 +1,7 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 import '../../styles/discount.scss'
+import bgimg from '../../images/discount/bg.png'
 import img15 from '../../images/discount/15.png'
 function List() {
     return (
@@ -12,7 +13,12 @@ function List() {
                         <div className="card">
                             <img
                                 src={img15}
-                                className="card-img-top"
+                                className="card-img-top pdimg"
+                                alt="..."
+                            />
+                            <img
+                                src={bgimg}
+                                className="card-img-top bgimg"
                                 alt="..."
                             />
                             <div className="card-body">

@@ -1,6 +1,11 @@
 import React from 'react'
 import '../styles/discount.scss'
 import { NavLink } from 'react-router-dom'
+import demo1 from '../images/discount/demo1.jpg'
+import demo2 from '../images/discount/demo2.jpg'
+import demo3 from '../images/discount/demo3.jpg'
+import demo4 from '../images/discount/demo4.jpg'
+import demo5 from '../images/discount/demo5.jpg'
 function disconts() {
     const menu_title = (eng, chs) => {
         return (
@@ -62,35 +67,35 @@ function disconts() {
                                 <NavLink
                                     to="/discountList/1"
                                 >
-                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                    <img src={demo1} className="img-fluid" alt="" />
                                 </NavLink>
                             </div>
                             <div className="disImg">
                                 <NavLink
                                     to="/discountList/2"
                                 >
-                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                    <img src={demo2} className="img-fluid" alt="" />
                                 </NavLink>
                             </div>
                             <div className="disImg">
                                 <NavLink
                                     to="/discountList/3"
                                 >
-                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                    <img src={demo3} className="img-fluid" alt="" />
                                 </NavLink>
                             </div>
                             <div className="disImg">
                                 <NavLink
                                     to="/discountList/4"
                                 >
-                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                    <img src={demo4} className="img-fluid" alt="" />
                                 </NavLink>
                             </div>
                             <div className="disImg">
                                 <NavLink
                                     to="/discountList/5"
                                 >
-                                    <img src="http://fakeimg.pl/700x100/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                                    <img src={demo5} className="img-fluid" alt="" />
 
                                 </NavLink></div>
                         </div>

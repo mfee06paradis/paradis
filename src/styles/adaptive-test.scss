@@ -45,6 +45,30 @@ main.adaptive-test {
     position: relative;
   }
 
+  .table-bg {
+    .table {
+      tbody {
+        tr td:first-child {
+          // width: auto;
+          // text-align: center;
+
+          @include phone-width {
+            display: block;
+          }
+        }
+
+        tr td:nth-child(2) {
+          // width: 4rem;
+          // text-align: right;
+
+          @include phone-width {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
   .adaptive-test__description {
     width: 500px;
     max-width: 100%;

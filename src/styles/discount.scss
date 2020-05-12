@@ -1,7 +1,30 @@
 @import "./variables.scss";
 
+.pdimg {
+  z-index: 2;
+}
+.bgimg {
+  position: absolute;
+  z-index: 1;
+}
+.card {
+  border: none;
+}
+.card:hover {
+  .pdimg {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in 0s;
+  }
+  .bgimg {
+    transform: scaleY(2);
+    transition: all 0.3s ease-in 0s;
+  }
+}
 .dis {
-  margin-bottom: 50px;
+  //margin-top: 3rem;
+  padding-top: 4rem;
+  height: 100vh;
+  background-color: $white;
 }
 
 .disMenu2 {
