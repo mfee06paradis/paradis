@@ -1,5 +1,28 @@
 @import "./variables.scss";
 
+.disFirstSlide {
+  background: url(../images/discount/demo1.jpg) center no-repeat;
+  height: 13vh;
+}
+
+.disSecondSlide {
+  background: url(../images/discount/demo2.jpg) center no-repeat;
+  height: 13vh;
+}
+
+.disThirdSlide {
+  background: url(../images/discount/demo3.jpg) center no-repeat;
+  height: 13vh;
+}
+.disFourSlide {
+  background: url(../images/discount/demo4.jpg) center no-repeat;
+  height: 13vh;
+}
+.disFiveSlide {
+  background: url(../images/discount/demo5.jpg) center no-repeat;
+  height: 13vh;
+}
+
 .pdimg {
   z-index: 2;
 }

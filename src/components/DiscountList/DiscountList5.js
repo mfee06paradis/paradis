@@ -3,9 +3,12 @@ import { Col } from 'react-bootstrap'
 import '../../styles/discount.scss'
 import bgimg from '../../images/discount/bg.png'
 import img15 from '../../images/discount/15.png'
+import ControlledCarousel from './Discav'
+
 function List() {
     return (
         <>
+        <ControlledCarousel />
             <div className="container">
                 <div className="card-deck">
 

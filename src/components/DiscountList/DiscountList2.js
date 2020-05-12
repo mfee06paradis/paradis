@@ -5,11 +5,12 @@ import bgimg from '../../images/discount/bg.png'
 import img1 from '../../images/discount/1.png'
 import img2 from '../../images/discount/2.png'
 import img3 from '../../images/discount/3.png'
-
+import ControlledCarousel from './Discav'
 
 function List() {
     return (
         <>
+        <ControlledCarousel />
             <div className="container">
                 <div className="card-deck">
                     <Row >

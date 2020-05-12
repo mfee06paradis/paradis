@@ -8,10 +8,11 @@ import img18 from '../../images/discount/18.png'
 import img19 from '../../images/discount/19.png'
 import img20 from '../../images/discount/20.png'
 import img21 from '../../images/discount/21.png'
-
+import ControlledCarousel from './Discav'
 function List() {
     return (
         <>
+        <ControlledCarousel />
             <div className="container">
                 <div className="card-deck">
                     <Row >
