@@ -255,6 +255,34 @@
   }
 }
 
+#cartNumber {
+
+  @include pc-width {
+    background-color: $success;
+    border-radius: 50%;
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-top: -0.8rem;
+    margin-left: 2rem;
+    font-size: 0.8rem;
+    color: $danger;
+  }
+
+  @include phone-width {
+    background-color: $success;
+    border-radius: 50%;
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-top: 0rem;
+    margin-left: -1.5rem;
+    font-size: 0.8rem;
+    color: $danger;
+    font-weight: bold;
+
+  }
+
+}
+
 //---------------------- Login modal ----------------------
 #login-modal {
   top: 20%;
@@ -684,7 +712,7 @@ footer {
 }
 
 #backtotop {
-  position: absolute;
+  position: absolute !important;
   background: url(../images/backtotop.svg) center no-repeat;
   height: 3rem;
   width: 6rem;

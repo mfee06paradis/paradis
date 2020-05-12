@@ -1,17 +1,16 @@
 @import './variables.scss';
 
+.carousel {
+  @include phone-width {
+    margin-top: 2em;
+  }
+}
+
 .carousel-caption {
-  right: 15%;
-  top: 20%;
-  z-index: 10;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  text-align: right !important;
 
   h1 {
     color: $danger;
     font-family: $font-family-title;
-    text-align: right !important;
     margin: 0;
   }
 
@@ -46,18 +45,124 @@
 }
 
 .FirstSlide {
-  background: url(../images/home/Carousel01.jpg) center no-repeat;
-  height: 100vh;
+
+  @include pc-width {
+    background: url(../images/home/Carousel01.jpg) center no-repeat;
+    background-size: 100%;
+    height: 100vh;
+  }
+
+  @include phone-width {
+    background: url(../images/home/Carousel01-phone.jpg) center no-repeat;
+    background-size: 100%;
+    height: 96vh;
+  }
+}
+
+.FirstSlide-text {
+  z-index: 10;
+  text-align: right !important;
+
+  h1 {
+    text-align: right !important;
+  }
+
+
+  @include pc-width {
+    right: 15%;
+    top: 10%;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    p {
+      color: $dark;
+    }
+
+  }
+
+  @include phone-width {
+    right: 10%;
+    top: 25%;
+
+    p {
+      color: white;
+    }
+
+  }
+
+
 }
 
 .SecondSlide {
-  background: url(../images/home/Carousel02.jpg) center no-repeat;
-  height: 100vh;
+
+  @include pc-width {
+    background: url(../images/home/Carousel02.jpg) center no-repeat;
+    background-size: 100%;
+    height: 100vh;
+  }
+
+  @include phone-width {
+    background: url(../images/home/Carousel02-phone.jpg) center no-repeat;
+    background-size: 100%;
+    height: 96vh;
+  }
+}
+
+.SecondSlide-text {
+  left: 15%;
+  top: 20%;
+  z-index: 10;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  text-align: left !important;
+
+  h1 {
+    text-align: left;
+  }
+
+  p {
+    color: $primary;
+  }
+
+  @include phone-width {
+    top: 35%
+  }
 }
 
 .ThirdSlide {
-  background: url(../images/home/Carousel03.jpg) center no-repeat;
-  height: 100vh;
+
+  @include pc-width {
+    background: url(../images/home/Carousel03.jpg) center no-repeat;
+    background-size: 100%;
+    height: 100vh;
+  }
+
+  @include phone-width {
+    background: url(../images/home/Carousel03-phone.jpg) center no-repeat;
+    background-size: 100%;
+    height: 96vh;
+  }
+}
+
+.ThirdSlide-text {
+  //right: 15%;
+  top: 43%;
+  z-index: 10;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  text-align: center !important;
+
+  h1 {
+    color: $success;
+  }
+
+  h4 {
+    color: $brown-light;
+  }
+
+  @include phone-width {
+    top: 48%
+  }
 }
 
 .view-height {
@@ -127,8 +232,8 @@
     }
 
     @media all and (min-width: 390px) and (max-width: 1289px) {
-      margin-left: 1.2rem;
-      padding-top: 0rem;
+      margin-left: 1.5rem;
+      padding-top: 0.1rem;
       margin-top: 1.5rem;
     }
 
@@ -139,7 +244,7 @@
     // }
 
     @include phone-width {
-      margin-left: 1.2rem;
+      margin-left: 1.4rem;
       padding-top: 0rem;
       margin-top: 0.8rem;
     }
@@ -178,9 +283,9 @@
     }
 
     @media all and (min-width: 390px) and (max-width: 1289px) {
-      width: 80%;
-      margin-top: 3rem;
-      margin-left: 1rem;
+      width: 85%;
+      margin-top: 1rem;
+      margin-left: 0rem;
     }
 
 
@@ -191,8 +296,8 @@
     // }
 
     @include phone-width {
-      width: 12rem;
-      margin-top: -4.5rem;
+      width: 11.5rem;
+      margin-top: -5.6rem;
       margin-left: -5.5rem;
     }
   }
