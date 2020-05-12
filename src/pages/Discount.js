@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/discount.scss'
 import { NavLink } from 'react-router-dom'
+import demo1_1 from '../images/discount/demo1-1.jpg'
 function discont() {
   const menu_title = (eng, chs) => {
     return (
@@ -62,7 +63,7 @@ function discont() {
                 to="/discountList/1"
               >
                 <div className="disImg">
-                  <img src="http://fakeimg.pl/800x400/F4A7B9/282828/?text=DISCONT" className="img-fluid" alt="" />
+                  <img src={demo1_1} className="img-fluid" alt="" />
                 </div>
               </NavLink>
             </div>
