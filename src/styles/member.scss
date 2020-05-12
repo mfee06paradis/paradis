@@ -5,6 +5,29 @@
 //     border: solid 1px black;
 // }
 
+.avatarIcon {
+    width: 70%;
+    margin-Left: 1em;
+    margin-Top: 10px;
+    border-Radius: 50%;
+    padding-Bottom: 10px;
+}
+
+.avatarIconMobileEdit {
+    width: 100%;
+    margin-Left: 4.5em;
+    border-Radius: 50%;
+    padding-Bottom: 10px;
+}
+
+.avatarIconMobile {
+    width: 70%;
+    margin-Left: 1.5em;
+    border-Radius: 50%;
+    padding-Bottom: 10px;
+
+}
+
 .sideBarText {
     margin-top: 20px;
     font-size: 20px;
@@ -79,6 +102,8 @@
 }
 
 @media screen and (max-width: 1000px) {
+
+    .avatarIcon,
     .sideBar {
         display: none;
     }
@@ -90,11 +115,14 @@
     .registerBox2 {
         display: flex !important;
         position: absolute;
-        top: -5%;
+        top: -2%;
+        right: 10%;
         max-width: 100%;
     }
 
-    .mobileIcon {
+    .mobileIcon,
+    .avatarIconMobile,
+    .avatarIconMobileEdit {
         display: block !important;
         max-width: 100%;
     }
@@ -147,9 +175,7 @@
     z-index: 1;
 }
 
-// * {
-//     border: 1px solid black;
-// }
+
 
 .avatar {
     margin-right: 10%;
@@ -219,7 +245,7 @@
 }
 
 .address {
-    height: 14em;
+    height: 4em;
 }
 
 .lastRow {
@@ -247,7 +273,7 @@
     }
 
     .MobileEditcontent {
-        display: block !important;
+        display: flex !important;
     }
 
     .buttonMobile {
@@ -268,12 +294,14 @@
 .creditCardText {
     display: flex;
 }
+
 .cardText {
     font-family: $font-family-title;
-    color:black;
-    padding-top:70px;
+    color: black;
+    padding-top: 70px;
     font-size: 20px;
 }
+
 .monthSelect {
     background-position-x: 95px;
     letter-spacing: 5px;
@@ -295,26 +323,33 @@
     width: 100%;
     border-radius: 15px;
 }
+
 .cardInfo {
     width: 18em;
     height: 10em;
     border-radius: 10px;
     background-image: linear-gradient(#c7c8ce, #fff67f)
 }
+
 @media screen and (max-width: 1000px) {
 
+    .brandText,
+    .addressPC,
     .creditCardButton,
     .creditCardCotent>.logo,
     .creditCardBlank2 {
         display: none;
     }
 
+    .brandBlank,
+    .addressMobile,
     .creditCardBlank {
         display: block !important;
     }
+
     .cardInfo {
         width: 15em;
-        height: em; 
+        height: em;
     }
 }
 
@@ -347,26 +382,41 @@ select {
     background: url(../images/downArrow.svg) no-repeat right #fff;
     appearance: none;
     background-position-x: 130px;
-  }
-  
-  
-  [type="date"] {
-      background:#fff url(../images/birthday.svg)  97% 50% no-repeat ;
-    }
-    [type="date"]::-webkit-inner-spin-button {
-      display: none;
-    }
-    [type="date"]::-webkit-calendar-picker-indicator {
-      opacity: 0;
-    }
-    
-    /* custom styles */
-  
-    input {
-      border: 1px solid #c4c4c4;
-      border-radius: 5px;
-      background-color: #fff;
-      padding: 3px 5px;
-      box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
-      width: 190px;
-    }
+}
+
+
+[type="date"] {
+    background: #fff url(../images/birthday.svg) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+input {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: 190px;
+}
+
+
+#backtotop {
+    position: fixed !important;
+    background: url(../images/backtotop.svg) center no-repeat;
+    height: 7rem;
+    width: 6rem;
+    bottom: 10px;
+    right: 3rem;
+}
+
+
+.divLeft {
+    text-align: left !important;
+}
