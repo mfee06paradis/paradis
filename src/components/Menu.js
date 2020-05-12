@@ -277,8 +277,27 @@ function Menu(props) {
             ) : (
               ''
             )}
+
+
             <div className="checkbox">
-              <input
+
+
+            <input className="inp-cbx" id="cbx" type="checkbox" style={{display: 'none'}}
+                defaultChecked={checkorNot}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setUserRemember(true)
+                  } else {
+                    setUserRemember(false)
+                  }
+                }}/>
+            <label className="cbx" for="cbx"><span>
+                <svg width="22px" height="28px" viewbox="0 0 12 9">
+                  <polyline points="1 10 7 20 17 1"></polyline>
+                </svg></span>
+            </label>
+
+            {/* <input
                 type="checkbox"
                 id="check"
                 name="check"
@@ -291,8 +310,8 @@ function Menu(props) {
                     setUserRemember(false)
                   }
                 }}
-              />
-              <label for="check">
+              /> */}
+              <label for="cbx">
                 <span></span>記住我
               </label>
             </div>
