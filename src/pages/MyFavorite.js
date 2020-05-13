@@ -41,11 +41,17 @@ function MyFavorite(props) {
                     alt="myorders"
                   />
                 </div>
-                <div className="col-12">
+                <div className="col-6 deleteMobile" style={{ display: 'none' }}>
+                  <button className="btn-green">刪除收藏</button>
+                </div>
+                <div className="col-lg-12 col-6">
                   <button style={{ float: 'right' }} className="btn-main">
                     去購買
                   </button>
-                  <button style={{ float: 'left' }} className="btn-green">
+                  <button
+                    style={{ float: 'left' }}
+                    className="btn-green delete"
+                  >
                     刪除收藏
                   </button>
                 </div>
@@ -61,11 +67,17 @@ function MyFavorite(props) {
                     alt="myorders"
                   />
                 </div>
-                <div className="col-12">
+                <div className="col-6 deleteMobile" style={{ display: 'none' }}>
+                  <button className="btn-green">刪除收藏</button>
+                </div>
+                <div className="col-lg-12 col-6">
                   <button style={{ float: 'right' }} className="btn-main">
                     去購買
                   </button>
-                  <button style={{ float: 'left' }} className="btn-green">
+                  <button
+                    style={{ float: 'left' }}
+                    className="btn-green delete"
+                  >
                     刪除收藏
                   </button>
                 </div>
@@ -81,11 +93,17 @@ function MyFavorite(props) {
                     alt="myorders"
                   />
                 </div>
-                <div className="col-12">
+                <div className="col-6 deleteMobile" style={{ display: 'none' }}>
+                  <button className="btn-green">刪除收藏</button>
+                </div>
+                <div className="col-lg-12 col-6">
                   <button style={{ float: 'right' }} className="btn-main">
                     去購買
                   </button>
-                  <button style={{ float: 'left' }} className="btn-green">
+                  <button
+                    style={{ float: 'left' }}
+                    className="btn-green delete"
+                  >
                     刪除收藏
                   </button>
                 </div>
