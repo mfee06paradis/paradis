@@ -331,7 +331,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-
+    .delete,
     .brandText,
     .addressPC,
     .creditCardButton,
@@ -339,7 +339,7 @@
     .creditCardBlank2 {
         display: none;
     }
-
+    .deleteMobile,
     .brandBlank,
     .addressMobile,
     .creditCardBlank {
