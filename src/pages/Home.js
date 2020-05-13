@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import AOS from 'aos';
+import { NavLink } from 'react-router-dom'
 
 
 import { Carousel, Row, Col } from 'react-bootstrap'
@@ -33,7 +34,11 @@ function ControlledCarousel() {
             母親節新品 - 一抹持妝<br></br>
             可校正眼皮暗沉與膚色不均，延長後續粉狀
           </p>
+          <NavLink
+                to="/discountList/1"
+              >
           <button>馬上訂購</button>
+          </NavLink>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -45,7 +50,11 @@ function ControlledCarousel() {
             NARS為母親節推出特別優惠<br></br>
             以柔和至飽和的色調呈現柔滑的色彩，整日保持柔順。
           </p>
-          <button>馬上訂購</button>
+          <NavLink
+                to="/discountList/1"
+              >
+            <button>馬上訂購</button>
+          </NavLink>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -59,7 +68,11 @@ function ControlledCarousel() {
             大膽顯色，持久潤澤，柔滑一抹，<br></br>
             瞬間釋放金緻女人魅力！
           </p>
+          <NavLink
+                to="/discountList/2"
+              >
           <button>馬上訂購</button>
+          </NavLink>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
