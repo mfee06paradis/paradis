@@ -463,8 +463,9 @@ function CreditCard(props) {
                     }}
                   />
                 </div>
-                <div className="col-lg-3 col-6 creditCardText">
+                <div className="col-lg-3 col-8 creditCardText">
                   <select
+                    style={{ backgroundPositionX: '90px' }}
                     className="monthSelect"
                     id="monthSelect"
                     onClick={createM}
@@ -478,8 +479,9 @@ function CreditCard(props) {
                     </option>
                   </select>
                 </div>
-                <div className="col-lg-3 col-6 creditCardText">
+                <div className="col-lg-3 col-8 creditCardText">
                   <select
+                    style={{ backgroundPositionX: '90px' }}
                     className="monthSelect"
                     id="yearSelect"
                     onClick={createY}

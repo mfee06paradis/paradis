@@ -109,6 +109,9 @@ function Account(props) {
                           src={avatar}
                           className="avatarIconMobileEdit"
                           alt="memberIcon"
+                          style={{
+                            marginLeft: '3.5em',
+                          }}
                         />
                       </div>
                     </div>

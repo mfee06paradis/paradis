@@ -79,7 +79,7 @@ function Member(props) {
               />
             </div>
           </div>
-          <div className="col-12" style={{ height: '6em' }}>
+          <div className="col-12" style={{ height: '4em' }}>
             <div className="pinkRibbon">歡迎! {name.slice(1)}</div>
           </div>
           <NavLink to="/Account" className="nav-link" activeClassName="active">
