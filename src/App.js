@@ -27,7 +27,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const [cartNumber, setCartNumber] = useState(0);
+  const [cartNumber, setCartNumber] = useState(1);
 
   return (
     <Router>

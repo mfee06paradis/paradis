@@ -1,28 +1,32 @@
 @import "./variables.scss";
 
+.productBody {
+  margin-top: 100px;
+}
+
 .disFirstSlide {
   background: url(../images/discount/demo1.jpg) center no-repeat;
-  height: 13vh;
+  height: 15vh;
 }
 
 .disSecondSlide {
   background: url(../images/discount/demo2.jpg) center no-repeat;
-  height: 13vh;
+  height: 15vh;
 }
 
 .disThirdSlide {
   background: url(../images/discount/demo3.jpg) center no-repeat;
-  height: 13vh;
+  height: 15vh;
 }
 
 .disFourSlide {
   background: url(../images/discount/demo4.jpg) center no-repeat;
-  height: 13vh;
+  height: 15vh;
 }
 
 .disFiveSlide {
   background: url(../images/discount/demo5.jpg) center no-repeat;
-  height: 13vh;
+  height: 15vh;
 }
 
 .pdimg {
