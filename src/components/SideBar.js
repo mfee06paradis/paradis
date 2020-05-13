@@ -52,14 +52,16 @@ function SideBar(props) {
     <>
       <div className="col-3 sideBar ">
         <div className="col-9 sideBarContent">
-          <div>
-            <img
-              src={avatar}
-              className="avatarIcon"
-              alt="memberIconForSideBar"
-            />
-          </div>
-          <div className="pinkRibbonSideBar">歡迎! {name.slice(1)}</div>
+          <NavLink to="/member" className="nav-link" activeClassName="active">
+            <div>
+              <img
+                src={avatar}
+                className="avatarIcon"
+                alt="memberIconForSideBar"
+              />
+            </div>
+            <div className="pinkRibbonSideBar">歡迎! {name.slice(1)}</div>
+          </NavLink>
           <NavLink
             to="/Account"
             className="row sideBarText nav-link"
@@ -133,7 +135,7 @@ function SideBar(props) {
               style={{ cursor: 'pointer' }}
               className="nav-link"
               activeClassName="active"
-              src={require('../images/logout.svg')}
+              src={require('../images/logoutMobile.svg')}
               alt="logout"
               onClick={() => {
                 setModalShow(true);
