@@ -63,7 +63,7 @@ function Product(props) {
                         <Col xs={12} md={4} >
                           <div className="card" key={index}>
                             <img
-                              src={img1}
+                              src={require(`../images/product/${value.productImg}.png`)}
                               className="card-img-top pdimg"
                               alt="..."
                             />
